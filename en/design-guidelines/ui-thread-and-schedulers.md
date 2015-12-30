@@ -7,12 +7,6 @@ FetchStuffAsync()
   .ObserveOn(RxApp.MainThreadScheduler)
   .Subscribe(x => this.SomeViewModelProperty = x);
 ```
-## Don't
-
-```csharp
-FetchStuffAsync()
-  .Subscribe(x => this.SomeViewModelProperty = x);
-```
 
 ## Better
 Even better, pass the scheduler to the asynchronous operation - this is often
@@ -20,6 +14,13 @@ necessary for more complex tasks.
 
 ```csharp
 FetchStuffAsync(RxApp.MainThreadScheduler)
+  .Subscribe(x => this.SomeViewModelProperty = x);
+```
+
+## Don't
+
+```csharp
+FetchStuffAsync()
   .Subscribe(x => this.SomeViewModelProperty = x);
 ```
 
