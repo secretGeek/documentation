@@ -6,7 +6,6 @@ Don't suffix `ReactiveCommand` properties' names with `Command`; instead, name t
 public ReactiveCommand Synchronize { get; private set; }
 
 // and then in the ctor:
-
 Synchronize = ReactiveCommand.CreateAsyncObservable(
   _ => SynchronizeImpl(mergeInsteadOfRebase: !IsAhead));
 
