@@ -31,7 +31,7 @@ this.WhenAny(x => x.StuffFetched, y => y.OtherStuffNotBusy, (x, y) => x && y)
   .Subscribe(x => CanDoIt = x);
 ```
 
-## Why
+## Why?
 
  - `ObservableAsPropertyHelper` will take care of raising `INotifyPropertyChanged`
    events - if you're creating read-only properties, this can save so much boilerplate
