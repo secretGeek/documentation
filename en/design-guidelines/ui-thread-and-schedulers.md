@@ -18,7 +18,6 @@ FetchStuffAsync(RxApp.MainThreadScheduler)
 ```
 
 ## Don't
-
 ```csharp
 FetchStuffAsync()
   .Subscribe(x => this.SomeViewModelProperty = x);
