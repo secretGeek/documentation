@@ -12,8 +12,8 @@ public interface ISearchViewModel
     ISearchService SearchService { get; }
 }
 ```
-### Define under what conditions a network request will be made
 
+## Define under what conditions a network request will be made
 ```csharp
 // Here we're describing here, in a *declarative way*, the conditions in
 // which the Search command is enabled.  Now our Command IsEnabled is
@@ -21,7 +21,8 @@ public interface ISearchViewModel
 // when it should change.
 var canSearch = this.WhenAny(x => x.SearchQuery, x => !String.IsNullOrWhiteSpace(x.Value));
 ```
-### Make the network connection
+
+## Make the network connection
 ```csharp
 // ReactiveCommand has built-in support for background operations and
 // guarantees that this block will only run exactly once at a time, and
@@ -32,7 +33,7 @@ Search = ReactiveCommand.CreateAsyncTask(canSearch, async _ => {
 });
 ```
 
-### Update the user interface 
+## Update the user interface 
 ```csharp
 // ReactiveCommands are themselves IObservables, whose value are the results
 // from the async method, guaranteed to arrive on the UI thread. We're going
@@ -44,7 +45,8 @@ Search.Subscribe(results => {
 });
 
 ```
-### Handling failures
+
+## Handling failures
 ```csharp
 // ThrownExceptions is any exception thrown from the CreateAsyncTask piped
 // to this Observable. Subscribing to this allows you to handle errors on
@@ -54,7 +56,8 @@ Search.ThrownExceptions
         UserError.Throw("Potential Network Connectivity Error", ex);
     });
 ```
-### Throttling network requests and automatic search execution behaviour
+
+## Throttling network requests and automatic search execution behaviour
 ```csharp
 // Whenever the Search query changes, we're going to wait for one second
 // of "dead airtime", then automatically invoke the subscribe command.
