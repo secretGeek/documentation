@@ -1,0 +1,29 @@
+{
+    "plugins": [
+        "olark",
+        "sitemap",
+        "richquotes",
+        "image-captions",
+        "printlinks",
+        "video",
+        "prism",
+        "-highlight",
+        "github",
+        "edit-link"
+    ],
+    "pluginsConfig": {
+        "edit-link": {
+          "base": "https://github.com/reactiveui/documentation/tree/master",
+          "label": "Edit This Page"
+        },
+        "github": {
+          "url": "https://github.com/reactiveui/documentation"
+        },
+        "sitemap": {
+            "hostname": "http://docs.reactiveui.net/"
+        },
+        "olark": {
+            "site_id": "2047-281-10-4006"
+        }
+    }
+}
