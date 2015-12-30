@@ -33,6 +33,6 @@ public class MyViewModel(IDependency dependency)
 }
 ```
 
-# Why?
+## Why?
 * The lifetime of `dependency` is unknown - if it is a singleton it
  could introduce memory leaks into your application.
