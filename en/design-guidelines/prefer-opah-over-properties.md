@@ -1,10 +1,10 @@
-### Prefer Observable Property Helpers to setting properties explicitly
+# Prefer Observable Property Helpers to setting properties explicitly
 
 When a property's value depends on another property, a set of properties, or an 
 observable stream, rather than set the value explicitly, use 
 `ObservableAsPropertyHelper` with `WhenAny` wherever possible.
 
-__Do__
+## Do
 
 ```csharp
 public class RepositoryViewModel : ReactiveObject
@@ -23,7 +23,7 @@ public class RepositoryViewModel : ReactiveObject
 }
 ```
 
-__Don't__
+## Don't
 
 ```csharp
 this.WhenAny(x => x.StuffFetched, y => y.OtherStuffNotBusy, (x, y) => x && y)
@@ -31,7 +31,7 @@ this.WhenAny(x => x.StuffFetched, y => y.OtherStuffNotBusy, (x, y) => x && y)
   .Subscribe(x => CanDoIt = x);
 ```
 
-#### Why?
+## Why?
 
  - `ObservableAsPropertyHelper` will take care of raising `INotifyPropertyChanged`
    events - if you're creating read-only properties, this can save so much boilerplate
