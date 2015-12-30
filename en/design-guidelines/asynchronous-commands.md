@@ -57,7 +57,7 @@ public class RepositoryViewModel : ReactiveObject
 }
 ```
 
-## Why
+## Why?
 A lot of the power of `ReactiveCommand` comes from the async version. In the basic version the following features do not function as expected:
 
 * `IsExecuting` observable will not report on your asynchronous method when it is inside the `Subscribe`
