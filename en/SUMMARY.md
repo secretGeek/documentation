@@ -8,6 +8,7 @@
        * [Reactive Extensions](fundamentals/reactive-extensions.md)
        * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
        * [Our Philosophy](fundamentals/philosophy.md)
+   * [Compelling Example](/compelling-example/index.md)
 * [Getting Started](getting-started/index.md)
 
 * [Samples](https://github.com/reactiveui/samples)
