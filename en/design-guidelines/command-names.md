@@ -3,7 +3,6 @@
 Don't suffix `ReactiveCommand` properties' names with `Command`; instead, name the property using a verb that describes the command's action. For example:
 
 ```csharp
-	
 public ReactiveCommand Synchronize { get; private set; }
 
 // and then in the ctor:
