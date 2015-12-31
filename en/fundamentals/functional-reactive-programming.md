@@ -18,6 +18,6 @@ If I have a signal that sends numbers, and I want it to send strings instead, I 
 
 A signal can be subscribed to in order to perform side-effects. A good example would be the signal emitted by a button when it's pressed; we can subscribe to that signal in order to perform side effects. A signal can also be bound to a property. For example, a signal that sends the location of a gesture recognizer can be mapped to a color and bound to the background color of a view. Then, when the user changes their tap position, the view changes color.
 
-Both of these examples, of subscription and binding, demonstrate that we can create a set up at the beginning of an application runtime and tell the code what to do without telling it how to do it. This is the value of functional reactive programming.
+Both of these examples, of subscription and binding, demonstrate that we can create a set up at the beginning of an application runtime and tell the code *what to do* without telling it *how to do it*. This is the value of functional reactive programming.
 
 Another core concept in functional reactive programming is that of *derived* state. State is OK in ReactiveUI, as long as it's *bound* to a signal. This derived state means that you never explicitly set the value of a bound property, but rather rely on signal transformations to derive that state for you.
