@@ -4,7 +4,7 @@ Functional. Reactive. Programming. What on Earth is that?
 
 Well, we know to some degree what functional programming is. Functions don't have side-effects; there's no mutable state. It's a difficult way to program since the real world is mutable. Modelling things like user input becomes a nightmare.
 
-*Reactive* programming? What's that? Well, the best way to describe reactive programming is to think of a spreadsheet. Imagine three cells, A, B, and C. A is defined as the sum of B and C. Whenever B or C changes, A reacts to update itself. That's reactive programming: changes propagate throughout a system automatically.
+*Reactive* programming? What's that? Well, the best way to describe reactive programming is to think of a spreadsheet. Imagine three cells, A, B, and C. A is defined as the sum of B and C. Whenever B or C changes, A *reacts* to update itself. That's reactive programming: changes propagate throughout a system automatically.
 
 Functional reactive programming is just a combination of functional and reactive paradigms. We model user input as a function that changes over time, abstracting away the idea of mutable state.
 
