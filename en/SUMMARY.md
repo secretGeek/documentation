@@ -1,19 +1,16 @@
 # Summary
 
-
 * [Introduction](README.md)
-   * [Community](/community/index.md)
+   * [Community](community/index.md)
    * [Fundamentals](fundamentals/index.md)
+       * [Our Philosophy](fundamentals/philosophy.md)
        * [Model View ViewModel (MVVM)](fundamentals/model-view-viewmodel.md)
        * [Reactive Extensions](fundamentals/reactive-extensions.md)
        * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
-       * [Our Philosophy](fundamentals/philosophy.md)
-   * [Compelling Example](/compelling-example/index.md)
-   * [Success Stories](/success-stories/index.md)
+   * [Compelling Example](compelling-example/index.md)
+   * [Success Stories](success-stories/index.md)
 * [Getting Started](getting-started/index.md)
-
-* [Samples](https://github.com/reactiveui/samples)
-
+* [Samples](https:/github.com/reactiveui/samples)
 * [User Guide](user-guide/index.md)
    * [View Models](user-guide/view-models/index.md)
    * [Data Suspension](user-guide/data-suspension/index.md)
@@ -25,7 +22,6 @@
    * [User Interaction](user-guide/user-interaction/index.md)
    * [Events](user-guide/events/index.md)
    * [Routing](user-guide/routing/index.md)
-
 * [Platform Considerations](platform-considerations/index.md)
    * [Xamarin Android](platform-considerations/xamarin-android.md)
    * [Xamarin Forms](platform-considerations/xamarin-forms.md)
@@ -35,19 +31,17 @@
    * [Windows Presentation Framework](platform-considerations/windows-presentation-framework.md)
    * [Windows Universal](platform-considerations/windows-universal.md)
    * [Windows Store](platform-considerations/windows-store.md)
-
 * [Design Guidelines](design-guidelines/index.md)
    * [Commands](design-guidelines/commands.md)
    * [Command Names](design-guidelines/command-names.md)
-   * [Asynchronous Commands](design-guidelines/asynchronous-commands.md)   
+   * [Asynchronous Commands](design-guidelines/asynchronous-commands.md)
    * [UI Thread and Schedulers](design-guidelines/ui-thread-and-schedulers.md)
    * [Prefer OPAH over Properties](design-guidelines/prefer-opah-over-properties.md)
    * [Use this on Left of WhenAny](design-guidelines/use-this-on-left-of-whenany.md)
    * [Use descriptive variables with WhenAny](design-guidelines/use-descriptive-variables-with-whenany.md)
-
 * [Support](support/index.md)
-
 * [Contributing](contributing/index.md)
-    * [Copyright Assignment](https://github.com/reactiveui/documentation/blob/master/COPYRIGHT.md)
-    * [License](https://github.com/reactiveui/documentation/blob/master/LICENSE.md)
-    * [Authors](https://github.com/reactiveui/documentation/graphs/contributors)
+   * [Copyright Assignment](https:/github.com/reactiveui/documentation/blob/master/COPYRIGHT.md)
+   * [License](https:/github.com/reactiveui/documentation/blob/master/LICENSE.md)
+   * [Authors](https:/github.com/reactiveui/documentation/graphs/contributors)
+
