@@ -38,5 +38,5 @@ public partial class NotificationsListViewController : ReactiveTableViewControll
 }
 ```
 
-# iOS Binding Helpers
+## iOS Binding Helpers
 ReactiveTableViewSource, ReactiveTableViewController, ReactiveTableViewCell etc. 
