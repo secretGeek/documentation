@@ -61,4 +61,5 @@
    * [Authors](https:/github.com/reactiveui/documentation/graphs/contributors)
    * [Plugin Development](contributing/plugin-development.md)
    * [Versioning](contributing/versioning.md)
+   * Documentation
 
