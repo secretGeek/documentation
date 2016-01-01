@@ -60,4 +60,5 @@
    * [License](https:/github.com/reactiveui/documentation/blob/master/LICENSE.md)
    * [Authors](https:/github.com/reactiveui/documentation/graphs/contributors)
    * [Plugin Development](contributing/plugin-development.md)
+   * Versioning
 
