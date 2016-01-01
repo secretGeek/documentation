@@ -38,7 +38,7 @@
    * [REST Client](user-guide/rest-client/index.md)
    * [Commands](user-guide/commands/index.md)
        * [Automatic Execution](user-guide/commands/automatic-execution.md)
-       * Thrown Exceptions
+       * [Thrown Exceptions](user-guide/commands/thrown-exceptions.md)
 * [Platform Considerations](platform-considerations/index.md)
    * [Xamarin Android](platform-considerations/xamarin-android.md)
    * [Xamarin Forms](platform-considerations/xamarin-forms.md)
