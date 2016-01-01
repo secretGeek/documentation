@@ -62,4 +62,5 @@
    * [Plugin Development](contributing/plugin-development.md)
    * [Versioning](contributing/versioning.md)
    * Documentation
+   * Framework
 
