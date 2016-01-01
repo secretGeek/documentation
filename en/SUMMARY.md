@@ -40,7 +40,7 @@
        * [Automatic Execution](user-guide/commands/automatic-execution.md)
        * [Thrown Exceptions](user-guide/commands/thrown-exceptions.md)
        * [Asynchronous operations](user-guide/commands/asynchronous-operations.md)
-       * Common Patterns
+       * [Common Patterns](user-guide/commands/common-patterns.md)
 * [Platform Considerations](platform-considerations/index.md)
    * [Xamarin Android](platform-considerations/xamarin-android.md)
    * [Xamarin Forms](platform-considerations/xamarin-forms.md)
