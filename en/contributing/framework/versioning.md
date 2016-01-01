@@ -23,3 +23,5 @@ Never bump the version numbers as part of a pull-request, it is done via the pro
     michaelteper [11:03 AM]  it would seem "bad" on principle, in case
     one doesnt want to pull a PR into a release or pull another one
     ahead of it...
+
+<img src="/images/contributing/branch-and-pull-based-workflow.png"/>
