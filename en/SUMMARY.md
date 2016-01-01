@@ -39,6 +39,7 @@
    * [Commands](user-guide/commands/index.md)
        * [Automatic Execution](user-guide/commands/automatic-execution.md)
        * [Thrown Exceptions](user-guide/commands/thrown-exceptions.md)
+       * Asynchronous operations
 * [Platform Considerations](platform-considerations/index.md)
    * [Xamarin Android](platform-considerations/xamarin-android.md)
    * [Xamarin Forms](platform-considerations/xamarin-forms.md)
