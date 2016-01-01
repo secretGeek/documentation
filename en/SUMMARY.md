@@ -59,5 +59,5 @@
    * [Copyright Assignment](https:/github.com/reactiveui/documentation/blob/master/COPYRIGHT.md)
    * [License](https:/github.com/reactiveui/documentation/blob/master/LICENSE.md)
    * [Authors](https:/github.com/reactiveui/documentation/graphs/contributors)
-   * Plugin Development
+   * [Plugin Development](contributing/plugin-development.md)
 
