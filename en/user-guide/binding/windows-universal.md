@@ -10,6 +10,6 @@
     
     I can see how Bind* would cause issues with dotnet native.
     
-    if it comes down to it, I can always refactor things to use x:Bind. 
+    @moswald: if it comes down to it, I can always refactor things to use x:Bind. 
     it doesn't support observables, so I'd have to convert some things
     to properties...but doable.
