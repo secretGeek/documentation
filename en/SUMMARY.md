@@ -56,11 +56,11 @@
    * [Use descriptive variables with WhenAny](design-guidelines/use-descriptive-variables-with-whenany.md)
 * [Support](support/index.md)
 * [Contributing](contributing/index.md)
-   * [Copyright Assignment](https:/github.com/reactiveui/documentation/blob/master/COPYRIGHT.md)
    * [License](https:/github.com/reactiveui/documentation/blob/master/LICENSE.md)
    * [Authors](https:/github.com/reactiveui/documentation/graphs/contributors)
    * [Plugin Development](contributing/plugin-development.md)
    * [Versioning](contributing/versioning.md)
+   * [Copyright Assignment](https:/github.com/reactiveui/documentation/blob/master/COPYRIGHT.md)
    * Documentation
    * Framework
 
