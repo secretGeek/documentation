@@ -35,7 +35,7 @@
    * [Events](user-guide/events/index.md)
    * [Routing](user-guide/routing/index.md)
    * [Caching](user-guide/caching/index.md)
-       * Common Patterns
+       * [Common Patterns](user-guide/caching/common-patterns.md)
    * [REST Client](user-guide/rest-client/index.md)
    * [Commands](user-guide/commands/index.md)
        * [Automatic Execution](user-guide/commands/automatic-execution.md)
