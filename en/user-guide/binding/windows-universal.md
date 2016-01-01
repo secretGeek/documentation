@@ -4,7 +4,7 @@
     
     https://reactivex.slack.com/archives/reactiveui/p1450928587001692
     
-    do you use the RxUI bind methods, or are you using {x:Bind}?
+    @onovotny: do you use the RxUI bind methods, or are you using {x:Bind}?
     
     I pretty much only use x:Bind
     
