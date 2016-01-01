@@ -36,7 +36,7 @@
    * [Routing](user-guide/routing/index.md)
    * [Caching](user-guide/caching/index.md)
    * [REST Client](user-guide/rest-client/index.md)
-   * Commands
+   * [Commands](user-guide/commands/index.md)
 * [Platform Considerations](platform-considerations/index.md)
    * [Xamarin Android](platform-considerations/xamarin-android.md)
    * [Xamarin Forms](platform-considerations/xamarin-forms.md)
