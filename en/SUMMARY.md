@@ -37,7 +37,7 @@
    * [Caching](user-guide/caching/index.md)
    * [REST Client](user-guide/rest-client/index.md)
    * [Commands](user-guide/commands/index.md)
-       * Automatic Execution
+       * [Automatic Execution](user-guide/commands/automatic-execution.md)
 * [Platform Considerations](platform-considerations/index.md)
    * [Xamarin Android](platform-considerations/xamarin-android.md)
    * [Xamarin Forms](platform-considerations/xamarin-forms.md)
