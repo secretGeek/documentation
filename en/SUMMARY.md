@@ -92,4 +92,5 @@
        * [Versioning](contributing/framework/versioning.md)
    * [Plugins](contributing/plugins/index.md)
 * Patterns
+   * Cross-platform Modal Dialogs
 
