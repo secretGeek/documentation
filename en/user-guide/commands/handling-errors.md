@@ -1,2 +1,2 @@
-# Handling errors (`ThrownExceptions`)
+# Handling Errors (`ThrownExceptions`)
 
