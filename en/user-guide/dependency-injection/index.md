@@ -53,21 +53,3 @@ parameter which is an arbitrary key that you provide.
 The current resolver that ReactiveUI itself will use (as well as what your app
 should use as well), is provided by [Splat.ModernDependencyResolver](https://github.com/paulcbetts/splat/blob/b833718d1b7940d1d02403e86864d03d2af5cea7/Splat/ServiceLocation.cs).
 
-#### Registration
-
-The default implementation of `Locator.Current` also implements
-another interface (accessible via the convenience property
-`Locator.CurrentMutable`):
-
-```cs
-public interface IMutableDependencyResolver : IDependencyResolver
-{
-    void Register(Func<object> factory, Type serviceType, string contract = null);
-}
-```
-
-This resolver allows you to register new implementations for interfaces. This is usually done on app startup (on Cocoa, in `AppDelegate`, or on WPF, in `App`).
-
-This design seems overly simplistic, but in fact, can represent most of the useful lifetime scopes that we would want to use in a desktop / mobile application. 
-
-
