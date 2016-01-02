@@ -11,12 +11,7 @@ shared between and referenced in each specific platform application:
 
 # Core Application Library
 
-The portable class library will be the heart of your application and where you
-will spend most of your time. `Profile78` or `Profile259` is the recommended
-profile which should be used, you will need to select it when you create the
-project. Alternatively you can adjust the profile after creation by editing
-the `.csproj` but you will need to run some NuGet commands to reinstall most
-of your packages.
+The portable class library will be the heart of your application and where you will spend most of your time. `Profile78` or `Profile259` is the recommended profile which should be used, you will need to select it when you create the project. Alternatively you can adjust the profile after creation by editing the `.csproj` but you will need to run some NuGet commands to reinstall most of your packages.
 
 MyCoolApp.Core.csproj:
 
