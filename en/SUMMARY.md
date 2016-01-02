@@ -31,6 +31,7 @@
    * [WhenAny](user-guide/when-any/index.md)
    * [WhenActivated](user-guide/when-activated/index.md)
    * [Lists](user-guide/lists/index.md)
+       * Derived Lists
    * [User Interaction](user-guide/user-interaction/index.md)
    * [Events](user-guide/events/index.md)
        * Platforms
