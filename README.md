@@ -1,5 +1,5 @@
 # Contributing
- By contributing to the ReactiveUI documentation, you agree to [assign copyright of any contribution back to the project](COPYRIGHT.md) under the [nominated license](LICENSE.md). We are open to, and grateful for, any contributions made by the community.
+By contributing to the ReactiveUI documentation, you agree to [assign copyright of any contribution back to the project](COPYRIGHT.md) under the [nominated license](LICENSE.md). We are open to, and grateful for, any contributions made by the community.
 
 # Reporting Documentation Issues
 
@@ -11,7 +11,8 @@ Please open an issue with a proposal for a new feature or refactoring before sta
 
 # Building
 
-    # npm install -g gitbook gitbook-cli
+    # npm install gitbook
+    # npm install -g gitbook-cli
     # gitbook install ./
     # gitbook serve
     
