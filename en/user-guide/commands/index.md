@@ -1,5 +1,39 @@
 # Commands
 
+## Overview
+
+Commands encapsulate logic to execute in response to some user action. For example, clicking a **Save** menu item, tapping a phone icon to instigate a phone call, or stretching an image to zoom in. Commands may or may not be executable in a given situation. For example, the aforementioned **Save** menu item might be disabled if there are no unsaved changes.
+
+In MVVM, the view model does not concern itself with *how* a user executes a particular command - that decision is left to the view. But typically it's best if the execution logic resides in the view model so that changes to the view model's state can be encapsulated. Commands facilitate this separation between the *how* and the *what*.
+
+If you've done any UI development in .NET, you're likely familiar with the [`ICommand`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand(v=vs.110).aspx) interface. It is an abstraction that can be used for exactly the purposes described. It's `CanExecute` method can be used to determine whether a command can be executed. If so, one can then invoke the `Execute` method. The `CanExecuteChanged` event can be used by interested parties to know when the command's executability has changed. For example, a `Button` bound to a particular `ICommand` would want to 
+
+But the `ICommand` interface isn't an ideal abstraction. It fails to elegantly accommodate long-running commands, such as those that perform I/O. Moreover, its interface is imperative, not reactive. This makes it far less amenable to a reactive code base.
+
+## Reactive Commands
+
+## A Compelling Example
+
+## Asynchronous versus Synchronous Commands
+
+## Command Parameters
+
+## Command Values
+
+## Controlling Executability
+
+## Controlling Scheduling
+
+## Handling Errors
+
+## Binding
+
+## Combined Commands
+
+
+
+# Commands
+
 # Misc
 
 
@@ -53,175 +87,3 @@ useful to model via Commands despite being primarily invoked programatically.
 For example, many code paths involving periodically loading or refreshing
 resources (i.e. "LoadTweets") can be modeled well using Commands.
 
-### Basics
-
-Since the act of invoking a Command represents an Event, ReactiveCommand
-itself is an `IObservable<object>`. The object that is passed along via the
-`IObservable` is the command parameter given to the `Execute` method of
-`ICommand`:
-
-```cs
-var command = ReactiveCommand.Create();
-
-command.Subscribe(x => this.Log().Info("The number is {0}", x));
-
-command.Execute(4);
->>> The number is 4
-```
-
-While ReactiveCommand supports the Command parameter, it is recommended to not
-use it, and simply always pass `null` to the `Execute` method. Instead of using
-the parameter, you should be using properties that are on the ViewModel.
-
-Since ReactiveCommand is an Observable, all of the Rx operators can be used
-with it. Here are some practical examples:
-
-```cs
-
-// Note: This is for illustration purposes, see the Asynchronous
-// ReactiveCommand chapter for a better way to do this
-LoadTweets
-    .Where(_ => IsLoggedIn == true)
-    .SelectMany(async x => await FetchTweets())
-    .ObserveOn(RxApp.MainThreadScheduler)
-    .Subscribe(x => LoadedTweets = x);
-
-// Refresh when either the Command is invoked *or* the window is activated
-shouldRefreshTweets = Observable.Merge(
-    this.Events().ActivatedObs.Select(_ => Unit.Default),
-    this.WhenAnyObservable(x => x.ViewModel.Refresh).Select(_ => Unit.Default));
-
-shouldRefreshTweets
-    .Where(x => this.ViewModel != null)
-    .Subscribe(_ => ViewModel.RefreshData());
-```
-
-### CanExecute via Observable
-
-All of the Commands we've created so far, can always be executed - their
-`CanExecute` simply returns 'true'. To specify when a Command can be executed,
-instead of using a `Func<object, bool>`, we'll use an `IObservable<bool>`.
-Because we're describing not only whether a Command can be executed, but when
-that value changes, we'll also get the implementation of `CanExecuteChanged`
-for free.
-
-Note that the parameter to `CanExecute` is ignored in ReactiveCommand. This is
-because it is fundamentally incompatible with the notion of
-`CanExecuteChanged` - if `CanExecute(bar)` is `true` and `CanExecute(baz)` is
-`false`, when should we fire `CanExecuteChanged`?
-
-The simplest thing we can possibly do to pass along `CanExecute` information, is
-to use a `Subject<bool>`, which is an Observable that you control yourself by
-hand. Here's how it works:
-
-```cs
-var commandCanExecute = new Subject<bool>();
-var command = ReactiveCommand.Create(commandCanExecute);
-
-commandCanExecute.OnNext(false);
-command.CanExecute(null);
->>> false
-
-commandCanExecute.OnNext(true);
-command.CanExecute(null);
->>> true
-```
-
-### Combining WhenAnyValue and CanExecute
-
-While a Subject might be the easiest thing to understand, it certainly isn't
-the most effective. Oftentimes, a far more appropriate `CanExecute` is one
-that is based on other properties on the ViewModel. Since we want to be
-notified when a Property changes, we use the `WhenAnyValue` method, and we `Select`
-it into a boolean value. For example:
-
-```cs
-// Whether we can post a Tweet, is based on whether the user has typed any
-// text and whether it is short enough.
-PostTweet = ReactiveCommand.Create(
-    this.WhenAnyValue(x => x.TweetContents)
-        .Select(x => !String.IsNullOrWhitespace(x) && x.Length < 140));
-
-// You can often leave off the extra Select by using the selector built into
-// WhenAnyValue
-OkButton = ReactiveCommand.Create(
-    this.WhenAnyValue(x => x.Red, x => x.Green, x => x.Blue,
-        (r,g,b) => r != null && g != null && b != null));
-```
-
-Nearly all of your Commands will use this pattern to define when they can be
-executed. Since your Commands will be tied to Properties, many validation-type
-tasks can be accomplished in this way.
-
-### Listening to Commands from the View via WhenAnyObservable
-
-Unlike traditional `ICommand` implementations, ReactiveCommands can have as
-many people listening to the `Executed` signal as you want. This is **very**
-useful for decoupling, as the View can now listen to the ViewModels and
-execute View specific code, such as setting control focus or scroll positions.
-
-One may be tempted to simply write 
-`ViewModel.SomeCommand.Subscribe(x => ...)`, but this code fails whenever the
-ViewModel changes - you will be subscribed to the wrong command and it will
-appear to never fire. A method called `WhenAnyObservable` solves this for you:
-
-```cs
-// Instead of doing this wrong code:
-this.ViewModel.ClearMessageText
-    .Subscribe(x => MessageTextBox.GetFocus());
-
-// Do this instead, which will handle null and changing ViewModels
-this.WhenAnyObservable(x => x.ViewModel.ClearMessageText)
-    .Subscribe(x => MessageTextBox.GetFocus());
-```
-
-### Combining Commands Together
-
-One thing that is sometimes useful, is to create a Command which simply
-invokes several other commands. ReactiveCommand helps you with this, via the
-`CreateCombined` method. The advantage to using this method, is that the
-`CanExecute` of the new Command will reflect the `and` of the child commands
-(i.e. if any of the child commands can't be invoked, the parent can't be
- either). This is especially useful when one of the commands has an
-asynchronous action attached to it.
-
-```cs
-RefreshUsers.Subscribe(_ => this.Log().Info("Refreshing Users!"));
-RefreshLists.Subscribe(_ => this.Log().Info("Refreshing Lists!"));
-
-RefreshAll = ReactiveCommand.CreateCombined(
-    RefreshUsers, RefreshLists);
-
-RefreshAll.Execute(null);
-
->>> Refreshing Users!
->>> Refreshing Lists!
-```
-
-### Invoking and Creating Commands via Observables
-
-There are a few convenience methods built into the framework for invoking
-commands. Any Observable can be used as a signal to invoke a command via
-`InvokeCommand`:
-
-```cs
-// Invoke the Close command whenever the user hits escape. This will
-// automatically do the CanExecute check for us before calling Execute.
-this.Events().KeyUpObs
-    .Where(x => x.EventArgs.Key == Key.Escape)
-    .InvokeCommand(this, x => x.ViewModel.Close);
-```
-
-Another convenience method called `ToCommand` allows you to create commands
-directly from `IObservable<bool>`. The above `CanExecute` examples could be
-more tersely written:
-
-```cs
-PostTweet = this.WhenAnyValue(x => x.TweetContents, 
-        x => !String.IsNullOrWhitespace(x) && x.Length < 140)
-    .ToCommand();
-
-OkButton = this.WhenAnyValue(x => x.Red, x => x.Green, x => x.Blue,
-        (r,g,b) => r != null && g != null && b != null)
-    .ToCommand();
-```
