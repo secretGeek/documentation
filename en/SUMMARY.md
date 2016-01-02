@@ -33,6 +33,7 @@
    * [Lists](user-guide/lists/index.md)
    * [User Interaction](user-guide/user-interaction/index.md)
    * [Events](user-guide/events/index.md)
+       * Platforms
    * [Routing](user-guide/routing/index.md)
    * [Caching](user-guide/caching/index.md)
        * [Common Patterns](user-guide/caching/common-patterns.md)
