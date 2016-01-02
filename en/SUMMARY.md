@@ -91,4 +91,5 @@
        * [License](https:/github.com/reactiveui/reactiveui/blob/master/LICENSE.md)
        * [Versioning](contributing/framework/versioning.md)
    * [Plugins](contributing/plugins/index.md)
+* Patterns
 
