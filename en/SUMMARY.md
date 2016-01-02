@@ -4,7 +4,7 @@
    * [Compelling Example](compelling-example/index.md)
    * [Success Stories](success-stories/index.md)
    * [Release Notes](release-notes.md)
-       * Version 6.0
+       * [Version 6.0](release-notes/version-6-0-0.md)
 * [Fundamentals](fundamentals/index.md)
    * [Our Philosophy](fundamentals/philosophy.md)
    * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
