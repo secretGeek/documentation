@@ -1,6 +1,6 @@
 {
     "plugins": [
-        "olark",
+        "clicky",
         "sitemap",
         "richquotes",
         "image-captions",
@@ -22,8 +22,8 @@
         "sitemap": {
             "hostname": "http://docs.reactiveui.net/"
         },
-        "olark": {
-            "site_id": "2047-281-10-4006"
+        "clicky": {
+            "site_id": "100909796"
         }
     }
 }
