@@ -5,7 +5,7 @@
    * [Success Stories](success-stories/index.md)
    * [Release Notes](release-notes.md)
        * [Version 6.0](release-notes/version-6-0-0.md)
-       * Version 5.0
+       * [Version 5.0](release-notes/version-5.0.0.md/version_50.md)
 * [Fundamentals](fundamentals/index.md)
    * [Our Philosophy](fundamentals/philosophy.md)
    * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
