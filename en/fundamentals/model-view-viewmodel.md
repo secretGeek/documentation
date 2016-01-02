@@ -18,3 +18,5 @@ MVVM promotes event-driven programming of user interfaces, and declarative prope
 * [WPF Data Binding](http://msdn.microsoft.com/en-us/library/aa480224.aspx)
 
 * [How to implement MVVM in TDD](http://msdn.microsoft.com/en-us/library/aa480224.aspx)
+
+* http://wp.qmatteoq.com/the-mvvm-pattern-introduction/
