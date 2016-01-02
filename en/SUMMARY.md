@@ -39,6 +39,7 @@
        * Platforms
            * [Windows Forms](user-guide/events/windows-forms.md)
    * [Routing](user-guide/routing/index.md)
+       * Platforms
    * [Caching](user-guide/caching/index.md)
        * [Common Patterns](user-guide/caching/common-patterns.md)
    * [REST Client](user-guide/rest-client/index.md)
