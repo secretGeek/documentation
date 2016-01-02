@@ -4,7 +4,7 @@
    * [Compelling Example](compelling-example/index.md)
    * [Success Stories](success-stories/index.md)
    * [Community](community/index.md)
-   * Troubleshooting
+   * [Troubleshooting](/en/user-guide/troubleshooting/index.md)
 * [Fundamentals](fundamentals/index.md)
    * [Our Philosophy](fundamentals/philosophy.md)
    * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
