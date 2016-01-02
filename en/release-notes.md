@@ -1,6 +1,6 @@
 # Release Notes
 
-page_title: ReactiveUI 6.x Series Release Notes
+
 
 #Release Notes
 
