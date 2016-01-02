@@ -1,2 +1,1 @@
-# Return values
-
+# Return values (`TResult`)
