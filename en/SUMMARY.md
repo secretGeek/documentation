@@ -34,6 +34,7 @@
    * [User Interaction](user-guide/user-interaction/index.md)
    * [Events](user-guide/events/index.md)
        * Platforms
+           * Windows Forms
    * [Routing](user-guide/routing/index.md)
    * [Caching](user-guide/caching/index.md)
        * [Common Patterns](user-guide/caching/common-patterns.md)
