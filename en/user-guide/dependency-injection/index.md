@@ -68,22 +68,15 @@ public interface IMutableDependencyResolver : IDependencyResolver
 }
 ```
 
-This resolver allows you to register new implementations for interfaces. This
-is usually done on app startup (on Cocoa, in `AppDelegate`, or on WPF, in
-`App`).
+This resolver allows you to register new implementations for interfaces. This is usually done on app startup (on Cocoa, in `AppDelegate`, or on WPF, in `App`).
 
-This design seems overly simplistic, but in fact, can represent most of the
-useful lifetime scopes that we would want to use in a desktop / mobile
-application. 
+This design seems overly simplistic, but in fact, can represent most of the useful lifetime scopes that we would want to use in a desktop / mobile application. 
 
 ## Common Cross-Platform Patterns
 
-Dependency resolution is very useful for moving logic that would normally have
-to be in platform-specific code, into the shared platform code. First, we need
-to define an Interface for something that we want to use - this example isn't
-a Best Practice, but it's illustrative.
+Dependency resolution is very useful for moving logic that would normally have to be in platform-specific code, into the shared platform code. First, we need to define an Interface for something that we want to use - this example isn't a Best Practice, but it's illustrative.
 
-```
+```csharp
 public interface IYesNoDialog
 {
     // Returns 'true' if yes, 'false' if no.
@@ -93,7 +86,7 @@ public interface IYesNoDialog
 
 Now this interface can be used in a ViewModel:
 
-```cs
+```csharp
 public class MainViewModel
 {
     public ReactiveCommand<Object> DeleteData { get; protected set; }
@@ -120,7 +113,7 @@ public class MainViewModel
 Now, our implementations could be very different between iOS and Android -
 here's a sample iOS implementation:
 
-```cs
+```csharp
 public class AlertDialog : IYesNoDialog
 {
     public IObservable<bool> Prompt(string title, string description)
