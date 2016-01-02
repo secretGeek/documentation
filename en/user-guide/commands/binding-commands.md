@@ -1,2 +1,1 @@
-# Binding commands
-
+# Binding Commands (`BindCommand`)
