@@ -1,2 +1,2 @@
-# Combining commands
+# Combining Commands (`CombinedReactiveCommand`)
 
