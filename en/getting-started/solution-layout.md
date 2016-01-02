@@ -6,8 +6,7 @@ We suggest the following logical naming pattern when laying out your solution:
 * image of visual studio layout video or animated gif of the side-waffle
 * extension that creates everything automatically.
 
-All application logic is stored within a core portable class library which is
-shared between and referenced in each specific platform application:
+All application logic is stored within a core portable class library which is shared between and referenced in each specific platform application:
 
 # Core Application Library
 
