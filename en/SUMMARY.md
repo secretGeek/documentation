@@ -48,7 +48,7 @@
        * [Asynchronous operations](user-guide/commands/asynchronous-operations.md)
        * [Common Patterns](user-guide/commands/common-patterns.md)
        * [Unit Testing](user-guide/commands/unit-testing.md)
-   * Logging
+   * [Logging](/en/user-guide/logging/index.md)
 * [Platform Considerations](platform-considerations/index.md)
    * [Xamarin Android](platform-considerations/xamarin-android.md)
    * [Xamarin Forms](platform-considerations/xamarin-forms.md)
