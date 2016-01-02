@@ -10,6 +10,7 @@
    * [Model View ViewModel (MVVM)](fundamentals/model-view-viewmodel.md)
    * [Reactive Extensions](fundamentals/reactive-extensions.md)
 * [Getting Started](getting-started/index.md)
+   * Solution Layout
 * [Samples](https:/github.com/reactiveui/samples)
 * [User Guide](user-guide/index.md)
    * [Dependency Injection](user-guide/dependency-injection/index.md)
