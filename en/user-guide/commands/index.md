@@ -1,7 +1,5 @@
 # Commands
 
-## Overview
-
 Commands encapsulate logic to execute in response to some user action. For example, clicking a **Save** menu item, tapping a phone icon to instigate a phone call, or stretching an image to zoom in. Commands may or may not be executable in a given situation. For example, the aforementioned **Save** menu item might be disabled if there are no unsaved changes.
 
 In MVVM, the view model does not concern itself with *how* a user executes a particular command - that decision is left to the view. But typically it's best if the execution logic resides in the view model so that changes to the view model's state can be encapsulated. Commands facilitate this separation between the *how* and the *what*.
