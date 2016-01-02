@@ -19,7 +19,7 @@ MyCoolApp.Core.csproj:
 <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
 ```
 
-MyCoolAppApp.Core.csproj:
+MyCoolApp.Core.csproj:
 
 ```xml
 <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
