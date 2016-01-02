@@ -1,6 +1,7 @@
 # Model view viewmodel (MVVM)
 
 Model-View-ViewModel, or MVVM for short, is a design pattern that is a variation of Martin Fowler's Presentation Model pattern which abstracts a view's state and behavior making view independent of any specific UI framework. The pattern promotes event-driven programming of user interfaces, and declarative property and command binding.
+
 ![](https://i.stack.imgur.com/yDjEr.png)
 
 
@@ -10,14 +11,5 @@ Model-View-ViewModel, or MVVM for short, is a design pattern that is a variation
 * View - any of UI Frameworks, including WPF, Silverlight, Cocoa and others.
 
 * View Model - a "model of the view", an abstraction of Viewm which uses platform specifc binder to mediate communication between View and Model.
-
-
-###Learning Resources
-
-* [Wikipedia MVVM](http://en.wikipedia.org/wiki/Model_View_ViewModel)
-
-* [WPF Data Binding](http://msdn.microsoft.com/en-us/library/aa480224.aspx)
-
-* [How to implement MVVM in TDD](http://msdn.microsoft.com/en-us/library/aa480224.aspx)
 
 * http://wp.qmatteoq.com/the-mvvm-pattern-introduction/
