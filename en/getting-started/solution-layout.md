@@ -37,7 +37,7 @@ An application of the platform that you are targeting that contains purely of us
 
 Register your platform specific concrete implementation of your services ie. `iPhoneNetworkConnectivityService : INetworkConnectiviyService`. You can use your favorite IOC library for this.
 
-*Please note that the Android namespace is reserved by Google for Android internals and must not be used. This is a Google limitation. Failure to obey this will result in heaps of pain.*
+*Please note that the .Android namespace is reserved by Google for Android internals and must not be used. This is a Google limitation. Failure to obey this will result in heaps of pain.*
 
 # Target Platform Tests
 
