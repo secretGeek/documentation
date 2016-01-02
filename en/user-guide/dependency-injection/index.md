@@ -1,5 +1,8 @@
 # Dependency Resolution / Service Location
 
+Dependency resolution is very useful for moving logic that would normally have to be in platform-specific code, into the shared platform code. First, we need to define an Interface for something that we want to use - this example isn't a Best Practice, but it's illustrative.
+
+
 Dependency resolution is a feature built into the core framework, which allows libraries and ReactiveUI itself to use classes that are in other libraries without taking a direct reference to them. This is quite useful for cross-platform applications, as it allows portable code to use non-portable APIs, as long as they can be described via an Interface.
 
 ReactiveUI's use of dependency resolution can more properly be called the Service Location pattern. Put thought into how you use this API, as it can either be used effectively to make code more testable, or when used poorly, makes code more difficult to test and understand, as the [Resolver itself can effectively become part of the class's state](http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/), but in an implicit and non-obvious way.
@@ -72,77 +75,4 @@ This resolver allows you to register new implementations for interfaces. This is
 
 This design seems overly simplistic, but in fact, can represent most of the useful lifetime scopes that we would want to use in a desktop / mobile application. 
 
-## Common Cross-Platform Patterns
 
-Dependency resolution is very useful for moving logic that would normally have to be in platform-specific code, into the shared platform code. First, we need to define an Interface for something that we want to use - this example isn't a Best Practice, but it's illustrative.
-
-```csharp
-public interface IYesNoDialog
-{
-    // Returns 'true' if yes, 'false' if no.
-    IObservable<bool> Prompt(string title, string description);
-}
-```
-
-Now this interface can be used in a ViewModel:
-
-```csharp
-public class MainViewModel
-{
-    public ReactiveCommand<Object> DeleteData { get; protected set; }
-
-    public MainViewModel(IYesNoDialog dialogFactory = null)
-    {
-        // If the constructor hasn't passed in its own implementation,
-        // use one from the resolver. This makes it easy to test DeleteData
-        // via providing a dummy implementation.
-        dialogFactory = dialogFactory ?? Locator.Current.GetService<IYesNoDialog>();
-
-        var title = "Delete the data?";
-        var desc = "Should we delete your important Data?";
-
-        DeleteData = ReactiveCommand.CreateAsyncObservable(() => dialogFactory.Prompt(title, desc)
-            .Where(x => x == true)
-            .SelectMany(async x => DeleteTheData()));
-
-	DeleteData.ThrownExceptions(ex => this.Log().WarnException(ex, "Couldn't delete the data"));
-    }
-}
-```
-
-Now, our implementations could be very different between iOS and Android -
-here's a sample iOS implementation:
-
-```csharp
-public class AlertDialog : IYesNoDialog
-{
-    public IObservable<bool> Prompt(string title, string description)
-    {
-        var dlgDelegate = new UIAlertViewDelegateRx();
-        var dlg = new UIAlertView(title, description, dlgDelegate, "No", "Yes");
-        dlg.Show();
-
-        return dlgDelegate.ClickedObs
-            .Take(1)
-            .Select(x => x.Item2 == 1);
-    }
-}
-```
-
-## ModernDependencyResolver and Resolver Initialization
-
-The default implementation of `IDependencyResolver` in Splat is a public
-class called `ModernDependencyResolver`. To initialize this class or any other
-`IMutableDependencyResolver` implementation with the implementations that
-ReactiveUI requires to function, call the `InitializeResolver` extension
-method.
-
-```cs
-var r = new MutableDependencyResolver();
-r.InitializeResolver();
-```
-
-Usually this **isn't necessary**, and you should use the default resolver. The
-Advanced section of the guide describes how to connect third-party dependency
-injection frameworks. However, the reader is highly encouraged to abandon this
-idea and use the default resolver.
