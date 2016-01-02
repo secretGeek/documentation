@@ -8,7 +8,7 @@ Model-View-ViewModel, or MVVM for short, is a design pattern that is a variation
 
 * Model - provides a domain model to some state content or to a data-layer representing content in a data-centric approach.
 
-* View - The user interface framework, ie. Xamarin.Android, Xamarin.iOS, Xamarin.Mac, WPF, Universal Windows Platform.
+* View - Native, platform specific user interface implementation. ie. Xamarin.Android, Xamarin.iOS, Xamarin.Mac, WPF, Universal Windows Platform.
 
 * View Model - a "model of the view", an abstraction of Viewm which uses platform specifc binder to mediate communication between View and Model.
 
