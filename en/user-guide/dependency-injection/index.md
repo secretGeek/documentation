@@ -1,28 +1,17 @@
 # Dependency Resolution / Service Location
 
-Dependency resolution is a feature built into the core framework, which allows
-libraries and ReactiveUI itself to use classes that are in other libraries
-without taking a direct reference to them. This is quite useful for
-cross-platform applications, as it allows portable code to use non-portable
-APIs, as long as they can be described via an Interface.
+Dependency resolution is a feature built into the core framework, which allows libraries and ReactiveUI itself to use classes that are in other libraries without taking a direct reference to them. This is quite useful for cross-platform applications, as it allows portable code to use non-portable APIs, as long as they can be described via an Interface.
 
-ReactiveUI's use of dependency resolution can more properly be called the Service
-Location pattern. Put thought into how you use this API, as it can either be
-used effectively to make code more testable, or when used poorly, makes code
-more difficult to test and understand, as the [Resolver itself can effectively
-become part of the class's
-state](http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/), but
-in an implicit and non-obvious way.
+ReactiveUI's use of dependency resolution can more properly be called the Service Location pattern. Put thought into how you use this API, as it can either be used effectively to make code more testable, or when used poorly, makes code more difficult to test and understand, as the [Resolver itself can effectively become part of the class's state](http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/), but in an implicit and non-obvious way.
 
-Since ReactiveUI 6, [Splat](https://github.com/paulcbetts/splat) is used by ReactiveUI for service location and dependency injection.
-Earlier versions included a RxUI resolver. If you come across samples for RxUI versions earlier than 6, you should replace references to `RxApp.DependencyResolver` with `Locator.Current` and `RxApp.MutableResolver` with `Locator.CurrentMutable`.
+Since ReactiveUI 6, [Splat](https://github.com/paulcbetts/splat) is used by ReactiveUI for service location and dependency injection. Earlier versions included a RxUI resolver. If you come across samples for RxUI versions earlier than 6, you should replace references to `RxApp.DependencyResolver` with `Locator.Current` and `RxApp.MutableResolver` with `Locator.CurrentMutable`.
 
 ## Basic Usage
 
 For basic registration and resolution, the following samples provide a good introduction.
 In most cases, you need not go beyond this level of detail. 
 
-#### Resolution
+## Resolution
 
 Splat provides methods to resolve dependencies to single or multiple instances. 
  
@@ -31,7 +20,7 @@ var toaster = Locator.Current.GetService<IToaster>();
 var allToasterImpls = Locator.Current.GetServices<IToaster>();
 ```
 
-#### Registration
+## Registration
 
 Splat supports on-demand new'ing, constant and lazy registration of dependencies. 
 
@@ -46,13 +35,10 @@ Locator.CurrentMutable.RegisterConstant(new ExtraGoodToaster(), typeof(IToaster)
 Locator.CurrentMutable.RegisterLazySingleton(() => new LazyToaster(), typeof(IToaster));
 ```
 
-## Splat's `Locator` in more depth
-
-#### Resolution
-
+##
 Splat's dependency resolver, accessible using `Locator.Current` conceptually resembles the below:
 
-```cs
+```csharp
 public interface IDependencyResolver
 {
     // Returns the most recent service registered to this type and contract
