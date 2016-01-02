@@ -1,2 +1,2 @@
-# Controlling executability
+# Controlling executability (`canExecute`)
 
