@@ -49,7 +49,7 @@
        * [Common Patterns](user-guide/commands/common-patterns.md)
        * [Unit Testing](user-guide/commands/unit-testing.md)
    * [Logging](en/user-guide/logging/index.md)
-       * Visual Studio IntelliTrace
+       * [Visual Studio IntelliTrace](en/user-guide/logging/visual-studio-intellitrace.md)
 * [Platform Considerations](platform-considerations/index.md)
    * [Xamarin Android](platform-considerations/xamarin-android.md)
    * [Xamarin Forms](platform-considerations/xamarin-forms.md)
