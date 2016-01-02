@@ -57,7 +57,7 @@ up on that is to actually run on physical hardware.
 # TL;DR
 
 A complete layout could look like the following (these are .csproj files):
-- MyCoolApp.Core     - Usually a portable class library, contains the core functionality
+- MyCoolApp.Core - Usually a portable class library, contains the core functionality
 - MyCoolApp.Core.Tests - Tests for the core functionality
 - MyCoolApp.Droid - Device/platform specific view code
 - MyCoolApp.iOS - Device/platform specific view code
