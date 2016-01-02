@@ -33,13 +33,9 @@ of .Core.
 
 # Target Platform Application
 
-An application of the platform that you are targeting that contains purely of
-user interface rendering code and platform specific application logic. Create
-your views here and sew your views to your view model using data binding.
+An application of the platform that you are targeting that contains purely of user interface rendering code and platform specific application logic. Create your views here and sew your views to your view model using data binding.
 
-Register your platform specific concrete implementation of your services ie.
-`iPhoneNetworkConnectivityService : INetworkConnectiviyService`.
-You can use your favorite IOC library for this.
+Register your platform specific concrete implementation of your services ie. `iPhoneNetworkConnectivityService : INetworkConnectiviyService`. You can use your favorite IOC library for this.
 
 Please note that the Android namespace is reserved by Google for Android 
 internals and must not be used. This is a Google limitation.
