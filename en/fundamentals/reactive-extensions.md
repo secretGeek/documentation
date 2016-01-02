@@ -13,7 +13,7 @@ It is impossible to tell whether subscribing to (observing) that `IObservable` w
 
 As such we also recommend [watching this video](https://www.youtube.com/watch?v=IDy21J75eyU), reading [this article](http://www.introtorx.com/content/v1.0.10621.0/14_HotAndColdObservables.html) and [playing with the marbles](http://rxmarbles.com/) to familiarize yourself with the fundamentals.
 
-## Learning resources
+## Resources
 
 * [Becoming a C# Time Lord](http://channel9.msdn.com/Events/TechEd/Australia/2013/DEV422)
 
