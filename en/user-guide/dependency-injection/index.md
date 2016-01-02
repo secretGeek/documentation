@@ -35,7 +35,7 @@ Locator.CurrentMutable.RegisterConstant(new ExtraGoodToaster(), typeof(IToaster)
 Locator.CurrentMutable.RegisterLazySingleton(() => new LazyToaster(), typeof(IToaster));
 ```
 
-##
+## Advanced
 Splat's dependency resolver, accessible using `Locator.Current` conceptually resembles the below:
 
 ```csharp
