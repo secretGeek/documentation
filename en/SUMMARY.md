@@ -72,7 +72,7 @@
    * [Logging](en/user-guide/logging/index.md)
        * [Visual Studio IntelliTrace](en/user-guide/logging/visual-studio-intellitrace.md)
        * [Debugging Observables](en/user-guide/logging/debugging-observables.md)
-* Patterns & Practices
+* Patterns
    * [Cross-platform Modal Dialogs](patterns/cross-platform-modal-dialogs.md)
 * [Design Guidelines](design-guidelines/index.md)
    * [Commands](design-guidelines/commands.md)
