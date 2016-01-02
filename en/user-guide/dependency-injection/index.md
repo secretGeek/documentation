@@ -9,11 +9,6 @@ ReactiveUI's use of dependency resolution can more properly be called the Servic
 
 Since ReactiveUI 6, [Splat](https://github.com/paulcbetts/splat) is used by ReactiveUI for service location and dependency injection. Earlier versions included a RxUI resolver. If you come across samples for RxUI versions earlier than 6, you should replace references to `RxApp.DependencyResolver` with `Locator.Current` and `RxApp.MutableResolver` with `Locator.CurrentMutable`.
 
-## Basic Usage
-
-For basic registration and resolution, the following samples provide a good introduction.
-In most cases, you need not go beyond this level of detail. 
-
 ## Resolution
 
 Splat provides methods to resolve dependencies to single or multiple instances. 
