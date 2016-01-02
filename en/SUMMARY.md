@@ -11,7 +11,7 @@
    * [Reactive Extensions](fundamentals/reactive-extensions.md)
 * [Getting Started](getting-started/index.md)
    * [Solution Layout](getting-started/solution-layout.md)
-   * Example
+   * [Example](getting-started/example.md)
 * [Samples](https:/github.com/reactiveui/samples)
 * [User Guide](user-guide/index.md)
    * [Dependency Injection](user-guide/dependency-injection/index.md)
