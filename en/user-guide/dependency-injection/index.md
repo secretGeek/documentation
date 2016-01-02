@@ -1,4 +1,4 @@
-# Dependency Resolution / Service Location
+# Dependency Injection
 
 Dependency resolution is very useful for moving logic that would normally have to be in platform-specific code, into the shared platform code. First, we need to define an Interface for something that we want to use - this example isn't a Best Practice, but it's illustrative.
 
