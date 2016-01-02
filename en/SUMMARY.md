@@ -3,9 +3,6 @@
 * [Introduction](README.md)
    * [Compelling Example](compelling-example/index.md)
    * [Success Stories](success-stories/index.md)
-   * [Release Notes](release-notes.md)
-       * [Version 6.0](release-notes/version-6-0-0.md)
-       * [Version 5.0](release-notes/version-5-0-0.md)
 * [Fundamentals](fundamentals/index.md)
    * [Our Philosophy](fundamentals/philosophy.md)
    * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
@@ -75,6 +72,8 @@
    * [Logging](en/user-guide/logging/index.md)
        * [Visual Studio IntelliTrace](en/user-guide/logging/visual-studio-intellitrace.md)
        * [Debugging Observables](en/user-guide/logging/debugging-observables.md)
+* Patterns
+   * [Cross-platform Modal Dialogs](patterns/cross-platform-modal-dialogs.md)
 * [Design Guidelines](design-guidelines/index.md)
    * [Commands](design-guidelines/commands.md)
    * [Command Names](design-guidelines/command-names.md)
@@ -93,6 +92,6 @@
        * [License](https:/github.com/reactiveui/reactiveui/blob/master/LICENSE.md)
        * [Versioning](contributing/framework/versioning.md)
    * [Plugins](contributing/plugins/index.md)
-* Patterns
-   * [Cross-platform Modal Dialogs](patterns/cross-platform-modal-dialogs.md)
-
+* [Release Notes](release-notes.md)
+   * [Version 6.0](release-notes/version-6-0-0.md)
+   * [Version 5.0](release-notes/version-5-0-0.md)
