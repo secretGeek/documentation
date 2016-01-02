@@ -4,6 +4,7 @@
    * [Compelling Example](compelling-example/index.md)
    * [Success Stories](success-stories/index.md)
    * [Community](community/index.md)
+   * Release Notes
 * [Fundamentals](fundamentals/index.md)
    * [Our Philosophy](fundamentals/philosophy.md)
    * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
