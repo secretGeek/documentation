@@ -18,14 +18,14 @@ project. Alternatively you can adjust the profile after creation by editing
 the `.csproj` but you will need to run some NuGet commands to reinstall most
 of your packages.
 
-EndlessCatsApp.Core.csproj:
+MyCoolApp.Core.csproj:
 
 ```xml
 <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
 <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
 ```
 
-EndlessCatsApp.Core.csproj:
+MyCoolAppApp.Core.csproj:
 
 ```xml
 <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
