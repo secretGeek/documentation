@@ -95,3 +95,5 @@
 * [Release Notes](release-notes.md)
    * [Version 6.0](release-notes/version-6-0-0.md)
    * [Version 5.0](release-notes/version-5-0-0.md)
+   * Version 7.0
+
