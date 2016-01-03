@@ -28,6 +28,8 @@ But the `ICommand` interface isn't an ideal abstraction. It fails to elegantly a
 
 ## Binding
 
+## Invoking Commands
+
 ## Combined Commands
 
 
