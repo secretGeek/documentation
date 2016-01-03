@@ -93,7 +93,7 @@
        * [Versioning](contributing/framework/versioning.md)
    * [Plugins](contributing/plugins/index.md)
 * [Release Notes](release-notes.md)
-   * Version 7.0
+   * [Version 7.0](release-notes/version-7-0-0.md)
    * [Version 6.0](release-notes/version-6-0-0.md)
    * [Version 5.0](release-notes/version-5-0-0.md)
 
