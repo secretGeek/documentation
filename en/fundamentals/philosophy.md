@@ -6,6 +6,9 @@ This is a set of rules and guidelines standing behind the framework design choic
 
 The setup of an app should be as easy as possible. Things should Just Work™ out of the box.
 
+    TODO: "We have created a yeoman generator that will scaffold out
+           an application with or without batteries. Your choice."
+
 ## Buffet Table
 
 You can select only the pieces of the framework you like and build on them. You can mix ReactiveUI with other frameworks and libraries to your liking.
