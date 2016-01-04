@@ -1,4 +1,4 @@
-# Our Philosophy
+# Historical background
 
 Long ago, when computer programming first came to be, machines had to be programmed quite manually. If the technician entered the correct sequence of machine codes in the correct order, then the resulting program behavior would satisfy the business requirements.
 
@@ -20,4 +20,4 @@ Instead of telling a computer how to do its job, why don't we just tell it what 
 
 ## There is a Better Way
 
-Instead of imperative programming, we can use a new paradigm to structure our code.
+Instead of imperative programming, we can use a new paradigm to structure our code. This paradigm is called [Functional Reactive Programming](fundamentals/functional-reactive-programming.md).
