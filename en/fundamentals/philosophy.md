@@ -1,4 +1,4 @@
-# The Zen of ReactiveUI
+# Our Philosophy
 
 This is a set of rules and guidelines standing behind the framework design choices.
 
