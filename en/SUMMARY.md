@@ -4,7 +4,7 @@
    * [Compelling Example](compelling-example/index.md)
    * [Success Stories](success-stories/index.md)
 * [Fundamentals](fundamentals/index.md)
-   * [Our Philosophy](fundamentals/philosophy.md)
+   * [Historical background](fundamentals/history.md)
    * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
    * [Model-View-ViewModel](fundamentals/model-view-viewmodel.md)
    * [Reactive Extensions](fundamentals/reactive-extensions.md)
