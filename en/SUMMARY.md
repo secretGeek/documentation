@@ -8,6 +8,7 @@
    * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
    * [Model-View-ViewModel](fundamentals/model-view-viewmodel.md)
    * [Reactive Extensions](fundamentals/reactive-extensions.md)
+   * Our Philosophy
 * [Getting Started](getting-started/index.md)
    * [Solution Layout](getting-started/solution-layout.md)
    * [Example](getting-started/example.md)
