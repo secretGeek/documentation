@@ -73,7 +73,7 @@
        * [Common Patterns](user-guide/caching/common-patterns.md)
    * [REST Client](user-guide/rest-client/index.md)
    * [Troubleshooting](en/user-guide/troubleshooting/index.md)
-   * ObservableAsPropertyHelper
+   * [ObservableAsPropertyHelper](user-guide/observableaspropertyhelper/index.md)
 * Patterns
    * [Cross-platform Modal Dialogs](patterns/cross-platform-modal-dialogs.md)
 * [Design Guidelines](design-guidelines/index.md)
