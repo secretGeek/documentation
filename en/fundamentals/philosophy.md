@@ -25,6 +25,7 @@ You should be able to test your ViewModels. Stuff like schedulers and routing sh
 > For example, the vast majority of popular IoC containers concern themselves solely with resolution speed on a warm cache, while basically completely disregarding memory usage or startup time - this is 100% fine for server applications, because these things don't matter; but for a mobile app? Startup time is huge.
 
 > Splat's Service Location solves a number of issues for RxUI:
+>
 > Service Location is fast, and has almost no overhead to set up.
 It encapsulates several different common object lifetime models (i.e. 'create new every time', 'singleton', 'lazy'), just by writing the Func differently
 It's Mono Linker friendly (generally)
