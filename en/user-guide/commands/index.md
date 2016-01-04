@@ -39,9 +39,6 @@ It sets people up for what is about to come next.
 
 > moved to subsection
 
-The parameter's type is captured as `TParam` in `ReactiveCommand<TParam, TResult>`. The type of both `command1` and `command2` above is `ReactiveCommand<int, Unit>`.
-
-Generally, you should avoid using command parameters. It is usually more appropriate for your view model to define a property that your command relies on.
 
 ## Command Values
 
