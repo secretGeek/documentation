@@ -16,9 +16,53 @@ Reactive commands also encapsulate logic to execute in response to user actions,
 
 The fact that executing a command returns an observable of the result and not the result itself makes it clear that reactive commands are inherently asynchronous. You can kick off a CPU- or I/O-bound command without blocking your UI. Once completed, the result ticks through the observable and your UI can respond accordingly. Whilst the command is executing, it is unavailable (i.e. `CanExecute` will tick `false`). Thus, any UI elements bound to that command will automatically disable themselves whilst the command is executing.
 
-## A Compelling Example
+Finally, reactive commands are themselves observable. Whenever any execution of the command completes, its value is observable by subscribing directly to the command.
+
+## An Example
+
+Do we need a "compelling example"?
+
+At what point do we drop directly into the meat/concepts instead of lots of text - maybe this is the place - we just call it something else and put in a diagram which shows the following high level:
+
+IObservable canExecute = Observable.Return(true);
+ReactiveCommand search = ReactiveCommand.Execute(canExecute, () => { return "Hello World"; });
+
+search.Subscribe() -> results of the operation
+search.ThrownExceptions() -> exceptions of the operation.
+
+Then go onto async vs sync, canExecute etc.
+
+It sets people up for what is about to come next.
+
 
 ## Asynchronous versus Synchronous Commands
+
+Even though the API presented by `ReactiveCommand` is asynchronous, you are not required to perform your execution logic asynchronously. If your command is not CPU- or I/O-bound then it probably makes sense to provide synchronous execution logic.
+
+Creating a command via `ReactiveCommand.Create` allows you to provide synchronous execution logic:
+
+```cs
+var command = ReactiveCommand.Create(() => Console.WriteLine("a synchronous reactive command));
+```
+
+There are several overloads of `Create` to facilitate commands that take parameters or return interesting values when they execute. These will be discussed in more detail below.
+
+If, on the other hand, your command's logic is CPU- or I/O-bound, you'll want to use `CreateAsyncObservable` or `CreateAsyncTask`:
+
+```cs
+// here we're using observables to model asynchrony
+var command1 = ReactiveCommand.CreateAsyncObservable(() => Observable.Return(Unit.Default).Delay(TimeSpan.FromSeconds(3)));
+
+// here we're using the TPL to model asynchrony
+var command2 = ReactiveCommand.CreateAsyncTask(async () =>
+    {
+        await Task.Delay(TimeSpan.FromSeconds(3)); 
+    });
+```
+
+Again, several overloads exist for commands taking parameters and returning values.
+
+Regardless of whether your command is synchronous or asynchronous in nature, you execute it via the `ExecuteAsync` method. You get back an observable that will tick the command's result value (which will just be `Unit.Default` if your command doesn't return anything of interest) when execution completes. Synchronous commands will execute _immediately_, so the observable you get back will already have completed. It is behavioral though, so subscribing after the fact will still tick through the result value. Moreover, this implies that there is no need to subscribe to the returned observable if you don't want/need the result. Often you will instead subscribe to the command itself and ignore the observable for individual executions of the command.
 
 ## Command Parameters
 
@@ -28,7 +72,7 @@ The fact that executing a command returns an observable of the result and not th
 
 ## Controlling Scheduling
 
-## Handling Errors
+## Command Errors
 
 ## Binding
 
