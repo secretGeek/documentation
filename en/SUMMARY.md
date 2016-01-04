@@ -40,6 +40,7 @@
    * [View Models](user-guide/view-models/index.md)
        * [Data Suspension](user-guide/data-suspension/index.md)
    * [WhenAny](user-guide/when-any/index.md)
+   * [ObservableAsPropertyHelper](user-guide/observableaspropertyhelper/index.md)
    * [WhenActivated](user-guide/when-activated/index.md)
    * [Commands](user-guide/commands/index.md)
        * [Reactive Commands](user-guide/commands/reactive-commands.md)
@@ -73,7 +74,6 @@
        * [Common Patterns](user-guide/caching/common-patterns.md)
    * [REST Client](user-guide/rest-client/index.md)
    * [Troubleshooting](en/user-guide/troubleshooting/index.md)
-   * [ObservableAsPropertyHelper](user-guide/observableaspropertyhelper/index.md)
 * Patterns
    * [Cross-platform Modal Dialogs](patterns/cross-platform-modal-dialogs.md)
 * [Design Guidelines](design-guidelines/index.md)
