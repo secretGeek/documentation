@@ -9,6 +9,21 @@ ReactiveUI's use of dependency resolution can more properly be called the Servic
 
 Since ReactiveUI 6, [Splat](https://github.com/paulcbetts/splat) is used by ReactiveUI for service location and dependency injection. Earlier versions included a RxUI resolver. If you come across samples for RxUI versions earlier than 6, you should replace references to `RxApp.DependencyResolver` with `Locator.Current` and `RxApp.MutableResolver` with `Locator.CurrentMutable`.
 
+## Why Splat?
+
+> "I generally think a lot of the advice around IoC/DI is pretty bad in the domain of 'cross-platform mobile applications', because you have to remember that a lot of their ideas were written for web apps, not mobile or desktop apps.
+>
+> For example, the vast majority of popular IoC containers concern themselves solely with resolution speed on a warm cache, while basically completely disregarding memory usage or startup time - this is 100% fine for server applications, because these things don't matter; but for a mobile app? Startup time is huge.
+>
+> Splat's Service Location solves a number of issues for RxUI:
+>
+> Service Location is fast, and has almost no overhead to set up.
+It encapsulates several different common object lifetime models (i.e. 'create new every time', 'singleton', 'lazy'), just by writing the Func differently
+It's Mono Linker friendly (generally)
+Service Location allows us to register types in platform-specific code, but use them in PCL code."
+>
+> Paul Betts @ http://stackoverflow.com/a/26924067/496857
+
 ## Resolution
 
 Splat provides methods to resolve dependencies to single or multiple instances. 
@@ -53,18 +68,3 @@ parameter which is an arbitrary key that you provide.
 The current resolver that ReactiveUI itself will use (as well as what your app
 should use as well), is provided by [Splat.ModernDependencyResolver](https://github.com/paulcbetts/splat/blob/b833718d1b7940d1d02403e86864d03d2af5cea7/Splat/ServiceLocation.cs).
 
-
-# Background Theory
-
-> "I generally think a lot of the advice around IoC/DI is pretty bad in the domain of 'cross-platform mobile applications', because you have to remember that a lot of their ideas were written for web apps, not mobile or desktop apps.
->
-> For example, the vast majority of popular IoC containers concern themselves solely with resolution speed on a warm cache, while basically completely disregarding memory usage or startup time - this is 100% fine for server applications, because these things don't matter; but for a mobile app? Startup time is huge.
->
-> Splat's Service Location solves a number of issues for RxUI:
->
-> Service Location is fast, and has almost no overhead to set up.
-It encapsulates several different common object lifetime models (i.e. 'create new every time', 'singleton', 'lazy'), just by writing the Func differently
-It's Mono Linker friendly (generally)
-Service Location allows us to register types in platform-specific code, but use them in PCL code."
->
-> Paul Betts @ http://stackoverflow.com/a/26924067/496857
