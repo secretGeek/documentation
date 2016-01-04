@@ -6,7 +6,7 @@
 * [Fundamentals](fundamentals/index.md)
    * [Our Philosophy](fundamentals/philosophy.md)
    * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
-   * [Model View ViewModel (MVVM)](fundamentals/model-view-viewmodel.md)
+   * [Model-View-ViewModel](fundamentals/model-view-viewmodel.md)
    * [Reactive Extensions](fundamentals/reactive-extensions.md)
 * [Getting Started](getting-started/index.md)
    * [Solution Layout](getting-started/solution-layout.md)
