@@ -30,4 +30,5 @@ You should be able to test your ViewModels. Stuff like schedulers and routing sh
 It encapsulates several different common object lifetime models (i.e. 'create new every time', 'singleton', 'lazy'), just by writing the Func differently
 It's Mono Linker friendly (generally)
 Service Location allows us to register types in platform-specific code, but use them in PCL code."
+>
 > Paul Betts @ http://stackoverflow.com/a/26924067/496857
