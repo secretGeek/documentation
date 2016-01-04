@@ -17,6 +17,8 @@ You can select only the pieces of the framework you like and build on them. You 
 
 You should be able to test your ViewModels. Stuff like schedulers and routing should not be an excuse for not writing unit tests. Framework should support mocking them easily.
 
+https://channel9.msdn.com/Events/TechEd/Australia/2013/DEV422
+
 ## Splat dependency
 
 [Splat](https://github.com/paulcbetts/splat) is an amazing library specifically developed with mobile devices in mind. Don't be afraid to use it.
