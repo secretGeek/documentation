@@ -1,5 +1,9 @@
 # Logging
 
+
+    From Paul Betts @ https://github.com/paulcbetts/splat/issues/46#issuecomment-56550457
+    One thing that motivates me to write my own instead of using the legion of others, is that most loggers give zero thought to perf concerns on mobile devices - they're all written for servers, so none of them think about CPU perf or allocations. The best imho is Serilog, but it allocates way too much stuff imho to be usable on mobile
+
 # Conversations from Slack  
 
     haacked [8:56 AM] So does rxui6 get rid of this.Log()?
