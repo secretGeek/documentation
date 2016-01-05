@@ -1,4 +1,4 @@
-## Command Parameters
+# Command Parameters
 
 Optionally, your command's execution logic can take a parameter. To do this, you need only use an appropriate overload of `Create*` when creating your `ReactiveCommand`:
 
