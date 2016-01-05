@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
    * [Compelling Example](compelling-example/index.md)
-   * [Success Stories](success-stories/index.md)
+   * [Success Stories](https://github.com/reactiveui/ReactiveUI/issues/979)
 * [Fundamentals](fundamentals/index.md)
    * [Historical background](fundamentals/history.md)
    * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
