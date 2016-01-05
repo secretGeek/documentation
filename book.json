@@ -11,7 +11,8 @@
         "prism",
         "-highlight",
         "github",
-        "edit-link"
+        "edit-link",
+        "anchors"
     ],
     "pluginsConfig": {
         "edit-link": {
