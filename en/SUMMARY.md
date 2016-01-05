@@ -47,7 +47,7 @@
        * [Asynchronous/Synchronous](user-guide/commands/asynchronous-synchronous.md)
        * [Command Parameters](user-guide/commands/command-parameters.md)
        * [Command Values](user-guide/commands/return-values.md)
-       * [Controlling executability](user-guide/commands/controlling-executability.md)
+       * [Controlling Executability](user-guide/commands/controlling-executability.md)
        * [Controlling scheduling](user-guide/commands/controlling-scheduling.md)
        * [Command errors](user-guide/commands/command-errors.md)
        * [Binding commands](user-guide/commands/binding-commands.md)
