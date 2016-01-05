@@ -45,7 +45,7 @@
    * [Commands](user-guide/commands/index.md)
        * [Reactive Commands](user-guide/commands/reactive-commands.md)
        * [Asynchronous/Synchronous](user-guide/commands/asynchronous-synchronous.md)
-       * [Parameters](user-guide/commands/parameters.md)
+       * [Command Parameters](user-guide/commands/command-parameters.md)
        * [Command values](user-guide/commands/return-values.md)
        * [Controlling executability](user-guide/commands/controlling-executability.md)
        * [Controlling scheduling](user-guide/commands/controlling-scheduling.md)
