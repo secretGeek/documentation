@@ -26,10 +26,7 @@ Then go onto async vs sync, canExecute etc.
 
 It sets people up for what is about to come next.
 
-
-
-
-
+>** Info: Kent I've moved your sections over into the seperate documents, thanks for your help so far - Geoff.
 
 ## Binding
 
