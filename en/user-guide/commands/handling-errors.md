@@ -1,4 +1,4 @@
-## Command Errors
+# Command Errors
 
 If the logic you provide to a `ReactiveCommand` can fail in expected ways, you need a means of dealing with those failures.
 
