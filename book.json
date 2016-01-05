@@ -1,4 +1,6 @@
 {
+    "title": "ReactiveUI Documentation",
+    "description": "ReactiveUI Documentation",
     "plugins": [
         "clicky",
         "sitemap",
