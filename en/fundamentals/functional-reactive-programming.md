@@ -10,6 +10,8 @@ Functional reactive programming is just a combination of functional and reactive
 
 Functional reactive programming is the peanut butter and chocolate of programming paradigms.
 
+## Signals
+
 At the core of functional reactive programming is a signal. A signal is a rather abstract concept, and it's easier to describe what a signal does rather than what it is. A signal simply sends values over time. It sends values until it either completes, or errors out, at which point it stops sending values forever. A signal either completes or errors out, but not both.
 
 Signals have no sense of a "current value" or "past values" or "future values", they are very simple. They just *send values over time*. Signals become useful when they're subscribed to or used with bindings, both cases of which we'll cover shortly. For now, it's important to understand that a signal can be *transformed*.
