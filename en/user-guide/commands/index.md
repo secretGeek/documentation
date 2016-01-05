@@ -145,7 +145,7 @@ All `Create*` methods take an optional `scheduler` parameter, so you can pass in
 var command = ReactiveCommand.Create(() => {}, scheduler: someScheduler);
 ```
 
-> **WARNING:** it's important to understand that the execution logic for a reactive command is *not* scheduled to execute on the provided scheduler. Instead, it is left to the caller to implement any required scheduling inside their execution pipeline. This means it is entirely possible for your execution logic to execute on a thread other than that owned by the provided scheduler:
+> **Warning** it's important to understand that the execution logic for a reactive command is *not* scheduled to execute on the provided scheduler. Instead, it is left to the caller to implement any required scheduling inside their execution pipeline. This means it is entirely possible for your execution logic to execute on a thread other than that owned by the provided scheduler:
 >
 > ```cs
 > var command = ReactiveCommand.Create(() => Console.WriteLine(Environment.CurrentManagedThreadId), scheduler: RxApp.MainThreadScheduler);
