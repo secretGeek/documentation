@@ -1,4 +1,4 @@
-## Controlling Executability
+# Controlling Executability
 
 Reactive commands automatically become unavailable whilst they're executing. That is, their `CanExecute` observable will tick `false` when execution commences, and then `true` once execution completes. However, there are times you will want to further control a command's executability. For example, you might want a login command to be disabled until the user has entered both a user name and a password.
 
