@@ -9,3 +9,5 @@ By the time this docs are completed, please refer to [the docs from main reposit
 
 You are more than welcome to help us build this documentation. We encourage you to get started by checking out our [contribution guidelines](contributing/index.html).
 
+> **Info** Info
+> **Note** Note
