@@ -1,6 +1,6 @@
 # Compelling Example
 
-> **Info** If you are not familiar with Reactive Extensions and MVVM pattern, you might want to check out our [Fundamentals section](fundamentals/index.md) first!
+> **Info** If you are not familiar with Reactive Extensions and MVVM pattern, you might want to check out our [Fundamentals section](../fundamentals/index.md) first!
 
 Let’s say you have a text field, and whenever the user types something into it, you want to make a network request which searches for that query.
 
