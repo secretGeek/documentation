@@ -51,7 +51,7 @@
        * [Controlling Scheduling](user-guide/commands/controlling-scheduling.md)
        * [Command Errors](user-guide/commands/command-errors.md)
        * [Binding Commands](user-guide/commands/binding-commands.md)
-       * [Combining commands](user-guide/commands/combining-commands.md)
+       * [Combining Commands](user-guide/commands/combining-commands.md)
        * Misc Documentation
            * [Automatic Execution](user-guide/commands/automatic-execution.md)
            * [Thrown Exceptions](user-guide/commands/thrown-exceptions.md)
