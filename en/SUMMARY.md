@@ -49,7 +49,7 @@
        * [Return values](user-guide/commands/return-values.md)
        * [Controlling executability](user-guide/commands/controlling-executability.md)
        * [Controlling scheduling](user-guide/commands/controlling-scheduling.md)
-       * [Handling errors](user-guide/commands/handling-errors.md)
+       * [Command errors](user-guide/commands/command-errors.md)
        * [Binding commands](user-guide/commands/binding-commands.md)
        * [Combining commands](user-guide/commands/combining-commands.md)
        * Misc Documentation
