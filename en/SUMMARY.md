@@ -51,6 +51,7 @@
        * [Controlling Scheduling](user-guide/commands/controlling-scheduling.md)
        * [Command Errors](user-guide/commands/command-errors.md)
        * [Binding Commands](user-guide/commands/binding-commands.md)
+       * [Invoking Commands](user-guide/commands/invoking-commands.md)
        * [Combining Commands](user-guide/commands/combining-commands.md)
        * Misc Documentation
            * [Automatic Execution](user-guide/commands/automatic-execution.md)
@@ -58,7 +59,6 @@
            * [Asynchronous operations](user-guide/commands/asynchronous-operations.md)
            * [Common Patterns](user-guide/commands/common-patterns.md)
            * [Unit Testing](user-guide/commands/unit-testing.md)
-       * [Invoking Commands](user-guide/commands/invoking-commands.md)
    * [Lists](user-guide/lists/index.md)
        * [Derived Lists](user-guide/lists/derived-lists.md)
    * [Logging](en/user-guide/logging/index.md)
