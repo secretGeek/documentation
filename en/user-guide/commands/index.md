@@ -16,26 +16,74 @@ Reactive commands also encapsulate logic to execute in response to user actions,
 
 The fact that executing a command returns an observable of the result and not the result itself makes it clear that reactive commands are inherently asynchronous. You can kick off a CPU- or I/O-bound command without blocking your UI. Once completed, the result ticks through the observable and your UI can respond accordingly. Whilst the command is executing, it is unavailable (i.e. `CanExecute` will tick `false`). Thus, any UI elements bound to that command will automatically disable themselves whilst the command is executing.
 
-Finally, reactive commands are themselves observable. Whenever any execution of the command completes, its value is observable by subscribing directly to the command.
+Reactive commands are themselves observable. Whenever any execution of the command completes, the result will tick through the command itself.
+
+An important truth of reactive commands is that they guarantee to deliver events on a given scheduler, but they make no attempt to marshal user-supplied pipelines (including execution logic) to that scheduler. Interacting with commands from the correct thread is therefore the responsibility of the caller. But any event you receive from a reactive command is guaranteed to be surfaced via the provided scheduler.
 
 > **Hint** All reactive commands also implement `ICommand`, but do so explicitly. This is to encourage the use of the reactive APIs rather than the imperative ones provided by `ICommand`. However, it also allows reactive commands to integrate seamlessly into frameworks that work against `ICommand`.
 
 ## An Example
 
-Do we need a "compelling example"?
-
-At what point do we drop directly into the meat/concepts instead of lots of text - maybe this is the place - we just call it something else and put in a diagram which shows the following high level:
-
-IObservable canExecute = Observable.Return(true);
-ReactiveCommand search = ReactiveCommand.Execute(canExecute, () => { return "Hello World"; });
-
-search.Subscribe() -> results of the operation
-search.ThrownExceptions() -> exceptions of the operation.
-
-Then go onto async vs sync, canExecute etc.
-
-It sets people up for what is about to come next.
-
+```cs
+public class LoginViewModel : ReactiveObject
+{
+    private readonly ReactiveCommand<Unit, Unit> loginCommand;
+    private readonly ReactiveCommand<Unit, Unit>  resetCommand;
+    private string userName;
+    private string password;
+    
+    public LoginViewModel()
+    {
+        var canLogin = this.WhenAnyValue(
+            x => x.UserName,
+            x => x.Password,
+            (userName, password) => !string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password));
+        this.loginCommand = ReactiveCommand.CreateAsyncObservable(
+            this.LoginAsync,
+            canLogin);
+        
+        this.resetCommand = ReactiveCommand.Create(
+            () =>
+            {
+                this.UserName = null;
+                this.Password = null;
+            });
+    }
+    
+    public ReactiveCommand<Unit, Unit> LoginCommand => this.loginCommand;
+    
+    // note that if no client code requires the full API of the generic ReactiveCommand<TParam, TResult>,
+    // we can just declare the type as ReactiveCommand
+    public ReactiveCommand ResetCommand => this.resetCommand;
+    
+    public string UserName
+    {
+        get { return this.userName; }
+        set { this.RaiseAndSetIfChanged(ref this.userName, value); }
+    }
+    
+    public string Password
+    {
+        get { return this.password; }
+        set { this.RaiseAndSetIfChanged(ref this.password, value); }
+    }
+    
+    // here we simulate logins by randomly passing/failing
+    private IObservable<Unit> LoginAsync() =>
+        Observable
+            .Return(new Random().Next(0, 2) == 1)
+            .Delay(TimeSpan.FromSeconds(1))
+            .Do(
+                success =>
+                {
+                    if (!success)
+                    {
+                        throw new InvalidOperationException("Failed to login.");
+                    }
+                }
+            .Select(_ => Unit.Default);
+}
+```
 
 ## Asynchronous versus Synchronous Commands
 
@@ -170,62 +218,121 @@ It can be tempting to *always* add a subscription to `ThrownExceptions`, even if
 
 ## Binding
 
+Once you have created a command and exposed it from your view model, the next logical step is to consume it from your view. The most common means of achieving this is via the `BindCommand` method. This method - of which there are several overloads - is responsible for tying any source `ICommand` to a target control. Typical usage looks like this:
+
+```cs
+// in a view
+this.BindCommand(
+    this.ViewModel,
+    x => x.MyCommand,
+    x => x.myControl);
+```
+
+Here we bind the `myControl` control to the `MyCommand` command exposed by our view model. What happens next is contingent upon any `ICreatesCommandBinding` instances registered in the [service locator](http://docs.reactiveui.net/en/user-guide/dependency-injection/index.html). However, normally `myControl` will be disabled whenever the command is unavailable. In addition, performing some default action against `myControl` will execute the command. For example, if `myControl` is a button, the required action would be a click (or tap).
+
+> **Note** The above example shows a naked call to `BindCommand`, but it will often be performed inside a `WhenActivated` block:
+> 
+> ```cs
+> this.WhenActivated(
+>     d =>
+>     {
+>         d(this.BindCommand(
+>             this.ViewModel,
+>             x => x.MyCommand,
+>             x => x.myControl));
+>     });
+> ```
+> 
+> Please see [the documentation on `WhenActivated`](http://docs.reactiveui.net/en/user-guide/when-activated/index.html) for more information.
+
+The form of `BindCommand` demonstrated above does not provide any hint as to which event instigates command execution. Hence, a default event will be used (such as `Click` or `Tapped`). If, on the other hand, you want to tie your command's execution to some event other than the default, you can use an overload of `BindCommand` that takes an event name:
+
+```cs
+this.BindCommand(
+    this.ViewModel,
+    x => x.MyCommand,
+    x => x.myControl,
+    nameof(myControl.SomeEvent));
+```
+
+Here, the `SomeEvent` on `myControl` will be used to trigger command execution instead of the default event.
+
+Finally, `BindCommand` also provides overloads that allow you to specify a parameter with which to execute the command. The parameter can be provided as a function, an observable, or even an expression that resolves a property on the view model:
+
+```cs
+// pass through an execution count as the command parameter
+var count = 0;
+this.BindCommand(
+    this.ViewModel,
+    x => x.MyCommand,
+    x => x.myControl,
+    () => count++);
+
+// use an observable as the source for command parameters
+IObservable<int> param = ...;
+this.BindCommand(
+    this.ViewModel,
+    x => x.MyCommand,
+    x => x.myControl,
+    param);
+
+// use a property on the VM as a command parameter
+this.BindCommand(
+    this.ViewModel,
+    x => x.MyCommand,
+    x => x.myControl,
+    x => x.SomeProperty);
+```
 
 ## Invoking Commands
 
+At times it can be convenient to execute a command in response to some observable that isn't perhaps tied to a user interaction. For example, a feature that automatically saves the current document by executing a `SaveCommand` every 5 minutes. The `InvokeCommand` extension makes it easy to achieve this:
+
+```cs
+var interval = TimeSpan.FromMinutes(5);
+Observable
+.Timer(interval, interval)
+.InvokeCommand(this.ViewModel, x => x.SaveCommand);
+```
+
+> **Hint** `InvokeCommand` respects the command's executability. That is, if the command's `CanExecute` method returns `false`, `InvokeCommand` will not execute the command when the source observable ticks.
 
 ## Combined Commands
 
+Occasionally it can be useful to have several commands aggregated into one. As an example, consider a browser that allows the user to clear individual caches (browsing history, download history, cookies), or clear all caches. There would be a command for clearing each individual cache, each of which might have its own logic to dictate the executability of the command. It would be onerous and error-prone to have to repeat or combine all this logic for the command that clears all caches. Combined commands provide an elegant means of addressing this situation:
 
-# Misc
+```cs
+IObservable<bool> canClearBrowsingHistory = ...;
+var clearBrowsingHistoryCommand = ReactiveCommand.CreateAsyncObservable(
+    this.ClearBrowsingHistoryAsync,
+    canClearBrowsingHistory);
+    
+IObservable<bool> canClearDownloadHistory = ...;
+var clearDownloadHistoryCommand = ReactiveCommand.CreateAsyncObservable(
+    this.ClearDownloadHistoryAsync,
+    canClearDownloadHistory);
 
+IObservable<bool> canClearCookies = ...;
+var clearCookiesCommand = ReactiveCommand.CreateAsyncObservable(
+    this.ClearCookiesAsync,
+    canClearCookies);
 
-    paulcbetts [10:41 AM]
-    It's not obvious that you should use Commands for things that aren't buttons in ReactiveUI, it's kind of a unique thing
+// combine all these commands into one "parent" command
+var clearAllCommand = ReactiveCommand
+    .CreateCombined(
+        new [] { clearBrowsingHistoryCommand, clearDownloadHistoryCommand, clearAllCommand });
+```
 
-    paulcbetts [10:41 AM]
-    But any time you want to run something in the background, then bring its result back, ReactiveCommand is pretty cool
+The combined command respects the executability of all child commands. That is, if any child command cannot currently execute, neither can the combined command. In addition, it is also possible for you to pass in *extra* executability logic when creating your combined command:
 
-    michaelteper [11:20 AM] 
-    I didnt know about `InvokeCommand`. Is that equivalent to `.Subscribe(_ => cmd.Execute(null))`?
+```cs
+IObservable<bool> canClearAll = ...;
+var clearAllCommand = ReactiveCommand
+    .CreateCombined(
+        new [] { clearBrowsingHistoryCommand, clearDownloadHistoryCommand, clearAllCommand },
+        canClearAll);
+```
 
-    rdavisau [11:21 AM] 
-    ^ it passes the value of the observable as the parameter, I believe
+In this case, `clearAllCommand` will only be executable if all child commands are executable *and* the latest value from `canClearAll` is `true`.
 
-    michaelteper [11:22 AM] 
-    that would make sense, sure
-
-    michaelteper [11:22 AM]
-    so `.Subscribe(x => cmd.Execute(x))`
-
-    rdavisau [11:22 AM] 
-    yep
-
-    michaelteper [11:29 AM] 
-    that would be good to know indeed
-
-    ghuntley [11:30 AM] 
-    would be kinda cool to see a fully fleshed out sample of your navigation pattern if you can afford the time :simple_smile:
-    NEW MESSAGES
-
-    paulcbetts [11:43 AM] 
-    InvokeCommand respects CanExecute
-
-
-One of the core goals of every MVVM library is to provide an implementation of
-`ICommand`. This interface represents one of the two major parts of what
-constitutes a ViewModel - Properties and Commands. In keeping with the goal of
-MVVM + Rx, ReactiveUI provides its own implementation of `ICommand` called
-`ReactiveCommand`, that works a bit differently than most other
-implementations.
-
-Commands represent discrete actions that are taken in the UI - "Copy", "Open",
-and "Ok" are good examples of Commands. Usually these Commands are bound to a
-control that is built to handle Commands, like a Button. Cocoa represents this
-concept via the [Target Action
-Framework](https://developer.apple.com/library/ios/documentation/general/conceptual/CocoaEncyclopedia/Target-Action/Target-Action.html).
-
-Many Commands are invoked directly by the user, but some operations are also
-useful to model via Commands despite being primarily invoked programatically.
-For example, many code paths involving periodically loading or refreshing
-resources (i.e. "LoadTweets") can be modeled well using Commands.
+> **Hint** All child commands provided to the `CreateCombined` method must be of the same type. You cannot combine, say, a `ReactiveCommand<Unit, Unit>` with a `ReactiveCommand<int, Unit>`. Nor can you combine, say, a `ReactiveCommand<Unit, Unit>` with a `ReactiveCommand<Unit, int>`. This is because all child commands will receive the parameter provided to the combined command, and the result of executing the combined command is a list of all child results.
