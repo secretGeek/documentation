@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
    * [Compelling Example](compelling-example/index.md)
-   * [Success Stories](https://github.com/reactiveui/ReactiveUI/issues/979)
+   * [Success Stories](https:/github.com/reactiveui/ReactiveUI/issues/979)
 * [Fundamentals](fundamentals/index.md)
    * [Historical background](fundamentals/history.md)
    * [Functional Reactive Programming](fundamentals/functional-reactive-programming.md)
@@ -58,6 +58,7 @@
            * [Asynchronous operations](user-guide/commands/asynchronous-operations.md)
            * [Common Patterns](user-guide/commands/common-patterns.md)
            * [Unit Testing](user-guide/commands/unit-testing.md)
+       * Invoking Commands
    * [Lists](user-guide/lists/index.md)
        * [Derived Lists](user-guide/lists/derived-lists.md)
    * [Logging](en/user-guide/logging/index.md)
