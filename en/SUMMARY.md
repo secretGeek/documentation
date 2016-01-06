@@ -58,7 +58,7 @@
            * [Asynchronous operations](user-guide/commands/asynchronous-operations.md)
            * [Common Patterns](user-guide/commands/common-patterns.md)
            * [Unit Testing](user-guide/commands/unit-testing.md)
-       * Invoking Commands
+       * [Invoking Commands](user-guide/commands/invoking-commands.md)
    * [Lists](user-guide/lists/index.md)
        * [Derived Lists](user-guide/lists/derived-lists.md)
    * [Logging](en/user-guide/logging/index.md)
