@@ -1,5 +1,7 @@
 # Windows Forms
 
+Example at https://github.com/shiftkey/reactiveui-winforms-example
+
 Make sure you install `reactiveui-winforms` into your solution.
 
 > I had one hell of a time getting started because I was missing the ReactiveUI-Winforms package...
