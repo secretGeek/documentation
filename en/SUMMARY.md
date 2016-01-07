@@ -47,6 +47,7 @@
        * [Asynchronous/Synchronous](user-guide/commands/asynchronous-synchronous.md)
        * [Command Parameters](user-guide/commands/command-parameters.md)
        * [Command Values](user-guide/commands/command-values.md)
+       * An Example
        * [Controlling Executability](user-guide/commands/controlling-executability.md)
        * [Controlling Scheduling](user-guide/commands/controlling-scheduling.md)
        * [Command Errors](user-guide/commands/command-errors.md)
@@ -59,7 +60,6 @@
            * [Asynchronous operations](user-guide/commands/asynchronous-operations.md)
            * [Common Patterns](user-guide/commands/common-patterns.md)
            * [Unit Testing](user-guide/commands/unit-testing.md)
-       * An Example
    * [Lists](user-guide/lists/index.md)
        * [Derived Lists](user-guide/lists/derived-lists.md)
    * [Logging](en/user-guide/logging/index.md)
