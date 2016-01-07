@@ -1,4 +1,5 @@
 # An Example
+> **Warning** This chapter describes ReactiveCommand implementation for future version of ReactiveUI (7.0). For documentation of the current version (part of ReactiveUI 6.5), consult the main repository docs: [ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command.md) and [Asynchronous operations with ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command-async.md). 
 
 ```cs
 public class LoginViewModel : ReactiveObject
