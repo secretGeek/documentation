@@ -16,4 +16,4 @@ command2.ExecuteAsync(42);
 
 The parameter's type is captured as `TParam` in `ReactiveCommand<TParam, TResult>`. The type of both `command1` and `command2` above is `ReactiveCommand<int, Unit>`.
 
-Generally, you should avoid using command parameters. It is usually more appropriate for your view model to define a property that your command relies on.
+Generally, you should avoid using command parameters. It is usually more appropriate for your view model to define properties for any state that your command's execution logic relies on.
