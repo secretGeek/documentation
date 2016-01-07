@@ -44,10 +44,10 @@
    * [WhenActivated](user-guide/when-activated/index.md)
    * [Commands](user-guide/commands/index.md)
        * [Reactive Commands](user-guide/commands/reactive-commands.md)
+       * An Example
        * [Asynchronous/Synchronous](user-guide/commands/asynchronous-synchronous.md)
        * [Command Parameters](user-guide/commands/command-parameters.md)
        * [Command Values](user-guide/commands/command-values.md)
-       * An Example
        * [Controlling Executability](user-guide/commands/controlling-executability.md)
        * [Controlling Scheduling](user-guide/commands/controlling-scheduling.md)
        * [Command Errors](user-guide/commands/command-errors.md)
