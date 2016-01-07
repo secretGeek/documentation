@@ -1,5 +1,7 @@
 ## Asynchronous versus Synchronous Commands
 
+> **Warning** This chapter describes ReactiveCommand implementation for future version of ReactiveUI (7.0). For documentation of the current version (part of ReactiveUI 6.5), consult the main repository docs: [ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command.md) and [Asynchronous operations with ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command-async.md). 
+
 Even though the API presented by `ReactiveCommand` is asynchronous, you are not required to perform your execution logic asynchronously. If your command is not CPU-intensive or I/O-bound then it probably makes sense to provide synchronous execution logic. You can do so by creating a command via `ReactiveCommand.Create`:
 
 ```cs
