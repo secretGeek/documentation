@@ -1,5 +1,7 @@
 ## Command Errors
 
+> **Warning** This chapter describes ReactiveCommand implementation for future version of ReactiveUI (7.0). For documentation of the current version (part of ReactiveUI 6.5), consult the main repository docs: [ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command.md) and [Asynchronous operations with ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command-async.md). 
+
 If the logic you provide to a `ReactiveCommand` can fail in expected ways, you need a means of dealing with those failures.
 
 For command execution, the pipeline you get back from `ExecuteAsync` will tick any errors that occur in your execution logic. However, the caller is under no obligation to subscribe to this pipeline and they typically will not choose to do so. Moreover, the caller is often a view and not well-suited to understanding and handling such errors.
