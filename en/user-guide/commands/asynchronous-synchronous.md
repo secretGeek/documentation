@@ -1,4 +1,4 @@
-# Asynchronous versus Synchronous Commands
+## Asynchronous versus Synchronous Commands
 
 Even though the API presented by `ReactiveCommand` is asynchronous, you are not required to perform your execution logic asynchronously. If your command is not CPU-intensive or I/O-bound then it probably makes sense to provide synchronous execution logic. You can do so by creating a command via `ReactiveCommand.Create`:
 
