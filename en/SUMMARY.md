@@ -44,7 +44,7 @@
    * [WhenActivated](user-guide/when-activated/index.md)
    * [Commands](user-guide/commands/index.md)
        * [Reactive Commands](user-guide/commands/reactive-commands.md)
-       * An Example
+       * [An Example](user-guide/commands/an-example.md)
        * [Asynchronous/Synchronous](user-guide/commands/asynchronous-synchronous.md)
        * [Command Parameters](user-guide/commands/command-parameters.md)
        * [Command Values](user-guide/commands/command-values.md)
