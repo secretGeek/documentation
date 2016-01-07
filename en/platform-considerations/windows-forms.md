@@ -2,13 +2,10 @@
 
 Example at https://github.com/shiftkey/reactiveui-winforms-example
 
-Make sure you install `reactiveui-winforms` into your solution.
+Make sure you install `reactiveui-winforms` into your solution.  If you don't,
+you'll see very strange behavior like `Bind` and `OneWayBind` not working correctly,
+and `WhenAny` observables not being automatically observed on the UI thread.
 
-> I had one hell of a time getting started because I was missing the ReactiveUI-Winforms package...
-> I actually wasn't missing the winforms-events package.  it was the "core" winforms package `ReactiveUI-Winforms`
-> if you're missing that everything acts like it works, except it mostly doesn't.
-> it was an extremely weird day figuring that out
-> `OneWayBind` and `Bind` I couldn't tell if they worked at all.
 
 Also see https://github.com/reactiveui/ReactiveUI/issues/997
 
