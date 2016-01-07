@@ -1,5 +1,7 @@
 # Commands
 
+> **Warning** This chapter describes ReactiveCommand implementation for future version of ReactiveUI (7.0). For documentation of the current version (part of ReactiveUI 6.5), consult the main repository docs: [ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command.md) and [Asynchronous operations with ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command-async.md). 
+
 Commands encapsulate logic to be executed in response to some user action. Examples of actions are clicking a **Save** menu item, tapping a phone icon, or stretching an image. Respectively, the associated logic might be to save outstanding changes, instigate a phone call, or zoom into the image.
 
 Commands may or may not be executable in a given situation. For example, the command backing the **Save** menu item might be unavailable if there are no unsaved changes.
