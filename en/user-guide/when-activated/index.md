@@ -1,5 +1,14 @@
 # WhenActivated (Object Lifecycle Management)
 
+
+> do you (when would you) use this.WhenActivated on a MyCoolUserControl : IViewFor MyCoolViewModel
+>
+>the `WhenActivated` parameter is an action that will accept an `IDisposable`
+>
+>so, when you have something you want to run every time you are added to the visual tree, and/or you want something to run when removed from the visual tree, you use it for instance, I update the appbar in the `WhenActivated` block and I dispose of subscriptions there
+
+
+
     ghuntley [10:07 AM] @kentcb / @rdavisau / @flagbug do you use
     this.WhenActivated (ie. prevent dependency property leaking) on Xamarin
     Forms/Android/iOS? Is it needed on these platforms or is it just an XAML/WPF
