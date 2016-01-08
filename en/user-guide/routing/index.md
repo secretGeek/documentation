@@ -1,5 +1,16 @@
 # Routing
 
+https://stackoverflow.com/questions/26898381/reactiveui-view-viewmodel-injection-and-di-in-general
+
+View-First or ViewModel-First?
+
+Whether you can use VM-based routing (i.e. RoutedViewHost, IScreen, RoutingState, and friends) in ReactiveUI depends on the platform you're on:
+
+* WPF, Xamarin Forms: Absolutely
+* WP8, WinRT: You can make it work, you lose some transitions and niceties
+* Android, iOS Native: Very difficult to make work
+
+
 # Navigation
 
     phil.cleveland [8:16 AM] 
