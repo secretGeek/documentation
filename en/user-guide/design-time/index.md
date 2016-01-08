@@ -1,5 +1,11 @@
 # Design Time
 
+https://github.com/shiftkey/octohipster/blob/reactive-ui/OctoHipster/ViewModels/Design/DesignShellViewModel.cs
+
+
+https://github.com/shiftkey/octohipster/blob/reactive-ui/OctoHipster/Views/ShellView.xaml#L6-L15
+
+
 Views/AboutView.xaml:
 
 
