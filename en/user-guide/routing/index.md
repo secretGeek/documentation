@@ -11,7 +11,7 @@ Whether you can use VM-based routing (i.e. RoutedViewHost, IScreen, RoutingState
 * Android, iOS Native: Very difficult to make work
 
 
-# Navigation
+# Wizard Navigation
 
     phil.cleveland [8:16 AM] 
     @moswald: I see how that could work.  I give up the default binding goodness of the command
