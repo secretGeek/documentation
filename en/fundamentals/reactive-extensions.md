@@ -41,8 +41,8 @@ And is used simply:
 ```
 IObservable<T> stream = getFoos();
 IDisposable disposable = foo.Subscribe(
-	element => Console.WriteLine($"New element arrived $element"),
-	error => Console.WriteLine($"Uh oh, an error $error"),
+	element => Console.WriteLine($"New element arrived {element}"),
+	error => Console.WriteLine($"Uh oh, an error {error}"),
 	() => Console.WriteLine("Stream ended"));
 ```
 
