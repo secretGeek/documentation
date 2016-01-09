@@ -4,7 +4,7 @@ The [official website](http://reactivex.io/intro.html) of Reactive Extensions (o
 
 We will break down this very dense explanation (actually, it could fit in a tweet!), and discuss point by point how the features of the library are useful while programming user interfaces.
 
-> **Note** Despite our best intensions, we will not be able to cover the whole Reactive Extensions in this chapter. This topic is so huge it deserves a book on its own. And in fact, there are such books (even free ones!) - check out the Learn more section.
+> **Note** Despite our best efforts, we will not be able to cover the whole Reactive Extensions in this chapter. This topic is so huge it deserves a book on its own. And in fact, there are such books (even free ones!) - check out the Learn more section.
 
 ## Observable sequences
 The most important concept of Reactive Extensions is a *sequence of data*, also know as a *stream*. The stream is simply a discrete series of values (of whatever type). This series of values can be either finite or infinite. The finite sequences can end normally, or by signalling an error.
