@@ -20,4 +20,4 @@ Instead of telling a computer how to do its job, why don't we just tell it what 
 
 ## There is a Better Way
 
-Instead of imperative programming, we can use a new paradigm to structure our code. This paradigm is called [Functional Reactive Programming](fundamentals/functional-reactive-programming.md).
+Instead of imperative programming, we can use a new paradigm to structure our code. This paradigm is called [Functional Reactive Programming](functional-reactive-programming.html).
