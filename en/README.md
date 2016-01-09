@@ -19,10 +19,12 @@ You are more than welcome to help us build this documentation. We encourage you 
 
 ### Index
 
-#### Introduction
-#### Fundamentrals
+#### Introduction ![PENDING REVIEW](/images/blue.png)
+* Compelling example ![IN PROGRESS](/images/yellow.png)
+* Success Stories ![IN PROGRESS](/images/yellow.png)  *external*
+#### Fundamentrals ![PENDING REVIEW](/images/blue.png)
 * Historical Background ![PENDING REVIEW](/images/blue.png)
 * Functional Reactive Programming ![PENDING REVIEW](/images/blue.png)
 * Model-View-ViewModel ![PENDING REVIEW](/images/blue.png)
-* Reactive Extensions ![IN PROGRESS](/images/yellow.png) 
+* Reactive Extensions ![PENDING REVIEW](/images/blue.png)
 * Our Philosophy ![IN PROGRESS](/images/yellow.png) 
