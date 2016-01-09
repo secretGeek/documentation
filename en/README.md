@@ -22,6 +22,7 @@ You are more than welcome to help us build this documentation. We encourage you 
 #### Introduction ![PENDING REVIEW](/images/blue.png)
 * Compelling example ![IN PROGRESS](/images/yellow.png)
 * Success Stories ![IN PROGRESS](/images/yellow.png)  *external*
+
 #### Fundamentrals ![PENDING REVIEW](/images/blue.png)
 * Historical Background ![PENDING REVIEW](/images/blue.png)
 * Functional Reactive Programming ![PENDING REVIEW](/images/blue.png)
