@@ -5,7 +5,7 @@ desktop platform.
 
 > **Warning** This book is a work in progress. Eventually it will contain the entire documentation for the ReactiveUI project.
 
-By the time this docs are completed, please refer to [the docs from main repository](https://github.com/reactiveui/ReactiveUI/tree/docs/docs). Those documents are successively ported into this book.
+Until this book is complete, you can find additional documentation in [the main repository](https://github.com/reactiveui/ReactiveUI/tree/docs/docs). Those documents are being successively ported into this book.
 
 You are more than welcome to help us build this documentation. We encourage you to get started by checking out our [contribution guidelines](contributing/index.html).
 
