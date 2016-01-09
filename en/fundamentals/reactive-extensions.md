@@ -23,11 +23,10 @@ You should easily come out with your own examples of streams similar to the list
 ## The type to observe them all
 To understand  the role of `IObservable<T>` let's analyze below diagram. It displays several options of a return type from a function. Available options are categorized based on two factors: the number of elements returned from a function, and whether function returns synchronously (is blocking) or asynchronously (is not blocking).
 
-```
-||single items|multiple items
-synchronous|T getFoo()|IEnumerable<T> getFoos()
-asynchronous|Task<T> getFoo()|IObservable<T> getFoos()
-```
+|              |single item   | multiple items  |
+| -------------|:-------------:| -----:|
+| synchronous  | `T getFoo()` | `IEnumerable<T> getFoos()` |
+| asynchronous | `Task<T> getFoo()` | `IObservable<T> getFoos()` |
 
 You can see that `IObservable<T>` returns asynchronously, which makes it similar to `Task<T>`, except it is able to return more than a single element.
 
