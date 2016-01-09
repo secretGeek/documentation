@@ -8,3 +8,21 @@ desktop platform.
 By the time this docs are completed, please refer to [the docs from main repository](https://github.com/reactiveui/ReactiveUI/tree/docs/docs). Those documents are successively ported into this book.
 
 You are more than welcome to help us build this documentation. We encourage you to get started by checking out our [contribution guidelines](contributing/index.html).
+
+### Status Legend
+
+* Not Done ![NOT DONE](/images/red.png)
+* In Progress ![IN PROGRESS](/images/yellow.png) 
+* Pending Review ![PENDING REVIEW](/images/blue.png)  
+* Done ![DONE](/images/green.png)  
+
+
+### Index
+
+#### Introduction
+#### Fundamentrals
+* Historical Background ![PENDING REVIEW](/images/blue.png)
+* Functional Reactive Programming ![PENDING REVIEW](/images/blue.png)
+* Model-View-ViewModel ![PENDING REVIEW](/images/blue.png)
+* Reactive Extensions ![IN PROGRESS](/images/yellow.png) 
+* Our Philosophy ![IN PROGRESS](/images/yellow.png) 
