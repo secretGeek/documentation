@@ -20,8 +20,8 @@ You are more than welcome to help us build this documentation. We encourage you 
 ### Index
 
 #### Introduction ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
-* Compelling example ![IN PROGRESS]((https://www.go.cd/documentation/developer/images/yellow.png)
-* Success Stories ![IN PROGRESS]((https://www.go.cd/documentation/developer/images/yellow.png)  *external*
+* Compelling example ![IN PROGRESS](https://www.go.cd/documentation/developer/images/yellow.png)
+* Success Stories ![IN PROGRESS](https://www.go.cd/documentation/developer/images/yellow.png)  *external*
 
 #### Fundamentrals ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
 * Historical Background ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
