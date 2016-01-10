@@ -28,4 +28,4 @@ You are more than welcome to help us build this documentation. We encourage you 
 * Functional Reactive Programming ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
 * Model-View-ViewModel ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
 * Reactive Extensions ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
-* Our Philosophy ![IN PROGRESS]((https://www.go.cd/documentation/developer/images/yellow.png) 
+* Our Philosophy ![IN PROGRESS](https://www.go.cd/documentation/developer/images/yellow.png) 
