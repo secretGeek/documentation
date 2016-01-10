@@ -58,3 +58,6 @@ A complete layout could look like the following (these are .csproj files):
 - MyCoolApp.Droid - Device/platform specific view code
 - MyCoolApp.iOS - Device/platform specific view code
 
+# UWP/WPF
+
+Moved the xxxUserControl classes to a Views subfolder, and renamed them. This might just be me, but I prefer to call anything that derives from IViewFor to be a "View" and anything that acts as a control (like a custom text box or something) to go into a "Controls" subfolder. Tl;DR: "Views" => RxUI objects, "Controls" => custom Windows controls
