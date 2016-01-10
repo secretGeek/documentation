@@ -2,6 +2,7 @@
     "title": "ReactiveUI Documentation",
     "description": "ReactiveUI Documentation",
     "plugins": [
+        "28msec",
         "clicky",
         "sitemap",
         "richquotes",
