@@ -10,7 +10,7 @@ All application logic is stored within a core portable class library which is sh
 
 # Core Application Library
 
-The portable class library will be the heart of your application and where you will spend most of your time. `Profile78` or `Profile259` is the recommended profile which should be used, you will need to select it when you create the project. Alternatively you can adjust the profile after creation by editing the `.csproj` but you will need to run some NuGet commands to reinstall most of your packages.
+The portable class library will be the heart of your application and where you will spend most of your time. `Profile78` (if targeting WP8.x) or `Profile259` (if targeting only WPA + Xamarin *.*) or `Profile111` (If targeting UWP + Xamarin *.*) is the recommended profile which should be used, you will need to select it when you create the project. Alternatively you can adjust the profile after creation by editing the `.csproj` but you will need to run some NuGet commands to reinstall most of your packages.
 
 MyCoolApp.Core.csproj:
 
@@ -23,6 +23,13 @@ MyCoolApp.Core.csproj:
 
 ```xml
 <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+<TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+```
+
+MyCoolApp.Core.csproj:
+
+```xml
+<TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
 <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
 ```
 
