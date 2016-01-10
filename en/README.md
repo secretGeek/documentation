@@ -11,21 +11,21 @@ You are more than welcome to help us build this documentation. We encourage you 
 
 ### Status Legend
 
-* Not Done ![NOT DONE](/images/red.png)
-* In Progress ![IN PROGRESS](/images/yellow.png) 
-* Pending Review ![PENDING REVIEW](/images/blue.png)  
-* Done ![DONE](/images/green.png)  
+* Not Done ![NOT DONE](https://www.go.cd/documentation/developer/images/red.png)
+* In Progress ![IN PROGRESS](https://www.go.cd/documentation/developer/images/yellow.png) 
+* Pending Review ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)  
+* Done ![DONE](https://www.go.cd/documentation/developer/images/green.png)  
 
 
 ### Index
 
-#### Introduction ![PENDING REVIEW](/images/blue.png)
-* Compelling example ![IN PROGRESS](/images/yellow.png)
-* Success Stories ![IN PROGRESS](/images/yellow.png)  *external*
+#### Introduction ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
+* Compelling example ![IN PROGRESS]((https://www.go.cd/documentation/developer/images/yellow.png)
+* Success Stories ![IN PROGRESS]((https://www.go.cd/documentation/developer/images/yellow.png)  *external*
 
-#### Fundamentrals ![PENDING REVIEW](/images/blue.png)
-* Historical Background ![PENDING REVIEW](/images/blue.png)
-* Functional Reactive Programming ![PENDING REVIEW](/images/blue.png)
-* Model-View-ViewModel ![PENDING REVIEW](/images/blue.png)
-* Reactive Extensions ![PENDING REVIEW](/images/blue.png)
-* Our Philosophy ![IN PROGRESS](/images/yellow.png) 
+#### Fundamentrals ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
+* Historical Background ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
+* Functional Reactive Programming ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
+* Model-View-ViewModel ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
+* Reactive Extensions ![PENDING REVIEW](https://www.go.cd/documentation/developer/images/blue.png)
+* Our Philosophy ![IN PROGRESS]((https://www.go.cd/documentation/developer/images/yellow.png) 
