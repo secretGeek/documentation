@@ -61,3 +61,87 @@ A complete layout could look like the following (these are .csproj files):
 # UWP/WPF
 
 Moved the xxxUserControl classes to a Views subfolder, and renamed them. This might just be me, but I prefer to call anything that derives from IViewFor to be a "View" and anything that acts as a control (like a custom text box or something) to go into a "Controls" subfolder. Tl;DR: "Views" => RxUI objects, "Controls" => custom Windows controls
+
+## Styles/Resource Dictionaries Convention
+
+Geoff:
+
+>  Whilst I've got your attention matt any recommending reading how to tame resource dictionaries. Inherited a interesting project and all the styles are mixed everywhere, app, in page, in global styles.xaml.
+
+> Does creating one file per style sorted by view name under Styles then merged together by a MyCoolViewStyles. Make sense or does it create perf issues having that many resource dictionaries.
+
+Matt:
+
+> no perf issues I keep mine separate
+
+Kent:
+ 
+> yeah, fwiw @ghuntley, I also separate dictionaries. I have a `Theme.xaml` which merges in individual dictionaries (`Button.xaml`, `TextBox.xaml` etc). Then my `App.xaml` just merges in `Theme.xaml` of course, doing this stuff in Xamarin Forms is far more touch and go
+
+
+Matt:
+
+> that's what I used to do, but that causes a lot of stuff to get parsed on first load when it's not necessary
+
+> so only the stuff that I ​_know_​ will get used on 95% of all xaml pages get added to the `App`'s resources. things like the color palette
+
+> it means you have to do a little more work inside each user control, because you get stuff like this:
+
+    ```<UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Common/ResourceDictionaries/DefaultStyles/PasswordBox.xaml" />
+                <ResourceDictionary Source="/Resources/Common/ResourceDictionaries/DefaultStyles/TextBox.xaml" />
+                <ResourceDictionary Source="/Resources/Common/ResourceDictionaries/DefaultStyles/ToggleSwitch.xaml" />
+                <ResourceDictionary Source="/Resources/Common/ResourceDictionaries/NamedStyles/SmallHeaderStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    ```
+
+> but you only take the hit for loading `PasswordBox.xaml` once, when the first page requires it. If you never browse to one of those pages, then your app never takes the time to parse that file
+
+Kent:
+
+> interesting approach. I never ran into any perf walls, so never needed to do anything differently
+
+Matt: 
+
+> it speeds up the initial application load somewhat if you have a lot of styles
+    basically takes that initial 50ms of initial app load, and parcels it out in 5-10ms hits on individual pages
+
+> my `Resources` tree usually looks something like this:
+
+    ​[2:40] 
+    ```\Resources
+    \Common
+        \Images
+        \ResourceDictionaries
+        \Brushes
+            ColorPalette.xaml
+        \DefaultStyles
+            ButtonStyles.xaml
+            TextBlockStyles.xaml
+            TextBoxStyles.xaml
+        \NamedStyles
+            LeftHeaderTextBoxStyle.xaml
+            TileButtonStyles.xaml
+    \LightTheme
+        ...repeats...
+    \DarkTheme
+        ...repeats...
+    \HighContrast (or whatever the key is, this might be incorrect)
+    ```
+
+Kent:
+ 
+ > I think I’d prefer to make the user wait an extra 50ms (on top of the several seconds they already have to wait for WPF/.NET to bootstrap) than force devs to deal with this. I guess UWP may be different because of native compilation and usage patterns. Desktop software is Different.
+
+Matt:
+
+> it's a tradeoff, for sure on mobile, it's been a noticeable difference when I apply this pattern
+
+> if I were doing WPF, I'd probably just have everything referenced in a single RD which is included in the app.xaml, as you said
+> Oh, I found the blog post: http://projekt202.com/blog/2010/xaml-organization/
+> I think I've improved upon this, but this blog entry is where I got started with `ResourceDictionary` organization
+
