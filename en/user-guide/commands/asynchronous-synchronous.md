@@ -10,14 +10,14 @@ var command = ReactiveCommand.Create(() => Console.WriteLine("a synchronous reac
 
 There are several overloads of `Create` to facilitate commands that take parameters or return interesting values when they execute. These will be discussed in more detail below.
 
-If, on the other hand, your command's logic *is* CPU- or I/O-bound, you'll want to use `CreateAsyncObservable` or `CreateAsyncTask`:
+If, on the other hand, your command's logic *is* CPU- or I/O-bound, you'll want to use `CreateFromObservable` or `CreateFromTask`:
 
 ```cs
 // here we're using observables to model asynchrony
-var command1 = ReactiveCommand.CreateAsyncObservable(() => Observable.Return(Unit.Default).Delay(TimeSpan.FromSeconds(3)));
+var command1 = ReactiveCommand.CreateFromObservable(() => Observable.Return(Unit.Default).Delay(TimeSpan.FromSeconds(3)));
 
 // here we're using the TPL to model asynchrony
-var command2 = ReactiveCommand.CreateAsyncTask(async () =>
+var command2 = ReactiveCommand.CreateFromTask(async () =>
     {
         await Task.Delay(TimeSpan.FromSeconds(3)); 
     });
