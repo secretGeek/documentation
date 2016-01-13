@@ -10,7 +10,7 @@ var canExecute = this
         x => x.UserName,
         x => x.Password,
         (u, p) => !string.IsNullOrEmpty(u) && !string.IsNullOrEmpty(p));
-var command = ReactiveCommand.CreateAsyncObservable(this.LogOnAsync, canExecute);
+var command = ReactiveCommand.CreateFromObservable(this.LogOnAsync, canExecute);
 ```
 
 Here, `command` has additional constraints on its executability. Namely, both `UserName` and `Password` must be provided. Of course, `command` is still unavailable during execution of `LogOnAsync`, even if `UserName` and `Password` are both currently valid. In other words, `canExecute` *supplements* the default executability behavior; it doesn't replace it.
