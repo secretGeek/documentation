@@ -4,17 +4,17 @@ Occasionally it can be useful to have several commands aggregated into one. As a
 
 ```cs
 IObservable<bool> canClearBrowsingHistory = ...;
-var clearBrowsingHistoryCommand = ReactiveCommand.CreateAsyncObservable(
+var clearBrowsingHistoryCommand = ReactiveCommand.CreateFromObservable(
     this.ClearBrowsingHistoryAsync,
     canClearBrowsingHistory);
     
 IObservable<bool> canClearDownloadHistory = ...;
-var clearDownloadHistoryCommand = ReactiveCommand.CreateAsyncObservable(
+var clearDownloadHistoryCommand = ReactiveCommand.CreateFromObservable(
     this.ClearDownloadHistoryAsync,
     canClearDownloadHistory);
 
 IObservable<bool> canClearCookies = ...;
-var clearCookiesCommand = ReactiveCommand.CreateAsyncObservable(
+var clearCookiesCommand = ReactiveCommand.CreateFromObservable(
     this.ClearCookiesAsync,
     canClearCookies);
 
