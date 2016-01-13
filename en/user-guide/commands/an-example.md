@@ -15,7 +15,7 @@ public class LoginViewModel : ReactiveObject
             x => x.UserName,
             x => x.Password,
             (userName, password) => !string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password));
-        this.loginCommand = ReactiveCommand.CreateAsyncObservable(
+        this.loginCommand = ReactiveCommand.CreateFromObservable(
             this.LoginAsync,
             canLogin);
         
