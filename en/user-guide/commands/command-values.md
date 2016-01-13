@@ -9,13 +9,13 @@ The execution of a command produces a value, which is captured as `TResult` in `
 var command1 = ReactiveCommand.Create(() => { });
 
 // an observable-based asynchronous command that does not return an interesting result
-var command2 = ReactiveCommand.CreateAsyncObservable(() => Observable.Return(Unit.Default));
+var command2 = ReactiveCommand.CreateFromObservable(() => Observable.Return(Unit.Default));
 
 // a Task-based asynchronous command that does not return an interesting result
-var command3 = ReactiveCommand.CreateAsyncTask(async () => await Task.Delay(TimeSpan.FromSeconds(2)));
+var command3 = ReactiveCommand.CreateFromTask(async () => await Task.Delay(TimeSpan.FromSeconds(2)));
 ```
 
-All the above commands are of type `ReactiveCommand<Unit, Unit>`. Note that `CreateAsyncObservable` is required to eventually return an `IObservable<T>`, so `T` must be known. Therefore, to achieve the same behavior we have to ensure our observable is of type `IObservable<Unit>`.
+All the above commands are of type `ReactiveCommand<Unit, Unit>`. Note that `CreateFromObservable` is required to eventually return an `IObservable<T>`, so `T` must be known. Therefore, to achieve the same behavior we have to ensure our observable is of type `IObservable<Unit>`.
 
 If we _do_ want to return something interesting each time our command executes, we need only use the appropriate `Create*` method:
 
@@ -24,10 +24,10 @@ If we _do_ want to return something interesting each time our command executes, 
 var command1 = ReactiveCommand.Create(() => 42);
 
 // an observable-based asynchronous command that always returns 42 upon execution
-var command2 = ReactiveCommand.CreateAsyncObservable(() => Observable.Return(42));
+var command2 = ReactiveCommand.CreateFromObservable(() => Observable.Return(42));
 
 // a Task-based asynchronous command that always returns 42 upon execution
-var command3 = ReactiveCommand.CreateAsyncTask(() => Task.FromResult(42));
+var command3 = ReactiveCommand.CreateFromTask(() => Task.FromResult(42));
 ```
 
 Here, all commands are of type `ReactiveCommand<Unit, int>`. Subscribing to the observable return by `ExecuteAsync` (or subscribing to the command itself) will tick through the value `42`.
