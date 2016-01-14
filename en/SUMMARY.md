@@ -78,6 +78,7 @@
    * [Troubleshooting](en/user-guide/troubleshooting/index.md)
 * Patterns
    * [Cross-platform Modal Dialogs](patterns/cross-platform-modal-dialogs.md)
+   * Value Bounds Checking
 * [Design Guidelines](design-guidelines/index.md)
    * [Commands](design-guidelines/commands.md)
    * [Command Names](design-guidelines/command-names.md)
