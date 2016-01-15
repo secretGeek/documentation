@@ -78,7 +78,7 @@ ReactiveCommand.Create(() => {}, canExecute, scheduler);
 
 ## UserError is New and Exciting
 
-`UserError` has been generalized and re-imagined as `UserInteraction`. We did this because people were feeling icky using `UserError` for non-error scenarios. Basically, we realized that people need a general mechanism via which a view model can ask a question, and wait for the answer.
+`UserError` has been generalized and re-imagined as `UserInteraction`. We did this because people were feeling icky using `UserError` for non-error scenarios. Basically, we realized that people need a general mechanism via which a view model can ask a question, and wait for the answer. It doesn't have to be an error - we're not that pessimistic! You could be asking to confirm a file deletion, or maybe how the weather is out there in the analog world.
 
 * The main API entry point is now `UserInteraction`, not `UserError`
 * Recovery commands are no longer an in-built thing. If you need such a mechanism for your interactions, you are encouraged to subclass `UserInteraction<TResult>` and define them therein
