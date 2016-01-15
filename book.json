@@ -1,12 +1,12 @@
 {
     "title": "ReactiveUI Documentation",
     "description": "ReactiveUI Documentation",
+    "disabledPlugins": [ "image-captions"],
     "plugins": [
         "28msec",
         "clicky",
         "sitemap",
         "richquotes",
-        "image-captions",
         "printlinks",
         "video",
         "prism",
