@@ -8,6 +8,8 @@
 * static creation methods have changed:
     * execution information is now _always_ required when calling `CreateXxx` methods, including with "synchronous" commands (i.e. those created with `Create`). So rather than calling `Create` and then subscribing, you call `Create` and pass in your execution logic right then and there.
     * for consistency, the execution behavior is always provided as the first parameter. Other parameters (`canExecute`, `scheduler`) are optional
+    * `CreateAsyncObservable` is now called `CreateFromObservable`
+    * `CreateAsyncTask` is now called `CreateFromTask`
 * parameter types are formalized by `TParam` in `ReactiveCommand<TParam, TResult>`
     * if your command takes a parameter, you no longer take an `object` and cast it. Instead, you explicitly specify the parameter type when creating the command (of course, you can still choose `object` if that makes sense, or as an intermediary migration step)
 * `ICommand` is now implemented explicitly. As a result:
@@ -35,8 +37,8 @@ var someAsyncCommand2 = ReactiveCommand.CreateAsyncTask(canExecute, someTaskMeth
 var canExecute = ...;
 var someCommand = ReactiveCommand.Create(() => /* execution logic */);
 
-var someAsyncCommand1 = ReactiveCommand.CreateAsyncObservable(someObservableMethod, canExecute);
-var someAsyncCommand2 = ReactiveCommand.CreateAsyncTask(someTaskMethod, canExecute);
+var someAsyncCommand1 = ReactiveCommand.CreateFromObservable(someObservableMethod, canExecute);
+var someAsyncCommand2 = ReactiveCommand.CreateFromTask(someTaskMethod, canExecute);
 ```
 
 For reference, here is a more detailed look at the ways in which you can create `ReactiveCommand` instances:
@@ -45,26 +47,26 @@ For reference, here is a more detailed look at the ways in which you can create 
 // take no parameter, and return nothing of interest
 // the type of all these commands is ReactiveCommand<Unit, Unit>
 ReactiveCommand.Create(() => Console.WriteLine("hello")));
-ReactiveCommand.CreateAsyncObservable(() => Observable.Return(Unit.Default));
-ReactiveCommand.CreateAsyncTask(async () => await Task.Delay(TimeSpan.FromSeconds(1)));
+ReactiveCommand.CreateFromObservable(() => Observable.Return(Unit.Default));
+ReactiveCommand.CreateFromTask(async () => await Task.Delay(TimeSpan.FromSeconds(1)));
 
 // take an int parameter, but return nothing of interest
 // the type of all these commands is ReactiveCommand<int, Unit>
 ReactiveCommand.Create<int>(param => Console.WriteLine(param)));
-ReactiveCommand.CreateAsyncObservable<int, Unit>(param => Observable.Return(Unit.Default));
-ReactiveCommand.CreateAsyncTask<int, Unit>(async param => await Task.Delay(TimeSpan.FromSeconds(param));
+ReactiveCommand.CreateFromObservable<int, Unit>(param => Observable.Return(Unit.Default));
+ReactiveCommand.CreateFromTask<int, Unit>(async param => await Task.Delay(TimeSpan.FromSeconds(param));
 
 // take no parameter, and return an int
 // the type of all these commands is ReactiveCommand<Unit, int>
 ReactiveCommand.Create(() => 5);
-ReactiveCommand.CreateAsyncObservable(() => Observable.Return(42));
-ReactiveCommand.CreateAsyncTask(() => Task.FromResult(42));
+ReactiveCommand.CreateFromObservable(() => Observable.Return(42));
+ReactiveCommand.CreateFromTask(() => Task.FromResult(42));
 
 // take an int parameter, and return a string
 // the type of all these commands is ReactiveCommand<int, string>
 ReactiveCommand.Create<int, string>(param => param.ToString());
-ReactiveCommand.CreateAsyncObservable<int, string>(param => Observable.Return(param.ToString()));
-ReactiveCommand.CreateAsyncTask<int, string>(param => Task.FromResult(param.ToString()));
+ReactiveCommand.CreateFromObservable<int, string>(param => Observable.Return(param.ToString()));
+ReactiveCommand.CreateFromTask<int, string>(param => Task.FromResult(param.ToString()));
 
 // in all cases, you can also pass in canExecute and scheduler
 var canExecute = ...;
