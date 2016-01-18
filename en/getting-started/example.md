@@ -15,6 +15,11 @@ In Visual Studio create a new WPF application (Please note as of ReactiveUI v6.x
 Our view has been already created for us, the `MainWindow`, so we will proceed 
 with creating our ViewModel.
 
+**Add references*
+```csharp
+using System.Web;
+```
+
 **Add a new field**
 
 ```csharp
@@ -56,7 +61,6 @@ public class AppViewModel : ReactiveObject
     // in the background.
 
     public ReactiveCommand<List<FlickrPhoto>> ExecuteSearch { get; protected set; }
-
 
     /* ObservableAsPropertyHelper
      * 
