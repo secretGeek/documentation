@@ -3,17 +3,16 @@
 # Introduction
 
 One of the core features of ReactiveUI is to be able to represent Properties as
-Observables, and conversely, represent Observables as Properties. 
-Treating changes to a property is an Observable stream is fundamental to FRP application design and
-the `WhenAny` operators are ReactiveUI's construct for achieving this.
+Observables and, conversely, Observables as Properties.
+Treating changes to a Property as an Observable stream is fundamental to FRP application design. ReactiveUI accomplishes this with the `WhenAny` operators.
 
 ## Why model changes as an observable?
 
 > **Warning** Wordsmithing required / incomplete
 
 - we can define our app in terms of changes in properties
-- we can declaratively compose logic over these changes using rx operators
-- treating asynchrosity and multiple values as first class citizens allows us to easily express logic that would be very difficult/error prone in an imperative manner
+- we can declaratively compose logic over these changes using Rx operators
+- treating asynchronicity and multiple values as first class citizens allows us to easily express logic that would be very difficult/error prone in an imperative manner
 - etc.
 
 ## What does it look like?
