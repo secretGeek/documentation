@@ -116,7 +116,7 @@ public class AppViewModel : ReactiveObject
         // making sure the Command can be executed via calling CanExecute.
         this.WhenAnyValue(x => x.SearchTerm)
             .Throttle(TimeSpan.FromMilliseconds(800), RxApp.MainThreadScheduler)
-            .Select(x => x.Trim())
+            .Select(x => x?.Trim())
             .DistinctUntilChanged()
             .Where(x => !String.IsNullOrWhiteSpace(x))
             .InvokeCommand(ExecuteSearch);
@@ -140,7 +140,7 @@ public class AppViewModel : ReactiveObject
         // where ReactiveUI pipes any exceptions that are thrown in 
         // "GetSearchResultsFromFlickr" into. See the "Error Handling" section
         // for more information about this.
-        ExecuteSearch.ThrownExceptions.Subscribe(ex => {/* Handle errors here */})
+        ExecuteSearch.ThrownExceptions.Subscribe(ex => {/* Handle errors here */});
 
         // Here, we're going to actually describe what happens when the Command
         // gets invoked - we're going to run the GetSearchResultsFromFlickr every
