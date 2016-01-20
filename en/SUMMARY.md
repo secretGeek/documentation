@@ -12,7 +12,7 @@
 * [Getting Started](getting-started/index.md)
    * [Solution Layout](getting-started/solution-layout.md)
    * [Example](getting-started/example.md)
-   * [Visual Studio Settings](../getting-started/visual-studio-settings.md)
+   * [Visual Studio Settings](getting-started/visual-studio-settings.md)
 * [Samples](https:/github.com/reactiveui/samples)
 * [Platform Considerations](platform-considerations/index.md)
    * [Xamarin Android](platform-considerations/xamarin-android.md)
