@@ -12,7 +12,7 @@
 * [Getting Started](getting-started/index.md)
    * [Solution Layout](getting-started/solution-layout.md)
    * [Visual Studio Settings](getting-started/visual-studio-settings.md)
-   * Xamarin Studio Settings
+   * [Xamarin Studio Settings](getting-started/xamarin-studio-settings.md)
    * [Example](getting-started/example.md)
 * [Platform Considerations](platform-considerations/index.md)
    * [Xamarin Android](platform-considerations/xamarin-android.md)
