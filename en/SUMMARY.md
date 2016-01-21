@@ -27,7 +27,7 @@
 * [User Guide](user-guide/index.md)
    * Dependency Injection
 	   * [Basics](user-guide/dependency-injection/index.md)
-	   * [Message Bus](user-guide/dependency-injection/messagebus.md)
+	   * [MessageBus](user-guide/dependency-injection/messagebus.md)
    * [Views](user-guide/views/index.md)
        * [Design Time](user-guide/design-time/index.md)
        * [Binding](user-guide/binding/index.md)
