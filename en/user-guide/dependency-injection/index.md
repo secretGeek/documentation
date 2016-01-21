@@ -2,10 +2,9 @@
 
 Dependency resolution is very useful for moving logic that would normally have to be in platform-specific code, into the shared platform code. First, we need to define an Interface for something that we want to use - this example isn't a Best Practice, but it's illustrative.
 
-
 Dependency resolution is a feature built into the core framework, which allows libraries and ReactiveUI itself to use classes that are in other libraries without taking a direct reference to them. This is quite useful for cross-platform applications, as it allows portable code to use non-portable APIs, as long as they can be described via an Interface.
 
-ReactiveUI's use of dependency resolution can more properly be called the Service Location pattern. Put thought into how you use this API, as it can either be used effectively to make code more testable, or when used poorly, makes code more difficult to test and understand, as the [Resolver itself can effectively become part of the class's state](http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/), but in an implicit and non-obvious way.
+ReactiveUI's use of dependency resolution can more properly be called the Service Location pattern. If you service location doesn't fit your situation then have a look at how to do composition root.
 
 Since ReactiveUI 6, [Splat](https://github.com/paulcbetts/splat) is used by ReactiveUI for service location and dependency injection. Earlier versions included a RxUI resolver. If you come across samples for RxUI versions earlier than 6, you should replace references to `RxApp.DependencyResolver` with `Locator.Current` and `RxApp.MutableResolver` with `Locator.CurrentMutable`.
 
@@ -24,14 +23,6 @@ Service Location allows us to register types in platform-specific code, but use 
 >
 > Paul Betts @ http://stackoverflow.com/a/26924067/496857
 
-## Resolution
-
-Splat provides methods to resolve dependencies to single or multiple instances. 
- 
-```csharp
-var toaster = Locator.Current.GetService<IToaster>();
-var allToasterImpls = Locator.Current.GetServices<IToaster>();
-```
 
 ## Registration
 
@@ -47,6 +38,45 @@ Locator.CurrentMutable.RegisterConstant(new ExtraGoodToaster(), typeof(IToaster)
 // Register a singleton which won't get created until the first user accesses it
 Locator.CurrentMutable.RegisterLazySingleton(() => new LazyToaster(), typeof(IToaster));
 ```
+
+It is recommended to register your dependencies all at one place. This can be achieved for example with an AppBootstrapper.
+
+```csharp
+public class AppBootstrapper : IEnableLogger 
+{  
+    public AppBootstrapper() 
+    { 
+        RegisterDependencies(); 
+    }  
+
+    public void RegisterDependencies() 
+    { 
+        Locator.CurrentMutable.RegisterConstant(new FeedService(), typeof(IFeedService)); 
+    }  
+} 
+```
+
+This code can be extended to have multiple methods to group the dependencies and make it better readable.
+
+
+## Resolution
+
+Splat provides methods to resolve dependencies to single or multiple instances. 
+ 
+```csharp
+var toaster = Locator.Current.GetService<IToaster>();
+var allToasterImpls = Locator.Current.GetServices<IToaster>();
+```
+
+Recommended usage is:
+
+```csharp
+public FeedsViewModel(IBlobCache cache = null) 
+{ 
+	Cache = cache ?? Locator.Current.GetService<IBlobCache>();
+}
+```
+ 
 
 ## Advanced
 Splat's dependency resolver, accessible using `Locator.Current` conceptually resembles the below:
