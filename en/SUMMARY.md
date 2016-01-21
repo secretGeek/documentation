@@ -25,7 +25,9 @@
    * [Windows Universal](platform-considerations/windows-universal.md)
    * [Windows Store](platform-considerations/windows-store.md)
 * [User Guide](user-guide/index.md)
-   * [Dependency Injection](user-guide/dependency-injection/index.md)
+   * Dependency Injection
+	   * [Basics](user-guide/dependency-injection/index.md)
+	   * [Message Bus](user-guide/dependency-injection/messagebus.md)
    * [Views](user-guide/views/index.md)
        * [Design Time](user-guide/design-time/index.md)
        * [Binding](user-guide/binding/index.md)
