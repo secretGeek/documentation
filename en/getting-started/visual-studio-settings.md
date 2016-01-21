@@ -7,3 +7,4 @@ In settings of Visual Studio, disable the [Just My Code](https://msdn.microsoft.
 This is like Rx debugging pro-tip #1:
 
 http://blogs.msdn.com/b/davidklinems/archive/2005/07/18/440150.aspx
+
