@@ -5,9 +5,13 @@
 
 Aka x:Bind
 
+"The default mode is OneTime" - MSFT
+
 # Classic Binding
 
 aka {Binding}
+
+"The default mode is Oneway" - MSFT
 
 
 # Misc
