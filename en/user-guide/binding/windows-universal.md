@@ -1,5 +1,17 @@
 # Windows Universal
 
+
+# Compiled Binding
+
+Aka x:Bind
+
+# Classic Binding
+
+aka {Binding}
+
+
+# Misc
+
     @moswald has experienced issues with dotnet native and RxUI but @onovotny and @ghuntley has not.
     
     https://reactivex.slack.com/archives/reactiveui/p1450928587001692
