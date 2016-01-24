@@ -60,6 +60,12 @@ See the [ObservableAsPropertyHelper](../observableaspropertyhelper/index.md) sec
 
 ####Supporting validation as a `CanExecute` criteria
 
+
+``cs
+this.WhenAny(x => x.UserName, x => x.Password, 
+            (user, pass) => !String.IsNullOrWhitespace(
+
+``
 ...
 
 ####Performing view-specific transforms as an an input to `BindTo`
