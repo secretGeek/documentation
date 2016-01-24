@@ -1,7 +1,6 @@
 > **Warning** This section is a work in progress by Ryan Davis and Geoffrey Huntley. Speak with them on Slack if you want to help out.
 
-One of the core features of ReactiveUI is to be able to represent Properties as
-Observables - and conversely - Observables as Properties. In particular, the idea that changes to a property can be represented as an Observable stream of events is fundamental the effective design of reactive applications.
+In interactive UI applications, state is continually changing in response to user actions and application events. ReactiveUI enables you to express changes to application state as streams of values and combine and manipulate them using the powerful Reactive Extensions library.
 
 The motivation is intuitive enough when you think about it. It's not hard to imagine that changes to a property can be considered events - that's how `INotifyPropertyChanged` works. From there, the same argument for using Rx over events applies. In the context of MVVM application design specifically, modelling property changes as observables leads to several advantages:
 
