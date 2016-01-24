@@ -8,7 +8,7 @@ Instead what is needed is a means of suspending the view model's execution path 
 
 ## API Overview
 
-Underpinning the user interaction infrastructure is the abstract `Interaction` class. This class provides a means of referring to _any_ interaction, regardless of the type of the interaction's result.
+Underpinning the interaction infrastructure is the abstract `Interaction` class. This class provides a means of referring to _any_ interaction, regardless of the type of the interaction's result.
 
 The `Interaction<TResult>` class extends `Interaction` and strongly-types the result of the interaction. For example, an `Interaction<bool>` is capable of obtaining a yes/no answer.
 
