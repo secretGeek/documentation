@@ -89,21 +89,19 @@ At the risk of extreme repetition - use `WhenAnyValue` unless you know you need 
 
 ####WhenAnyObservable
 
-> **Warning** Wordsmithing required / incomplete
+`WhenAnyObservable` acts a lot like the Rx operator `CombineLatest`, in that it watches one or multiple observables and allows you to define a projection based on the latest value from each. `WhenAnyObservable` differs from `CombineLatest` in that its parameters are expressions, rather than direct references to the target observables. The impact of this difference is that the watch set up by `WhenAnyObservable` is not tied to the specific observable instances present at the time of subscription. That is, the observable pointed to by the expression can be replaced later, and the results of the new observable will still be captured. 
 
-`WhenAnyObservable` acts a lot like the Rx operator `CombineLatest`, in that it watches one or multiple observables and allows you to define a projection based on the latest value from each. `WhenAnyObservable` differs from `CombineLatest` in that its parameters are expressions and are not tied to the specific observables present at the time of subscription. This can be handy when wishing to subscribe to a ViewModel command from a View. 
-
-Consider the statement `this.WhenAnyObservable(x => x.ViewModel.DoStuff)` - as opposed to a direct subscription to the `ViewModel.DoStuff` command, a subscription to the `WhenAnyObservable` result will continue to signal on new command invocations if the ViewModel is replaced at a later point in time. Without `WhenAnyObservable`, the View would need create another direct subscription to the new ViewModel's `DoStuff` in order to receive signals from it.
+An example of where this can come in handy is when a view wants to observe an observable on a viewmodel, but the viewmodel can be replaced during the view's lifetime. Rather than needing to resubscribe to the target observable after every change of viewmodel, you can use `WhenAnyObservable` to specify a the 'path' to which you want to watch, and a single subscription can be used for the view lifetime, regardless of the life of the viewmodel. 
 
 ## Best Practices / How not to hang yourself
 
 > **Warning** Wordsmithing required / incomplete
 
-There are a few things to keep in mind when when using `WhenAny` and friends:
+The usage of `WhenAny` variants is fairly straightforward. However, there are a few aspects of their behaviour that are worth highlighting.
 
-#### INPC
+#### INotifyPropertyChanged
 
-* Watched properties need to implement ReactiveUI's `RaiseAndSetIfChanged` or standard INPC* (* pretty sure INPC works, need to verify*). if you attempt to whenany on something without either of these a warning will be issued at runtime (ILogger)
+* Watched properties must implement ReactiveUI's `RaiseAndSetIfChanged` or standard `INotifyPropertyChanged` members. A warning will be issued at run time if you attempt to create a `WhenAny` over a property without either of these (ensure you have registered a service for `ILogger` to see this). Without change notifications in place, `WhenAny` will produce the current value of the property upon subscription, and nothing thereafter.
 
 #### Cold Observable semantics
 
@@ -111,8 +109,7 @@ There are a few things to keep in mind when when using `WhenAny` and friends:
    UI component events. For events such as DependencyProperties, this could
    potentially be a (minor) place to optimize, via `Publish`.
 
-* if you chain a `WhenAny` to a `ToProperty`, but don't call `.Value` on it or subscribe to a WhenAny on /that/ property, still nothing will happen
-  (but hey, if you're not checking the derived property, it doesn't matter that it didn't change, right? like a tree falling in the woods or something)
+* As `ToProperty` is also cold, if a `WhenAny` is chained to a `ToProperty`, the target `ObservableAsPropertyHelper` must be checked (`.Value`) or observed (e.g. used in a binding or used as part of another `WhenAny` with a subscription) for any of the chain to execute set up. 
 
 #### Behavioural Semantics 
 * `WhenAny` always provides you with the current value as soon as you Subscribe
