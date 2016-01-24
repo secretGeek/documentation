@@ -26,8 +26,8 @@
    * [Windows Store](platform-considerations/windows-store.md)
 * [User Guide](user-guide/index.md)
    * Dependency Injection
-	   * [Basics](user-guide/dependency-injection/index.md)
-	   * [MessageBus](user-guide/dependency-injection/messagebus.md)
+       * [Basics](user-guide/dependency-injection/index.md)
+       * [MessageBus](user-guide/dependency-injection/messagebus.md)
    * [Views](user-guide/views/index.md)
        * [Design Time](user-guide/design-time/index.md)
        * [Binding](user-guide/binding/index.md)
@@ -69,7 +69,7 @@
    * [Logging](en/user-guide/logging/index.md)
        * [Visual Studio IntelliTrace](en/user-guide/logging/visual-studio-intellitrace.md)
        * [Debugging Observables](en/user-guide/logging/debugging-observables.md)
-   * [User Interaction](user-guide/user-interaction/index.md)
+   * [Interactions](user-guide/interactions/index.md)
    * [Events](user-guide/events/index.md)
        * Platforms
            * [Windows Forms](user-guide/events/windows-forms.md)
