@@ -1,125 +1,149 @@
-# User Interactions
+# Interactions
 
 At times you may find yourself writing view model code that needs to confirm something with the user. For example, checking if it's OK to delete a file, or asking what to do about an error that has occurred.
 
 It might be tempting to simply throw up a message box right from within the view model. But that would be a mistake. Not only does this tie your view model to a particular UI technology, it also makes testing difficult (or even impossible).
 
-Instead what is needed is a means of suspending the view model's execution path until some data is provided by the user. ReactiveUI's user interaction mechanism facilitates just this.
+Instead what is needed is a means of suspending the view model's execution path until some data is provided by the user. ReactiveUI's interaction mechanism facilitates just this.
 
 ## API Overview
 
-Underpinning the user interaction infrastructure is the `UserInteraction` class. This abstract class represents the interaction. That is, it models the process of asking the user for data, and includes the user's response.
+Underpinning the user interaction infrastructure is the abstract `Interaction` class. This class provides a means of referring to _any_ interaction, regardless of the type of the interaction's result.
 
-The generic `UserInteraction<TResult>` class extends `UserInteraction` and strongly-types the result of the interaction. For example, a `UserInteraction<bool>` is capable of obtaining a yes/no answer from the user.
+The `Interaction<TResult>` class extends `Interaction` and strongly-types the result of the interaction. For example, an `Interaction<bool>` is capable of obtaining a yes/no answer.
 
-For richer interactions that require more than a typed result, you can subclass `UserInteraction<TResult>`. In fact, ReactiveUI provides one such subclass called `UserErrorInteraction<TResult>`. This class adds an `Error` property (of type `Exception`), which makes it a suitable option in error recovery scenarios.
+For richer interactions that require more than a typed result, you can subclass `Interaction<TResult>`. In fact, ReactiveUI provides one such subclass called `ErrorInteraction<TResult>`. This class adds an `Error` property (of type `Exception`), which makes it a suitable option in error recovery scenarios.
 
-Interactions are usually created by your view model. They are then "raised" either locally or globally to obtain a result from outside the view model.
+The interaction encapsulates only the result of the interaction, as well as any data that supports it. It does not provide a distribution or handling mechanism for interactions. For that, ReactiveUI provides the `InteractionBroker<TInteraction>` class.
 
-## Local versus Global Interactions
-
-Interactions can be raised either locally or globally. If raised locally, the handler (usually a view) must have direct access to the interaction instance. If raised globally, the handler need not have direct access.
-
-The advantage of global interactions is that you can handle the same interaction in one location. This is particularly useful for errors because there are usually many sources for errors throughout the application, but typically only one useful recourse for handling them.
-
-The primary disadvantage of global interactions is that seemingly unrelated components can become coupled. If a view model needs an answer to a specific question in a confined context, having the associated view handle the interaction directly is usually a better choice.
-
-Another disadvantage of global interactions is that they can necessitate the creation of application-specific `UserInteraction<TResult>` subclasses. If, for example, two different view models raise a `UserInteraction<bool>` globally to get an answer to two completely different questions, a global handler does not have sufficient information to distinguish between them.
-
-For these reasons, local interactions are recommended in those cases where they suffice. 
+Interaction brokers are the means by which collaborating components communicate. Normally this implies that both the view model and view are hooked into the same broker. The view registers a handler against the broker, which can be asynchronous. Then, the view model "raises" an interaction against the broker.
 
 ## An Example
 
-Here is an example of a local interaction:
-
 ```cs
-public class LocalInteractionViewModel : ReactiveObject
+public class ViewModel : ReactiveObject
 {
-    private readonly Subject<UserInteraction<bool>> confirmFileDeletion;
+    private readonly InteractionBroker<Interaction<bool>> confirm;
     
-    public LocalInteractionViewModel()
+    public ViewModel()
     {
-        this.confirmFileDeletion = new Subject<UserInteraction<bool>>();
+        this.confirm = new InteractionBroker<Interaction<bool>>();
     }
-
-    public IObservable<UserInteraction<bool>> ConfirmFileDeletion => this.confirmFileDeletion;
-
+    
+    public InteractionBroker<Interaction<bool>> Confirm => this.confirm;
+    
     public async Task DeleteFileAsync()
     {
-        // create the interaction instance
-        var confirmFileDeletion = new UserInteraction<bool>();
-    
-        // tick it through the observable so the view gets it
-        this.confirmFileDeletion.OnNext(confirmFileDeletion);
-    
-        // raise it and await the result
-        var result = await confirmFileDeletion.Raise();
-    
-        if (result)
+        var confirmation = new Interaction<bool>();
+        
+        // this will throw an exception if nothing handles the interaction
+        await this.confirm.Raise(confirmation);
+        
+        if (confirmation.GetResult())
         {
             // delete the file
         }
     }
 }
 
-public class LocalInteractionView
+public class View
 {
-    public SomeView()
+    public View()
     {
-        this
-            .WhenAnyObservable(x => x.ViewModel.ConfirmFileDeletion)
-            .Subscribe(
-                async interaction =>
-                {
-                    var deleteIt = await this.DisplayAlert(
-                        "Confirm Delete",
-                        "Are you sure you want to delete this super important file?",
-                        "YES",
-                        "NO");
-                
-                    interaction.SetResult(deleteIt);
-                });
-            
+        this.WhenActivated(
+            d =>
+            {
+                d(this
+                    .ViewModel
+                    .Confirm
+                    .RegisterHandler(
+                        async interaction =>
+                        {
+                            var deleteIt = await this.DisplayAlert(
+                                "Confirm Delete",
+                                "Are you sure you want to delete this super important file?",
+                                "YES",
+                                "NO");
+
+                            interaction.SetResult(deleteIt);
+                        }));
+            });
     }
 }
 ```
 
-And here is the same use case implemented as a global interaction:
+You can also create a shared broker that is utilized by multiple components in your application. A common example of this is in error recovery. Many components may want to raise errors, but we may want only one common handler. Here's an example of how you can achieve this:
 
 ```cs
-public class GlobalInteractionViewModel : ReactiveObject
+public enum ErrorRecoveryOption
 {
-    public async Task DeleteFileAsync()
-    {
-        // create the interaction instance
-        var confirmFileDeletion = new UserInteraction<bool>();
+    Retry,
+    Abort
+}
 
-        // raise it globally and await the result
-        var result = await confirmFileDeletion.RaiseGlobal();
-    
-        if (result)
+public class AppErrorInteraction : ErrorInteraction<ErrorRecoveryOption>
+{
+    public AppErrorInteraction(Exception error)
+        : base(error)
+    {
+    }
+}
+
+public static class InteractionBrokers
+{
+    public static readonly InteractionBroker<AppErrorInteraction> Errors = new InteractionBroker<AppErrorInteraction>();
+}
+
+public class SomeViewModel : ReactiveObject
+{
+    public async Task SomeMethodAsync()
+    {
+        while (true)
         {
-            // delete the file
+            Exception failure = null;
+            
+            try
+            {
+                DoSomethingThatMightFail();
+            }
+            catch (Exception ex)
+            {
+                failure = ex;
+            }
+            
+            if (failure == null)
+            {
+                break;
+            }
+            
+            var recovery = new AppErrorInteraction(failure);
+            
+            // this will throw if nothing handles the interaction
+            await InteractionBrokers.Errors.Raise(recovery);
+            
+            if (interaction.GetResult() == ErrorRecoveryOption.Abort)
+            {
+                break;
+            }
         }
     }
 }
 
-public class GlobalInteractionView
+public class RootView
 {
-    public SomeView()
+    public RootView()
     {
-        UserInteraction
-            .RegisterGlobalHandler<UserInteraction<bool>>(
-                async interaction =>
-                {
-                    var deleteIt = await this.DisplayAlert(
-                        "Confirm Delete",
-                        "Are you sure you want to delete this super important file?",
-                        "YES",
-                        "NO");
-                
-                    interaction.SetResult(deleteIt);
-                });
+        InteractionBrokers.Errors.RegisterHandler(
+            async interaction =>
+            {
+                var action = await this.DisplayAlert(
+                    "Error",
+                    "Something bad has happened. What do you want to do?",
+                    "RETRY",
+                    "ABORT");
+
+                interaction.SetResult(action ? ErrorRecoveryOption.Retry : ErrorRecoveryOption.Abort);
+                        });
     }
 }
 ```
@@ -128,54 +152,50 @@ public class GlobalInteractionView
 
 ## Handler Precedence
 
-Global handlers can form a chain. Any number of handlers can be registered, and later registrations are deemed of higher priority than earlier registrations. When an interaction is raised globally, each global handler is given the _opportunity_ to handle that interaction (i.e. set a result). The handler is under no obligation to actually handle the interaction. If a handler chooses not to set a result, the next handler in the chain is invoked.
+The implementation of `InteractionBroker<TInteraction>` facilitates a handler chain. Any number of handlers can be registered, and later registrations are deemed of higher priority than earlier registrations. When an interaction is raised, each handler is given the _opportunity_ to handle that interaction (i.e. set a result). The handler is under no obligation to actually handle the interaction. If a handler chooses _not_ to set a result, the next handler in the chain is invoked.
 
-This chain of precedence makes it possible to define default handlers at a root level of your application, then override those handlers from higher level components. For example, a root level handler may provide default error recovery behavior. But a specific view in the application may know how to recover from a certain error without prompting the user. It could register a global handler whilst it's activated, then dispose of that registration when it deactivates.
+This chain of precedence makes it possible to define default handlers at a root level of your application, then override those handlers from higher level components. For example, a root level handler may provide default error recovery behavior. But a specific view in the application may know how to recover from a certain error without prompting the user. It could register a handler whilst it's activated, then dispose of that registration when it deactivates. Obviously such an approach requires a shared interaction broker instance.
 
-> **Note** Handler precedence is only relevant to global interactions. Generally speaking, local interactions will normally only have one handler.
+> **Note** The `InteractionBroker<TInteraction>` class is designed to be extensible. Subclasses can change the behavior of `Raise` such that it does not exhibit the behavior described above. For example, you could write an implementation that tries only the first handler in the list.
 
 ## Unhandled Interactions
 
-Any interaction, be it global or local, can go unhandled. If there are no handlers, or none of the handlers set a result, the interaction is unhandled. This is always a programming error.
+Any interaction can go unhandled. If there are no handlers, or none of the handlers set a result, the interaction is itself is considered unhandled. This is always a programming error.
 
-For local interactions, this is likely because you've forgotten to hook into the interaction from your view. Or perhaps you've forgotten to call `SetResult` against the interaction instance. Either way, the end result is that your view model will stall when it awaits the interaction result. Because nothing has handled that interaction, its result is never set and so the view model waits indefinitely.
-
-For global interactions, the handler chain mechanism gives each registered handler an opportunity to handle the interaction. If the end of the chain is reached and no handler has handled the interaction, an `UnhandledUserInteractionException` is thrown.
+In this circumstance, the invocation of `Raise` will result in an `UnhandledInteractionException` being thrown. The underlying interaction is exposed via the `Interaction` property of this exception.
 
 ## Testing
 
-Regardless of whether you're using global or local interactions, you can easily test user interaction logic in view models.
-
-Local interactions need to hook into the interaction through whatever means the view model provides:
+You can easily test interaction logic in view models by hooking into the relevant interaction broker:
 
 ```cs
 [Fact]
-public async Task local_interaction_test()
+public async Task interaction_test()
 {
-    var fixture = new SomeViewModel();
+    var fixture = new ViewModel();
     fixture
-        .WhenAnyObservable(x => x.ConfirmFileDeletion)
-        .Subscribe(i => i.SetResult(true));
-    
+        .Confirm
+        .RegisterHandler(interaction => interaction.SetResult(true));
+        
     await fixture.DeleteFileAsync();
     
     Assert.True(/* file was deleted */);
 }
 ```
 
-For global interactions, your unit test can easily register a temporary handler:
+If your test is hooking into a shared broker, you probably want to dispose of the registration:
 
 ```cs
 [Fact]
-public async Task global_interaction_test()
+public async Task interaction_test()
 {
     var fixture = new SomeViewModel();
     
-    using (UserInteraction.RegisterGlobalHandler<UserInteraction<bool>>(i => i.SetResult(true))
+    using (InteractionsBrokers.Error.RegisterHandler(interaction => interaction.SetResult(ErrorRecoveryOption.Abort)))
     {
-        await fixture.DeleteFileAsync();
+        fixture.SomeMethodAsync();
         
-        Assert.True(/* file was deleted */);
+        // assert abort here
     }
 }
 ```
