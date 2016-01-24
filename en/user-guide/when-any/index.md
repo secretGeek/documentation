@@ -40,11 +40,11 @@ this.WhenAnyValue(x => x.Red, x => x.Green, x => x.Blue,
 this.WhenAnyValue(x => x.Foo.Bar.Baz);
 ```
 
-## Idiomatic usage
+##Idiomatic usage
 
 Naturally, once you have an observable you can `Subscribe` to it to perform actions response to the changed values. However, given the design of ReactiveUI is centered around the observable, in many cases there will be a Better Way to achieve what you want. Below are some typical usages of the observables returned by  `WhenAny` variants:
 
-#### Exposing 'calculated' properties
+####Exposing 'calculated' properties
 
 In general, using `Subscribe` on a `WhenAny` observable (or any observable, for that matter) just to set a property is likely a code smell. Idiomatically, the `ToProperty` operator is used to create a 'read-only' calculated property that can be exposed to the rest of your application, but not set in any manner but the `WhenAny` chain that preceded it:
 
@@ -58,11 +58,11 @@ This initialises the `SearchTextLength` property (an [ObservableAsPropertyHelper
 
 See the [ObservableAsPropertyHelper](../observableaspropertyhelper/index.md) section for more information on this pattern.
 
-#### Supporting validation as a `CanExecute` criteria
+####Supporting validation as a `CanExecute` criteria
 
 ...
 
-#### Performing view-specific transforms as an an input to `BindTo`
+####Performing view-specific transforms as an an input to `BindTo`
 
 ... 
 
@@ -77,13 +77,13 @@ Several variants of `WhenAny` exist, suited for different scenarios.
 
 The following two statements are equivalent and return an observable that yields the updated value of `SearchText` on every change:
 
-- `this.WhenAny(x => x.SearchText, x=> x.Value)`
+- `this.WhenAny(x => x.SearchText, x => x.Value)`
 - `this.WhenAnyValue(x => x.SearchText)`
 
 When needing to observe one or many properties for changes, `WhenAnyValue` is quick to type and results in simpler looking code. Working with `WhenAny` directly gives you access to the `ObservedChange<,>` object that ReactiveUI produces on each property change. This is typically useful for framework code or extension methods. `ObservedChange` exposes the following properties:
 * `Value` - the updated value
 * `Sender` - the object whose has property changed 
-* `Expression` - the expression that changed
+* `Expression` - the expression that changed.
 
 At the risk of extreme repetition - use `WhenAnyValue` unless you know you need `WhenAny`. 
 
@@ -91,19 +91,17 @@ At the risk of extreme repetition - use `WhenAnyValue` unless you know you need 
 
 `WhenAnyObservable` acts a lot like the Rx operator `CombineLatest`, in that it watches one or multiple observables and allows you to define a projection based on the latest value from each. `WhenAnyObservable` differs from `CombineLatest` in that its parameters are expressions, rather than direct references to the target observables. The impact of this difference is that the watch set up by `WhenAnyObservable` is not tied to the specific observable instances present at the time of subscription. That is, the observable pointed to by the expression can be replaced later, and the results of the new observable will still be captured. 
 
-An example of where this can come in handy is when a view wants to observe an observable on a viewmodel, but the viewmodel can be replaced during the view's lifetime. Rather than needing to resubscribe to the target observable after every change of viewmodel, you can use `WhenAnyObservable` to specify a the 'path' to which you want to watch, and a single subscription can be used for the view lifetime, regardless of the life of the viewmodel. 
+An example of where this can come in handy is when a view wants to observe an observable on a viewmodel, but the viewmodel can be replaced during the view's lifetime. Rather than needing to resubscribe to the target observable after every change of viewmodel, you can use `WhenAnyObservable` to specify the 'path' to which watch. This allows you to use a single subscription in the view, regardless of the life of the target viewmodel. 
 
-## Best Practices / How not to hang yourself
+##Getting the most out of your new `WhenAny`
 
-> **Warning** Wordsmithing required / incomplete
+Using `WhenAny` variants is fairly straightforward. However, there are a few aspects of their behaviour that are worth highlighting.
 
-The usage of `WhenAny` variants is fairly straightforward. However, there are a few aspects of their behaviour that are worth highlighting.
+####INotifyPropertyChanged is required
 
-#### INotifyPropertyChanged
+* Watched properties must implement ReactiveUI's `RaiseAndSetIfChanged` or raise the standard `INotifyPropertyChanged` events. If you attempt to use `WhenAny` on a property without either of these in place, `WhenAny` will produce the current value of the property upon subscription, and nothing thereafter. Additionally, a warning will be issued at run time (ensure you have registered a service for `ILogger` to see this).
 
-* Watched properties must implement ReactiveUI's `RaiseAndSetIfChanged` or standard `INotifyPropertyChanged` members. A warning will be issued at run time if you attempt to create a `WhenAny` over a property without either of these (ensure you have registered a service for `ILogger` to see this). Without change notifications in place, `WhenAny` will produce the current value of the property upon subscription, and nothing thereafter.
-
-#### Cold Observable semantics
+####`WhenAny` has cold observable semantics
 
 * `WhenAny` is a purely cold Observable, which eventually directly connects to
    UI component events. For events such as DependencyProperties, this could
@@ -111,15 +109,9 @@ The usage of `WhenAny` variants is fairly straightforward. However, there are a 
 
 * As `ToProperty` is also cold, if a `WhenAny` is chained to a `ToProperty`, the target `ObservableAsPropertyHelper` must be checked (`.Value`) or observed (e.g. used in a binding or used as part of another `WhenAny` with a subscription) for any of the chain to execute set up. 
 
-#### Behavioural Semantics 
-* `WhenAny` always provides you with the current value as soon as you Subscribe
-   to it - it is effectively a BehaviorSubject.
+####`WhenAny` has behavioural observable semantics 
+* `WhenAny` always provides you with the current value as soon as you Subscribe to it - it is effectively a BehaviorSubject.
 
-# Examples 'Gallery'
+#Relevant Samples
 
-Below are a set of typical `WhenAny` usage examples with a brief explanation.
-
-* The 'live query' search text from the main example?
-* Validation for a login screen 
-* WhenAnyObs from the View
-* ..
+Samples demonstrating `WhenAny` use will be listed below.
