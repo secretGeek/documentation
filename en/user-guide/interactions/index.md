@@ -8,15 +8,13 @@ Instead what is needed is a means of suspending the view model's execution path 
 
 ## API Overview
 
-Underpinning the interaction infrastructure is the abstract `Interaction` class. This class provides a means of referring to _any_ interaction, regardless of the type of the interaction's result.
-
-The `Interaction<TResult>` class extends `Interaction` and strongly-types the result of the interaction. For example, an `Interaction<bool>` is capable of obtaining a yes/no answer.
+Underpinning the interaction infrastructure is the abstract `Interaction` class. This class provides a means of referring to _any_ interaction, regardless of the type of the interaction's result. The `Interaction<TResult>` class extends `Interaction` and strongly-types the result of the interaction. For example, an `Interaction<bool>` is capable of obtaining a yes/no answer.
 
 For richer interactions that require more than a typed result, you can subclass `Interaction<TResult>`. In fact, ReactiveUI provides one such subclass called `ErrorInteraction<TResult>`. This class adds an `Error` property (of type `Exception`), which makes it a suitable option in error recovery scenarios.
 
 The interaction encapsulates only the result of the interaction, as well as any data that supports it. It does not provide a distribution or handling mechanism for interactions. For that, ReactiveUI provides the `InteractionBroker<TInteraction>` class.
 
-Interaction brokers are the means by which collaborating components communicate. Normally this implies that both the view model and view are hooked into the same broker. The view registers a handler against the broker, which can be asynchronous. Then, the view model "raises" an interaction against the broker.
+Interaction brokers are the means by which collaborating components communicate. Thus, it's generally the view model and view that are hooked into the same broker. The view registers a handler against the broker, which can be asynchronous. Then, the view model "raises" an interaction against the broker.
 
 ## An Example
 
@@ -152,17 +150,15 @@ public class RootView
 
 ## Handler Precedence
 
-The implementation of `InteractionBroker<TInteraction>` facilitates a handler chain. Any number of handlers can be registered, and later registrations are deemed of higher priority than earlier registrations. When an interaction is raised, each handler is given the _opportunity_ to handle that interaction (i.e. set a result). The handler is under no obligation to actually handle the interaction. If a handler chooses _not_ to set a result, the next handler in the chain is invoked.
+`InteractionBroker<TInteraction>` implements a handler chain. Any number of handlers can be registered, and later registrations are deemed of higher priority than earlier registrations. When an interaction is raised, each handler is given the _opportunity_ to handle that interaction (i.e. set a result). The handler is under no obligation to actually handle the interaction. If a handler chooses _not_ to set a result, the next handler in the chain is invoked.
 
-This chain of precedence makes it possible to define default handlers at a root level of your application, then override those handlers from higher level components. For example, a root level handler may provide default error recovery behavior. But a specific view in the application may know how to recover from a certain error without prompting the user. It could register a handler whilst it's activated, then dispose of that registration when it deactivates. Obviously such an approach requires a shared interaction broker instance.
+This chain of precedence makes it possible to define a default handler, and then temporarily override that handler. For example, a root level handler may provide default error recovery behavior. But a specific view in the application may know how to recover from a certain error without prompting the user. It could register a handler whilst it's activated, then dispose of that registration when it deactivates. Obviously such an approach requires a shared interaction broker instance.
 
 > **Note** The `InteractionBroker<TInteraction>` class is designed to be extensible. Subclasses can change the behavior of `Raise` such that it does not exhibit the behavior described above. For example, you could write an implementation that tries only the first handler in the list.
 
 ## Unhandled Interactions
 
-Any interaction can go unhandled. If there are no handlers, or none of the handlers set a result, the interaction is itself is considered unhandled. This is always a programming error.
-
-In this circumstance, the invocation of `Raise` will result in an `UnhandledInteractionException` being thrown. The underlying interaction is exposed via the `Interaction` property of this exception.
+If there are no handlers for an interaction, or none of the handlers set a result, the interaction is itself considered unhandled. In this circumstance, the invocation of `Raise` will result in an `UnhandledInteractionException` being thrown. The underlying interaction is exposed via the `Interaction` property of this exception.
 
 ## Testing
 
