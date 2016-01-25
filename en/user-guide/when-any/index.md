@@ -104,7 +104,7 @@ Several variants of `WhenAny` exist, suited for different scenarios.
 
 ####WhenAny vs WhenAnyValue
 
-`WhenAnyValue` is covers the most common usage of `WhenAny`, and is a useful shortcut in many cases. The following two statements are equivalent and return an observable that yields the updated value of `SearchText` on every change:
+`WhenAnyValue` covers the most common usage of `WhenAny`, and is a useful shortcut in many cases. The following two statements are equivalent and return an observable that yields the updated value of `SearchText` on every change:
 
 - `this.WhenAny(x => x.SearchText, x => x.Value)`
 - `this.WhenAnyValue(x => x.SearchText)`
