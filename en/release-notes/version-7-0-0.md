@@ -76,16 +76,19 @@ ReactiveCommand.Create(() => {}, canExecute, scheduler);
 
 > **Note** To enable you to ease into the migration, all previous types are available under the `ReactiveUI.Legacy` namespace. Note, however, that there is no legacy version of `RoutingState`, so any code you have that interacts with its command may require minor updates.
 
-## UserError is New and Exciting
+## Interactions is New and Exciting
 
-`UserError` has been generalized and re-imagined as `UserInteraction`. We did this because people were feeling icky using `UserError` for non-error scenarios. Basically, we realized that people need a general mechanism via which a view model can ask a question, and wait for the answer. It doesn't have to be an error - we're not that pessimistic! You could be asking to confirm a file deletion, or maybe how the weather is out there in the analog world.
+`UserError` has been generalized and re-imagined. We call it interactions, and we think you'll like it. We did this because people were feeling icky using `UserError` for non-error scenarios. Basically, we realized that people need a general mechanism via which a view model can ask a question, and wait for the answer. It doesn't have to be an error - we're not that pessimistic! You could be asking to confirm a file deletion, or maybe how the weather is out there in the analog world.
 
-* The main API entry point is now `UserInteraction`, not `UserError`
-* Recovery commands are no longer an in-built thing. If you need such a mechanism for your interactions, you are encouraged to subclass `UserInteraction<TResult>` and define them therein
-* `UserErrorInteraction<TResult>` is a built-in subclass of `UserInteraction<TResult>` that is intended as a means of communicating errors. If you're using `UserError` to communicate errors to the UI, you want to use `UserErrorInteraction<TResult>` (possibly subclassing it first)
-* There is a formalized distinction between local and global interactions. Local interactions are handled by something with direct knowledge and access to the interaction. Global interactions are handled by something that doesn't require direct knowledge or access.
+Migrating from `UserError` to the interactions infrastructure is not really a case of one-for-one substitution. But here are some tips to get you started:
 
-Please see [the documentation](http://docs.reactiveui.net/en/user-guide/user-interaction/index.html) for more details.
+* read through [the documentation](http://docs.reactiveui.net/en/user-guide/interactions/index.html) first
+* decide whether you need shared interactions and, if so, define them in a static class
+* for any non-shared interactions, have your view model create an instance of the interaction and expose it via a property
+* typically you want the corresponding view to handle interactions by calling one of the `RegisterHandler` methods on the interaction exposed by the view model
+* the view model can create instances of the interaction data and call `Handle` on the interaction instance
+* `ErrorInteractionData<TResult>` is a built-in subclass of `InteractionData<TResult>` that is intended as a means of communicating errors. If you're using `UserError` to communicate errors to the UI, you'll want to use this class (possibly subclassing it first)
+* Recovery commands are no longer a built-in thing. If you need such a mechanism for your interactions, you are encouraged to subclass `ErrorInteractionData<TResult>` and define them therein
 
 > **Note** To enable you to ease into the migration, all previous types are available under the `ReactiveUI.Legacy` namespace.
 
