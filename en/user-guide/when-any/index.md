@@ -49,7 +49,6 @@ In general, using `Subscribe` on a `WhenAny` observable (or any observable, for 
 
 ```cs
 this.WhenAnyValue(x => x.SearchText, x => x.Length)
-    .DistinctUntilChanged()
     .ToProperty(this, x => x.SearchTextLength, out _searchTextLength);
 ```
 
@@ -128,18 +127,60 @@ Using `WhenAny` variants is fairly straightforward. However, there are a few asp
 
 ####`INotifyPropertyChanged` is required
 
-* Watched properties must implement ReactiveUI's `RaiseAndSetIfChanged` or raise the standard `INotifyPropertyChanged` events. If you attempt to use `WhenAny` on a property without either of these in place, `WhenAny` will produce the current value of the property upon subscription, and nothing thereafter. Additionally, a warning will be issued at run time (ensure you have registered a service for `ILogger` to see this).
+Watched properties must implement ReactiveUI's `RaiseAndSetIfChanged` or raise the standard `INotifyPropertyChanged` events. If you attempt to use `WhenAny` on a property without either of these in place, `WhenAny` will produce the current value of the property upon subscription, and nothing thereafter. Additionally, a warning will be issued at run time (ensure you have registered a service for `ILogger` to see this).
 
-####`WhenAny` has cold observable semantics
+####`WhenAny` has cold observable and behavioural semantics
 
-* `WhenAny` is a purely cold Observable, which eventually directly connects to
-   UI component events. For events such as DependencyProperties, this could
-   potentially be a (minor) place to optimize, via `Publish`.
+`WhenAny` is a purely cold Observable, which eventually directly connects to UI component events. For events such as `DependencyProperties`, this could potentially be a minor place to optimize, via `Publish`. When chaining to `ToProperty` (another cold operator), the target `ObservableAsPropertyHelper` must be read (`.Value`) or observed (e.g. used in a binding or used as part of another `WhenAny` with a subscription), for any part of the chain to execute. 
 
-* As `ToProperty` is also cold, if a `WhenAny` is chained to a `ToProperty`, the target `ObservableAsPropertyHelper` must be checked (`.Value`) or observed (e.g. used in a binding or used as part of another `WhenAny` with a subscription) for any of the chain to execute set up. 
+Additionally, `WhenAny` always provides you with the current value as soon as you subscribe to it - in this sense it is effectively a `BehaviorSubject`.
 
-####`WhenAny` has behavioural observable semantics 
-* `WhenAny` always provides you with the current value as soon as you subscribe to it - it is effectively a BehaviorSubject.
+#### `WhenAny` will not propagate `NullReferenceException`s within the watched expression
+`WhenAny` will only send notifications if reading the given expression would not throw a `NullReferenceException`. Consider the following code:
+
+```cs
+this.WhenAny(x => x.Foo.Bar.Baz, _ => "Hello!")
+    .Subscribe(x => Console.WriteLine(x));
+
+// Example 1
+this.Foo.Bar.Baz = null;
+>>> Hello!
+
+// Example 2: Nothing printed!
+this.Foo.Bar = null;
+
+// Example 3
+this.Foo.Bar = new Bar() { Baz = "Something" };
+>>> Hello!
+```
+
+* In Example 1, even though `Baz` is null, because the expression could be evaluated, you get a notification.
+
+* In Example 2 however, evaluating this.Foo.Bar.Baz wouldn't give you null, it would crash. `WhenAny` therefore suppresses any notifications from being generated. Setting `Bar` to a new value generates a new notification.
+
+#### `WhenAny` only notifies on change of the output value
+`WhenAny` only tells you when the final value of the input expression has changed. This is true even if the resulting change is because of an intermediate value in the expression chain. Here's an explaining example:
+
+```cs
+this.WhenAny(x => x.Foo.Bar.Baz, _ => "Hello!")
+    .Subscribe(x => Console.WriteLine(x));
+
+// Example 1
+this.Foo.Bar.Baz = "Something";
+>>> Hello!
+
+// Example 2: Nothing printed!
+this.Foo.Bar.Baz = "Something";
+
+// Example 3: Still nothing
+this.Foo.Bar = new Bar() { Baz = "Something" };
+
+// Example 4: The result changes, so we print
+this.Foo.Bar = new Bar() { Baz = "Else" };
+>>> Hello!
+```
+
+Notably, in Example 3, even though the intermediate `Bar` object was replaced with a new instance, no change is fired - as the result of the full `Foo.Bar.Baz` expression has not changed.
 
 #Relevant Samples
 
