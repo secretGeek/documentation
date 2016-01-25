@@ -8,34 +8,43 @@ Instead what is needed is a means of suspending the view model's execution path 
 
 ## API Overview
 
-Underpinning the interaction infrastructure is the abstract `Interaction` class. This class provides a means of referring to _any_ interaction, regardless of the type of the interaction's result. The `Interaction<TResult>` class extends `Interaction` and strongly-types the result of the interaction. For example, an `Interaction<bool>` is capable of obtaining a yes/no answer.
+Underpinning the interaction infrastructure is the `Interaction<TInteractionData>` class. This class provides the glue between collaborating components of the interaction. It is responsible for distributing interactions to handlers.
 
-For richer interactions that require more than a typed result, you can subclass `Interaction<TResult>`. In fact, ReactiveUI provides one such subclass called `ErrorInteraction<TResult>`. This class adds an `Error` property (of type `Exception`), which makes it a suitable option in error recovery scenarios.
+The `TInteractionData` generic type argument must be a type that extends the `InteractionData` class. An instance of `InteractionData` encapsulates the data related to an interaction, as well as the interaction result.
 
-The interaction encapsulates only the result of the interaction, as well as any data that supports it. It does not provide a distribution or handling mechanism for interactions. For that, ReactiveUI provides the `InteractionBroker<TInteraction>` class.
+`InteractionData` is abstract, and is not something you'd typically use directly. Instead, you can use the `InteractionData<TResult>` class. This class strongly-types the result of the interaction. For example, if your interaction requires a yes/no answer, you could use an `InteractionData<bool>` to obtain it.
 
-Interaction brokers are the means by which collaborating components communicate. Thus, it's generally the view model and view that are hooked into the same broker. The view registers a handler against the broker, which can be asynchronous. Then, the view model "raises" an interaction against the broker.
+If your interaction requires extra data specific to your use case, you can subclass `InteractionData<TResult>`. In fact, ReactiveUI includes one such subclass called `ErrorInteractionData<TResult>`. This class adds an `Error` property (of type `Exception`), which makes it a suitable option in error recovery scenarios.
+
+A typical arrangement of interaction components and their roles is:
+
+* **View Model**: wants to know the answer to a question, such as "is it OK to delete this file?"
+* **View**: asks the user the question, and supplies the answer during the interaction
+
+Whilst this configuration is the most common, it is by no means required. You could, for example, have the view answer the question itself without user intervention. Or perhaps both components are view models. The interactions infrastructure provided by ReactiveUI does not place any restrictions on collaborating components.
+
+Assuming the common configuration, a view would register a handler by calling one of the `RegisterHandler` methods on `Interaction<TInteractionData>` instance. The view model would pass in an `InteractionData` instance to the `Handle` method.
 
 ## An Example
 
 ```cs
 public class ViewModel : ReactiveObject
 {
-    private readonly InteractionBroker<Interaction<bool>> confirm;
+    private readonly Interaction<InteractionData<bool>> confirm;
     
     public ViewModel()
     {
-        this.confirm = new InteractionBroker<Interaction<bool>>();
+        this.confirm = new Interaction<InteractionData<bool>>();
     }
     
-    public InteractionBroker<Interaction<bool>> Confirm => this.confirm;
+    public Interaction<InteractionData<bool>> Confirm => this.confirm;
     
     public async Task DeleteFileAsync()
     {
-        var confirmation = new Interaction<bool>();
+        var confirmation = new InteractionData<bool>();
         
         // this will throw an exception if nothing handles the interaction
-        await this.confirm.Raise(confirmation);
+        await this.confirm.Handle(confirmation);
         
         if (confirmation.GetResult())
         {
@@ -70,7 +79,7 @@ public class View
 }
 ```
 
-You can also create a shared broker that is utilized by multiple components in your application. A common example of this is in error recovery. Many components may want to raise errors, but we may want only one common handler. Here's an example of how you can achieve this:
+You can also create an `Interaction<TInteractionData>` that is shared across multiple components in your application. A common example of this is in error recovery. Many components may want to raise errors, but we may want only one common handler. Here's an example of how you can achieve this:
 
 ```cs
 public enum ErrorRecoveryOption
@@ -79,17 +88,17 @@ public enum ErrorRecoveryOption
     Abort
 }
 
-public class AppErrorInteraction : ErrorInteraction<ErrorRecoveryOption>
+public class AppErrorInteractionData : ErrorInteractionData<ErrorRecoveryOption>
 {
-    public AppErrorInteraction(Exception error)
+    public AppErrorInteractionData(Exception error)
         : base(error)
     {
     }
 }
 
-public static class InteractionBrokers
+public static class Interactions
 {
-    public static readonly InteractionBroker<AppErrorInteraction> Errors = new InteractionBroker<AppErrorInteraction>();
+    public static readonly Interaction<AppErrorInteractionData> Errors = new Interaction<AppErrorInteractionData>();
 }
 
 public class SomeViewModel : ReactiveObject
@@ -114,12 +123,12 @@ public class SomeViewModel : ReactiveObject
                 break;
             }
             
-            var recovery = new AppErrorInteraction(failure);
+            var recovery = new AppErrorInteractionData(failure);
             
             // this will throw if nothing handles the interaction
-            await InteractionBrokers.Errors.Raise(recovery);
+            await Interactions.Errors.Handle(recovery);
             
-            if (interaction.GetResult() == ErrorRecoveryOption.Abort)
+            if (recovery.GetResult() == ErrorRecoveryOption.Abort)
             {
                 break;
             }
@@ -131,7 +140,7 @@ public class RootView
 {
     public RootView()
     {
-        InteractionBrokers.Errors.RegisterHandler(
+        Interactions.Errors.RegisterHandler(
             async interaction =>
             {
                 var action = await this.DisplayAlert(
@@ -150,19 +159,19 @@ public class RootView
 
 ## Handler Precedence
 
-`InteractionBroker<TInteraction>` implements a handler chain. Any number of handlers can be registered, and later registrations are deemed of higher priority than earlier registrations. When an interaction is raised, each handler is given the _opportunity_ to handle that interaction (i.e. set a result). The handler is under no obligation to actually handle the interaction. If a handler chooses _not_ to set a result, the next handler in the chain is invoked.
+`Interaction<TInteractionData>` implements a handler chain. Any number of handlers can be registered, and later registrations are deemed of higher priority than earlier registrations. When an interaction is passed into the `Handle` method, each handler is given the _opportunity_ to handle that interaction (i.e. set a result). The handler is under no obligation to actually handle the interaction. If a handler chooses _not_ to set a result, the next handler in the chain is invoked.
 
-This chain of precedence makes it possible to define a default handler, and then temporarily override that handler. For example, a root level handler may provide default error recovery behavior. But a specific view in the application may know how to recover from a certain error without prompting the user. It could register a handler whilst it's activated, then dispose of that registration when it deactivates. Obviously such an approach requires a shared interaction broker instance.
+This chain of precedence makes it possible to define a default handler, and then temporarily override that handler. For example, a root level handler may provide default error recovery behavior. But a specific view in the application may know how to recover from a certain error without prompting the user. It could register a handler whilst it's activated, then dispose of that registration when it deactivates. Obviously such an approach requires a shared interaction instance.
 
-> **Note** The `InteractionBroker<TInteraction>` class is designed to be extensible. Subclasses can change the behavior of `Raise` such that it does not exhibit the behavior described above. For example, you could write an implementation that tries only the first handler in the list.
+> **Note** The `Interaction<TInteractionData>` class is designed to be extensible. Subclasses can change the behavior of `Handle` such that it does not exhibit the behavior described above. For example, you could write an implementation that tries only the first handler in the list.
 
 ## Unhandled Interactions
 
-If there are no handlers for an interaction, or none of the handlers set a result, the interaction is itself considered unhandled. In this circumstance, the invocation of `Raise` will result in an `UnhandledInteractionException` being thrown. The underlying interaction is exposed via the `Interaction` property of this exception.
+If there are no handlers for a given interaction, or none of the handlers set a result, the interaction is itself considered unhandled. In this circumstance, the invocation of `Handle` will result in an `UnhandledInteractionException<TInteractionData>` being thrown. This exception includes both an `Interaction` and `InteractionData` property, so you can examine the details of the failed interaction.
 
 ## Testing
 
-You can easily test interaction logic in view models by hooking into the relevant interaction broker:
+You can easily test interaction logic in view models by registering a handler against the interaction:
 
 ```cs
 [Fact]
@@ -179,7 +188,7 @@ public async Task interaction_test()
 }
 ```
 
-If your test is hooking into a shared broker, you probably want to dispose of the registration:
+If your test is hooking into a shared interaction, you probably want to dispose of the registration before your test returns:
 
 ```cs
 [Fact]
@@ -187,7 +196,7 @@ public async Task interaction_test()
 {
     var fixture = new SomeViewModel();
     
-    using (InteractionsBrokers.Error.RegisterHandler(interaction => interaction.SetResult(ErrorRecoveryOption.Abort)))
+    using (Interactionss.Error.RegisterHandler(interaction => interaction.SetResult(ErrorRecoveryOption.Abort)))
     {
         fixture.SomeMethodAsync();
         
