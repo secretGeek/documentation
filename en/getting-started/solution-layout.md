@@ -6,11 +6,11 @@ We suggest the following logical naming pattern when laying out your solution:
 * image of visual studio layout video or animated gif of the side-waffle
 * extension that creates everything automatically.
 
-All application logic is stored within a core portable class library which is shared between and referenced in each specific platform application:
+All application logic is stored within a core portable class library which is shared between - and referenced by - each specific platform application:
 
 # Core Application Library
 
-The portable class library will be the heart of your application and where you will spend most of your time. `Profile78` (if targeting WP8.x) or `Profile259` (if targeting only WPA + Xamarin *.*) or `Profile111` (If targeting UWP + Xamarin *.*) is the recommended profile which should be used, you will need to select it when you create the project. Alternatively you can adjust the profile after creation by editing the `.csproj` but you will need to run some NuGet commands to reinstall most of your packages.
+The portable class library will be the heart of your application and where you will spend most of your time. When you create the project, you will need to select a profile. You should use `Profile78` (if targeting WP8.x), `Profile259` (if targeting only WPA + Xamarin) or `Profile111` (if targeting UWP + Xamarin). Alternatively you can adjust the profile after creation by editing the `.csproj`, but you will need to run some NuGet commands to reinstall most of your packages.
 
 MyCoolApp.Core.csproj:
 
@@ -40,9 +40,9 @@ of .Core.
 
 # Target Platform Application
 
-An application of the platform that you are targeting that contains purely of user interface rendering code and platform specific application logic. Create your views here and sew your views to your view model using data binding.
+An application of the platform that you are targeting that consists purely of user interface rendering code, and platform specific application logic. Create your views here and attach your views to your view model using data binding.
 
-Register your platform specific concrete implementation of your services ie. `iPhoneNetworkConnectivityService : INetworkConnectiviyService`. You can use your favorite IOC library for this.
+Register your platform-specific concrete implementation of your services e.g. `iPhoneNetworkConnectivityService : INetworkConnectivityService`. You can use your favorite IOC library for this.
 
 *Please note that the .Android namespace is reserved by Google for Android internals and must not be used. This is a Google limitation. Failure to obey this will result in heaps of pain.*
 
