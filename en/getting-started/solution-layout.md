@@ -48,7 +48,7 @@ Register your platform-specific concrete implementation of your services e.g. `i
 
 # Target Platform Tests
 
-How you handle this is purely up to you, due to the way xamarin works this is a good opportunity to write higher level acceptance tests using Xamarin Test Cloud instead of lower level library tests. Reaosn behind this is code behaves differently on physical hardware vs emulated hardware and that the linker can sometimes be too greedy resulting in code being linked out. Only way to pick up on that is to actually run on physical hardware.
+How you handle this is purely up to you. Due to the way Xamarin works, this is a good opportunity to write higher level acceptance tests using Xamarin Test Cloud instead of lower level library tests. The reason behind this is that code behaves differently on physical hardware vs emulated hardware, and that the linker can sometimes be too greedy resulting in code being linked out. Sometimes the only way to pick up on that is to actually run on physical hardware.
 
 # TL;DR
 
