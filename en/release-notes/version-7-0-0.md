@@ -83,12 +83,11 @@ ReactiveCommand.Create(() => {}, canExecute, scheduler);
 Migrating from `UserError` to the interactions infrastructure is not really a case of one-for-one substitution. But here are some tips to get you started:
 
 * read through [the documentation](http://docs.reactiveui.net/en/user-guide/interactions/index.html) first
-* decide whether you need shared interactions and, if so, define them in a static class
+* decide whether you need shared interactions and, if so, define them in an appropriate place for your application (often just a static class)
 * for any non-shared interactions, have your view model create an instance of the interaction and expose it via a property
 * typically you want the corresponding view to handle interactions by calling one of the `RegisterHandler` methods on the interaction exposed by the view model
-* the view model can create instances of the interaction data and call `Handle` on the interaction instance
-* `ErrorInteractionData<TResult>` is a built-in subclass of `InteractionData<TResult>` that is intended as a means of communicating errors. If you're using `UserError` to communicate errors to the UI, you'll want to use this class (possibly subclassing it first)
-* Recovery commands are no longer a built-in thing. If you need such a mechanism for your interactions, you are encouraged to subclass `ErrorInteractionData<TResult>` and define them therein
+* the view model can call `Handle` on the interaction, passing in an input value
+* Recovery commands are no longer a built-in thing. If you need such a mechanism for your interactions, you are encouraged to write a class that is used as the input for your interaction
 
 > **Note** To enable you to ease into the migration, all previous types are available under the `ReactiveUI.Legacy` namespace.
 
