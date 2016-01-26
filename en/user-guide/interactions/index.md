@@ -145,6 +145,8 @@ public class RootView
 
 > **Note** For the sake of clarity, the example code here mixes TPL and Rx code. Production code would normally stick with one or the other.
 
+> **Warning** The observable returned by `Handle` is cold. You must subscribe to it for handlers to be invoked.
+
 ## Handler Precedence
 
 `Interaction<TInput, TOutput>` implements a handler chain. Any number of handlers can be registered, and later registrations are deemed of higher priority than earlier registrations. When an interaction is instigated with the `Handle` method, each handler is given the _opportunity_ to handle that interaction (i.e. set an output). The handler is under no obligation to actually handle the interaction. If a handler chooses _not_ to set an output, the next handler in the chain is invoked.
