@@ -188,14 +188,13 @@ Otherwise we would not be able to know when it was changed.
 
 The ExecuteSearch is basically an asynchronous task, executing in the background.
   
-In cases when we don't need to provide for two-way binding between the View and the ViewModel, we can utilize
+In cases when we don't need to provide for two-way binding between the View and the ViewModel, we can use
 one of many ReactiveUI Helpers, to notify Observers of a changing read-only value in the ViewModel. We use the
 ObservableAsPropertyHelper twice, once to turn a generic List<T> into an observable read-only collection,
 and then to change the visibility of an indicator to show that a request is currently executing.
 
-This also works in the opposite direction, when we take the `SearchTerm` property and turn it into an observable,
-so every time a change occurs in the UI, we get notified. Using Reactive Extensions, we trottle those events,
-and ensure that the search occurs no sooner than 800ms after the last keystroke. If the user did not change the
+This also works in the opposite direction, when we take the `SearchTerm` property and turn it into an observable. This means that we are notified every time a change occurs in the UI. Using Reactive Extensions, we then throttle those events,
+and ensure that the search occurs no sooner than 800ms after the last keystroke. And if at that point the user did not change the
 last value, or if the search term is blank, we ignore the event completely.
 
 Using the `IsExecuting` observable of `ReactiveCommand`, we derive another 
