@@ -35,7 +35,7 @@ The somewhat confusing name of the *ViewModel* class comes from a fact that it i
 
 *ViewModel* classes expose data and actions that can be executed using UI of an application. Data is exposed to the *View* via public properties. The actions are simply methods of a *ViewModel*, wrapped in a so-called [`Command` classes](commands/index.md). Generally, commands allow you to enforce when the associated method of a *ViewModel* can be executed.
 
-The data and the commands are used by *View* class associated with the *ViewModel*. Properties are read and written (e.g. in a textbox), while commands are usually executed when a user pushes a button. The mechanism that helps keeping *View* and *ViewModel* state in sync is called [data binding](binding/index.md).
+The data and the commands are used by a *View* class associated with the *ViewModel*. Properties are read and written (e.g. in a textbox), while commands are usually executed when a user pushes a button. The mechanism that helps keep *View* and *ViewModel* state in sync is called [data binding](binding/index.md).
 
 Another important aspect of *ViewModels* is that they are an abstraction to separate policy from mechanism. *ViewModels* do not deal in the specifics of Buttons and Menus and TextBoxes, they only describe how the data in these elements are related. For example, the *Copy* command has no direct knowledge of the MenuItem or the Button that it is connected to, it only models the *Action of Copying*. The View has the responsibility of mapping the *Copy* command to the controls that invoke it.
 
@@ -56,7 +56,7 @@ The last layer of you application is called a *Model*. Once you know what *View*
 *Model* classes usually serve as a source of data for your ViewModels. They are often injected in the constructor.
 
 ## Additional reading
-There are lots of good introductory material to the MVVM around the web. If you need more information, check out the [great introductory article written by qmatteoq](http://wp.qmatteoq.com/the-mvvm-pattern-introduction/). You will also enjoy [this entertaining piece by Jeremiah Morrill ](http://jmorrill.hjtcentral.com/Home/tabid/428/EntryId/433/Anatomy-of-an-MVVM-Application-or-How-Tards-Like-Me-Make-MVVM-Apps.aspx).
+There are lots of good introductory material to the MVVM pattern around the web. If you need more information, check out the [great introductory article written by qmatteoq](http://wp.qmatteoq.com/the-mvvm-pattern-introduction/). You will also enjoy [this entertaining piece by Jeremiah Morrill ](http://jmorrill.hjtcentral.com/Home/tabid/428/EntryId/433/Anatomy-of-an-MVVM-Application-or-How-Tards-Like-Me-Make-MVVM-Apps.aspx).
 
 ## All other articles on MVVM I have seen had diagrams included. Can I get one?
 
