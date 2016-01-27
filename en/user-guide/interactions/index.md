@@ -165,7 +165,7 @@ If there are no handlers for a given interaction, or none of the handlers set a 
 
 ## Testing
 
-You can easily test interaction logic in view models by registering a handler against the interaction:
+You can easily test interaction logic in view models by registering a handler for the interaction:
 
 ```cs
 [Fact]
@@ -190,7 +190,7 @@ public async Task interaction_test()
 {
     var fixture = new SomeViewModel();
     
-    using (Interactionss.Error.RegisterHandler(interaction => interaction.SetOutput(ErrorRecoveryOption.Abort)))
+    using (Interactions.Error.RegisterHandler(interaction => interaction.SetOutput(ErrorRecoveryOption.Abort)))
     {
         fixture.SomeMethodAsync();
         
