@@ -2,6 +2,12 @@
     "gitbook": "2.5.x",
     "title": "ReactiveUI Documentation",
     "description": "ReactiveUI Documentation",
+    "links": {
+        "sidebar": {
+            "Home": "http://www.reactiveui.net",
+            "Contribute": "https://github.com/reactiveui/documentation/"
+        }
+    },
     "disabledPlugins": [ "image-captions"],
     "plugins": [
         "28msec",
