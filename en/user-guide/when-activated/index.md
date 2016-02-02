@@ -4,7 +4,7 @@
 
 # View
 
-Whenever you attach an object onto an event of another object you introduce the potential for a memory leak. This is especially true for XAML based platforms where [objects/events referenced by a dependency property will not get garbage collected for you automatically](http://sharpfellows.com/post/Memory-Leaks-and-Dependency-Properties).
+Whenever you attach an object onto an event of another object you introduce the potential for a memory leak. This is especially true for XAML based platforms where [objects/events referenced by a dependency property may not get garbage collected for you automatically](http://sharpfellows.com/post/Memory-Leaks-and-Dependency-Properties).
 
 The problem is, normally when there was a "ValueChanged" event, and you add a handler to it, the lifetime of the handler is tied to the lifetime of the object. So even if you don't free ValueChanged's handler, if the object goes away, you're fine. In XAML, if you hook change events on the "Value" property _even when the object goes way_​, you have leaked the event because it's tied to the static property ValueProperty
 
