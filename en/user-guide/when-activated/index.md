@@ -21,7 +21,7 @@ this.WhenActivated(
     });
 ```
 
-
+See: https://github.com/kentcb/WorkoutWotch/blob/master/Src/WorkoutWotch.Utility/ReactiveUI/WhenActivatedExtensions.cs
 
 # Chatlogs
 
