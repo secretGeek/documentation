@@ -1,5 +1,64 @@
 # WhenActivated (Object Lifecycle Management)
 
+TL;DR - For all platforms, when doing bindings use the following convention to prevent dependency properties from leaking:
+
+```
+this.WhenActivated(
+    disposable =>
+    {
+        disposable(this.Bind(…));
+    });
+```
+
+If you create a `WhenActivated` that gives you a `CompositeDisposable` instead of an `Action<IDisposable>`, you can be express your intent even clearer.
+
+```
+this.WhenActivated(
+    disposables =>
+    {
+        this.Bind(…)
+            .AddTo(disposables);
+    });
+```
+
+
+
+# Chatlogs
+
+## Discussion about WorkoutWotch
+
+Kent:
+> I use `WhenActivated` these days (in iOS and XF): https://github.com/kentcb/WorkoutWotch/blob/master/Src/WorkoutWotch.UI/ExerciseProgramView.xaml.cs#L21
+> `AddTo` is still super useful because the code is far more readable. I have a custom `WhenActivated` that gives you a `CompositeDisposable` instead of an `Action<IDisposable>`, which means I can do:
+```this.WhenActivated(
+    disposables =>
+    {
+        this.Bind(…)
+            .AddTo(disposables);
+    });
+```
+
+Geoff: 
+> `AddTo` makes it super explicit that resource will be disposed but it's not really needed right? It's being explicit to help the reader of the code understand what will happen?
+
+Kent: 
+> Exactly. I could also do it using the built-in `WhenActivated` like this:
+```this.WhenActivated(
+    d =>
+    {
+        d(this.Bind(…));
+    });
+```
+I just find `AddTo` improves readability. And, frankly, makes it easier to write too.
+
+Dennis:
+> I've created an extension method called `DisposeWith(CompositeDisposable)` for this, I too think that this makes it easier to read/write
+
+JCM:
+> In a similar vain, we wrap the WhenActivated at a lower level and have a ILifetime construct instead and invoke our own virtual methods of Activated through which the ILifetime is passed in.
+
+
+
 
 > do you (when would you) use this.WhenActivated on a MyCoolUserControl : IViewFor MyCoolViewModel
 >
@@ -7,6 +66,8 @@
 >
 >so, when you have something you want to run every time you are added to the visual tree, and/or you want something to run when removed from the visual tree, you use it for instance, I update the appbar in the `WhenActivated` block and I dispose of subscriptions there
 
+
+## Attic
 
 
     ghuntley [10:07 AM] @kentcb / @rdavisau / @flagbug do you use
