@@ -4,11 +4,11 @@
 
 # View
 
-Whenever you attach an object onto an event of another object you introduce the potential for a memory leak. This is especially true for XAML based platforms where [objects/events referenced by a dependency property may not get garbage collected for you automatically](http://sharpfellows.com/post/Memory-Leaks-and-Dependency-Properties).
+Whenever you subscribe one object to an event exposed by another object, you introduce the potential for a memory leak. This is especially true for XAML based platforms where [objects/events referenced by a dependency property may not get garbage collected for you automatically](http://sharpfellows.com/post/Memory-Leaks-and-Dependency-Properties).
 
-The problem is, normally when there was a "ValueChanged" event, and you add a handler to it, the lifetime of the handler is tied to the lifetime of the object. So even if you don't free ValueChanged's handler, if the object goes away, you're fine. In XAML, if you hook change events on the "Value" property _even when the object goes way_​, you have leaked the event because it's tied to the static property ValueProperty
+In a nutshell, when object A provides a handler for an event exposed by object B, the handler is attached to the event and the lifetime of the handler is tied to the lifetime of object B. When object B is disposed, it's event handlers are cleared, thus under normal circumstances it is not necessary to explicitly clear event subscriptions. In XAML, however, there is an additional wrinkle with dependency properties. If you hook change events on the "Value" property, _even when the object goes way_, you have leaked the event because it's tied to the static property ValueProperty
 
-ReactiveUI provides a varient of the Dispose pattern to help handle this concern:
+ReactiveUI provides a variant of the Dispose pattern to help handle this concern:
 
 ```
 this.WhenActivated(
@@ -20,9 +20,9 @@ this.WhenActivated(
     });
 ```
 
-As a rule of thumb for all platforms, you should use it for bindings or any time there's something your view set up that will outlive the view bindings. It is also super useful for setting up things that should get added to the visual tree, even if they are not a disposable.
+As a rule of thumb for all platforms, you should use it for bindings and any time there's something your view sets up that will outlive the view bindings. It is also super useful for setting up things that should get added to the visual tree, even if they are not a disposable.
 
-If you create a `WhenActivated` that gives you a `CompositeDisposable` instead of an `Action<IDisposable>`, you can be express your intent even clearer.
+If you create a `WhenActivated` extension that gives you a `CompositeDisposable` instance instead of an `Action<IDisposable>`, you can express your intent even clearer.
 
 ```
 this.WhenActivated(
