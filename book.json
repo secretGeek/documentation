@@ -20,7 +20,8 @@
         "-highlight",
         "github",
         "edit-link",
-        "anchors"
+        "anchors",
+		"toggle-chapters"
     ],
     "pluginsConfig": {
         "edit-link": {
