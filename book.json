@@ -4,8 +4,7 @@
     "description": "ReactiveUI Documentation",
     "links": {
         "sidebar": {
-            "Home": "http://www.reactiveui.net",
-            "Contribute": "https://github.com/reactiveui/documentation/"
+            "Home": "http://www.reactiveui.net"
         }
     },
     "disabledPlugins": [ "image-captions"],
