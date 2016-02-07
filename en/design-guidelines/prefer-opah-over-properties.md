@@ -36,7 +36,5 @@ this.WhenAny(x => x.StuffFetched, y => y.OtherStuffNotBusy, (x, y) => x && y)
  - `ObservableAsPropertyHelper` will take care of raising `INotifyPropertyChanged`
    events - if you're creating read-only properties, this can save so much boilerplate
    code.
- - `ObservableAsPropertyHelper` will use `MainThreadScheduler` to schedule subscribers,
-  unless specified otherwise - no need to remember to do this yourself.
  - `WhenAny` lets you combine multiple properties, treat their changes as observable
   streams, and craft ViewModel-specific outputs.
