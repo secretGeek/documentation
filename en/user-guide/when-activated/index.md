@@ -19,10 +19,6 @@ public MyCoolViewModel : ISupportsActivation
 {
     public MyCoolViewModel()
     {
-        // TODO
-        
-         = new ViewModelActivator();
-        
         this.WhenActivated(
             dispose =>
             {
