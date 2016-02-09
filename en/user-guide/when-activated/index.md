@@ -2,6 +2,44 @@
 
 # ViewModel
 
+Geoff:
+> who uses ISupportsActivation on their view models and why. Is it just to get this.WhenActivated and have a way to track viewmodel disposables? Ie exactly same concern as the view, just a pattern for doing it in VM.
+
+JCM:
+> We use it. Why? To defer the setup of the view model until its truly required. It also allows us 2 stop updating of the view model based e.g. things like an observable updating the users current location.
+
+Michael:
+> We use it for tracking disposables. For example, a background task that periodically pings a network endpoint for some data needs to be disposed of when view is deactivated and re-set-up again when it is activated.(edited)
+
+
+Here's how it is implemented.
+
+```
+public MyCoolViewModel : ISupportsActivation 
+{
+    public MyCoolViewModel()
+    {
+        // TODO
+        
+         = new ViewModelActivator();
+        
+        this.WhenActivated(
+            dispose =>
+            {
+                dispose(this.WhenAny(…));
+                dispose(this.WhenAnyValue(…));
+            });
+    }
+    
+    private readonly ViewModelActivator _viewModelActivator = new ViewModelActivator();
+
+    private  ViewModelActivator ISupportsActivation.Activator
+    {
+            get { return _viewModelActivator; }
+    }
+}
+```
+
 # View
 
 Whenever you subscribe one object to an event exposed by another object, you introduce the potential for a memory leak. This is especially true for XAML based platforms where [objects/events referenced by a dependency property may not get garbage collected for you automatically](http://sharpfellows.com/post/Memory-Leaks-and-Dependency-Properties).
