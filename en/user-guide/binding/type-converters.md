@@ -1,5 +1,9 @@
 # Type Converters
 
+Inline type conversions for bindings were recently added in https://github.com/reactiveui/ReactiveUI/pull/1052
+
+
+# Links
 * https://github.com/reactiveui/ReactiveUI/blob/master/ReactiveUI/PropertyBinding.cs#L50
 * https://github.com/reactiveui/ReactiveUI/blob/master/ReactiveUI/Xaml/BindingTypeConverters.cs#L24
 
