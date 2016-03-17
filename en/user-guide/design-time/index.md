@@ -1,5 +1,21 @@
 # Design Time
 
+## Chatlogs
+
+      RxUI has a better (IMO) system for design-time data
+      `this.Bind` and family overwrite whatever has been put into the Xaml
+      so your Xaml can look like this, and will be overridden by the following code: (edited)
+
+      ```<TextBlock x:Name="SomeField" 
+                        Text="-this is design time-" />
+
+      this.Bind(ViewModel, vm => vm.Something, v => v.SomeField.Text);
+      ```
+
+      now, if you're on UWP, `{x:Bind}` is superior to both
+
+## Reference
+
 https://github.com/shiftkey/octohipster/blob/reactive-ui/OctoHipster/ViewModels/Design/DesignShellViewModel.cs
 
 
