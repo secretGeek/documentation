@@ -5,8 +5,8 @@ At times it can be convenient to execute a command in response to some observabl
 ```cs
 var interval = TimeSpan.FromMinutes(5);
 Observable
-.Timer(interval, interval)
-.InvokeCommand(this.ViewModel, x => x.SaveCommand);
+    .Timer(interval, interval)
+    .InvokeCommand(this.ViewModel, x => x.SaveCommand);
 ```
 
 > **Hint** `InvokeCommand` respects the command's executability. That is, if the command's `CanExecute` method returns `false`, `InvokeCommand` will not execute the command when the source observable ticks.
