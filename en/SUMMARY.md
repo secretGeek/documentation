@@ -44,7 +44,7 @@
        * [Binding Commands](user-guide/commands/binding-commands.md)
        * [Invoking Commands](user-guide/commands/invoking-commands.md)
        * [Combining Commands](user-guide/commands/combining-commands.md)
-       * [Canceling](user-guide/commands/cancelling.md)
+       * [Canceling](user-guide/commands/canceling.md)
        * [Misc Documentation](user-guide/commands/misc.md)
            * [Automatic Execution](user-guide/commands/automatic-execution.md)
            * [Thrown Exceptions](user-guide/commands/thrown-exceptions.md)
