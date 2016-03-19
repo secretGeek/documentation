@@ -50,6 +50,7 @@
            * [Asynchronous operations](user-guide/commands/asynchronous-operations.md)
            * [Common Patterns](user-guide/commands/common-patterns.md)
            * [Unit Testing](user-guide/commands/unit-testing.md)
+       * Cancelling
    * [Interactions](user-guide/interactions/index.md)
    * [ObservableAsPropertyHelper](user-guide/observableaspropertyhelper/index.md)
    * [Lists](user-guide/lists/index.md)
