@@ -75,5 +75,87 @@ Here we have a view model with a command, `CancelableCommand`, that can be cance
 
 ### Cancellation with the Task Parallel Library
 
-Cancellation in the TPL is handled with `CancellationToken` and `CancellationTokenSource`. Rx operators that provide TPL integration will normally have overloads that will pass you a `CancellationToken` with which to create your `Task`. The idea of these overloads is that the `CancellationToken` you receive will be canceled if the subscription is disposed. So you should pass the token through to all relevant asynchronous operations.
+Cancellation in the TPL is handled with `CancellationToken` and `CancellationTokenSource`. Rx operators that provide TPL integration will normally have overloads that will pass you a `CancellationToken` with which to create your `Task`. The idea of these overloads is that the `CancellationToken` you receive will be canceled if the subscription is disposed. So you should pass the token through to all relevant asynchronous operations. `ReactiveCommand` provides similar overloads for `CreateFromTask`.
 
+Consider the following example:
+
+```cs
+public class SomeViewModel : ReactiveObject
+{
+    public SomeViewModel()
+    {
+        this.CancelableCommand = ReactiveCommand
+            .CreateFromTask(
+                ct => this.DoSomethingAsync(ct));
+    }
+    
+    public ReactiveCommand<Unit, Unit> CancelableCommand
+    {
+        get;
+        private set;
+    }
+    
+    private async Task DoSomethingAsync(CancellationToken ct)
+    {
+        await Task.Delay(TimeSpan.FromSeconds(3), ct);
+    }
+}
+```
+
+There are several important things to note here:
+
+1. Our `DoSomethingAsync` method takes a `CancellationToken`
+2. This token is passed through to `Task.Delay` so that the delay will end early if the token is canceled.
+3. We use an appropriate overload of `CreateFromTask` so that we have a token to pass through to `DoSomethingAsync`. This token will be automatically canceled if the execution subscription is disposed.
+
+The above code allows us to do something like this:
+
+```cs
+var subscription = viewModel
+    .CancelableCommand
+    .Execute()
+    .Subscribe();
+
+// this cancels the execution
+subscription.Dispose();
+```
+
+But what if we want to cancel the execution based on an external factor, just as we did with observables? Since we only have access to the `CancellationToken` and not the `CancellationTokenSource`, it's not immediately obvious how we can achieve this.
+
+Besides forgoing TPL completely (which is recommended if possible, but not always practical), there are actually quite a few ways to achieve this. Perhaps the easiest is to use `CreateFromObservable` instead:
+
+```cs
+public class SomeViewModel : ReactiveObject
+{
+    public SomeViewModel()
+    {
+        this.CancelableCommand = ReactiveCommand
+            .CreateFromObservable(
+                () => Observable
+                    .StartAsync(ct => this.DoSomethingAsync(ct))
+                    .TakeUntil(this.CancelCommand));
+        this.CancelCommand = ReactiveCommand.Create(
+            () => { },
+            this.CancellableCommand.IsExecuting);
+    }
+    
+    public ReactiveCommand<Unit, Unit> CancelableCommand
+    {
+        get;
+        private set;
+    }
+    
+    public ReactiveCommand<Unit, Unit> CancelCommand
+    {
+        get;
+        private set;
+    }
+    
+    private async Task DoSomethingAsync(CancellationToken ct)
+    {
+        await Task.Delay(TimeSpan.FromSeconds(3), ct);
+    }
+}
+```
+
+This approach allows us to use exactly the same technique as with the pure Rx solution discussed above. The difference is that our observable pipeline includes execution of TPL-based asychronous code.
