@@ -15,9 +15,9 @@ var command2 = ReactiveCommand.CreateFromObservable(() => Observable.Return(Unit
 var command3 = ReactiveCommand.CreateFromTask(async () => await Task.Delay(TimeSpan.FromSeconds(2)));
 ```
 
-All the above commands are of type `ReactiveCommand<Unit, Unit>`. Note that `CreateFromObservable` is required to eventually return an `IObservable<T>`, so `T` must be known. Therefore, to achieve the same behavior we have to ensure our observable is of type `IObservable<Unit>`.
+All the above commands are of type `ReactiveCommand<Unit, Unit>`. Note that `CreateFromObservable` is required to eventually return an `IObservable<T>`, so `T` must be known. Therefore, to get a `ReactiveCommand<Unit, Unit>` from `CreateFromObservable`, you must ensure your observable is of type `IObservable<Unit>`.
 
-If we _do_ want to return something interesting each time our command executes, we need only use the appropriate `Create*` method:
+If you _do_ want to return something interesting each time your command executes, you need only use the appropriate `Create*` method:
 
 ```cs
 // a synchronous command that always returns 42 upon execution
@@ -30,4 +30,4 @@ var command2 = ReactiveCommand.CreateFromObservable(() => Observable.Return(42))
 var command3 = ReactiveCommand.CreateFromTask(() => Task.FromResult(42));
 ```
 
-Here, all commands are of type `ReactiveCommand<Unit, int>`. Subscribing to the observable return by `ExecuteAsync` (or subscribing to the command itself) will tick through the value `42`.
+Here, all commands are of type `ReactiveCommand<Unit, int>`. Subscribing to the observable return by `Execute` will tick through the value `42`.
