@@ -38,10 +38,10 @@
        * [Asynchronous/Synchronous](user-guide/commands/asynchronous-synchronous.md)
        * [Command Parameters](user-guide/commands/command-parameters.md)
        * [Command Values](user-guide/commands/command-values.md)
-       * [Controlling Executability](user-guide/commands/controlling-executability.md)
        * Cancelling
        * [Controlling Scheduling](user-guide/commands/controlling-scheduling.md)
        * [Command Errors](user-guide/commands/command-errors.md)
+       * [Controlling Executability](user-guide/commands/controlling-executability.md)
        * [Binding Commands](user-guide/commands/binding-commands.md)
        * [Invoking Commands](user-guide/commands/invoking-commands.md)
        * [Combining Commands](user-guide/commands/combining-commands.md)
