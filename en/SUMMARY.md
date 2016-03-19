@@ -38,6 +38,7 @@
        * [Asynchronous/Synchronous](user-guide/commands/asynchronous-synchronous.md)
        * [Command Parameters](user-guide/commands/command-parameters.md)
        * [Command Values](user-guide/commands/command-values.md)
+       * Cancelling
        * [Controlling Executability](user-guide/commands/controlling-executability.md)
        * [Controlling Scheduling](user-guide/commands/controlling-scheduling.md)
        * [Command Errors](user-guide/commands/command-errors.md)
@@ -50,7 +51,6 @@
            * [Asynchronous operations](user-guide/commands/asynchronous-operations.md)
            * [Common Patterns](user-guide/commands/common-patterns.md)
            * [Unit Testing](user-guide/commands/unit-testing.md)
-       * Cancelling
    * [Interactions](user-guide/interactions/index.md)
    * [ObservableAsPropertyHelper](user-guide/observableaspropertyhelper/index.md)
    * [Lists](user-guide/lists/index.md)
