@@ -9,7 +9,6 @@
     },
     "disabledPlugins": [ "image-captions"],
     "plugins": [
-        "28msec",
         "clicky",
         "sitemap",
         "richquotes",
