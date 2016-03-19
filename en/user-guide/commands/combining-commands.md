@@ -1,21 +1,21 @@
 ## Combined Commands
 
-Occasionally it can be useful to have several commands aggregated into one. As an example, consider a browser that allows the user to clear individual caches (browsing history, download history, cookies), or clear all caches. There would be a command for clearing each individual cache, each of which might have its own logic to dictate the executability of the command. It would be onerous and error-prone to have to repeat or combine all this logic for the command that clears all caches. Combined commands provide an elegant means of addressing this situation:
+At times it can be useful to have several commands aggregated into one. As an example, consider a browser that allows the user to clear individual caches (browsing history, download history, cookies), or clear all caches. There would be a command for clearing each individual cache, each of which might have its own logic to dictate the executability of the command. It would be onerous and error-prone to have to repeat or combine all this logic for the command that clears all caches. Combined commands provide an elegant means of addressing this situation:
 
 ```cs
 IObservable<bool> canClearBrowsingHistory = ...;
 var clearBrowsingHistoryCommand = ReactiveCommand.CreateFromObservable(
-    this.ClearBrowsingHistoryAsync,
+    this.ClearBrowsingHistory,
     canClearBrowsingHistory);
     
 IObservable<bool> canClearDownloadHistory = ...;
 var clearDownloadHistoryCommand = ReactiveCommand.CreateFromObservable(
-    this.ClearDownloadHistoryAsync,
+    this.ClearDownloadHistory,
     canClearDownloadHistory);
 
 IObservable<bool> canClearCookies = ...;
 var clearCookiesCommand = ReactiveCommand.CreateFromObservable(
-    this.ClearCookiesAsync,
+    this.ClearCookies,
     canClearCookies);
 
 // combine all these commands into one "parent" command
