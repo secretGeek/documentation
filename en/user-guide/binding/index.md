@@ -21,7 +21,7 @@ In order to use bindings in the View, you must first implement
 implement it differently:
 
 * **iOS** - change your base class to one of the Reactive UIKit classes (i.e.
-  `ReactiveUIViewController`) and implement `ViewModel` using
+  `ReactiveViewController`) and implement `ViewModel` using
   `RaiseAndSetIfChanged`, *or* implement `INotifyPropertyChanged` on your View and
   ensure that ViewModel signals changes.
 
