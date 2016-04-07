@@ -20,6 +20,7 @@
    * [View Models](user-guide/view-models/index.md)
        * [Data Suspension](user-guide/data-suspension/index.md)
    * [Views](user-guide/views/index.md)
+       * [View Location](user-guide/views/view-location.md) 
        * [Design Time](user-guide/design-time/index.md)
        * [Binding](user-guide/binding/index.md)
            * [Type Converters](user-guide/binding/type-converters.md)
