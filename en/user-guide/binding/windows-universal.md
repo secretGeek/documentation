@@ -1,5 +1,6 @@
 # Windows Universal
 
+If you decide to switch from RxUI bindings to, e.g., XAML bindings (for performance reasons), any OAPH won’t work because nothing is subscribed 
 
 # Compiled Binding
 
