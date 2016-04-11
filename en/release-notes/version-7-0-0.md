@@ -116,6 +116,9 @@ Migrating from `UserError` to the interactions infrastructure is not really a ca
 * `ViewModelViewHost` rewritten [#868](https://github.com/reactiveui/ReactiveUI/issues/868)
 * rewrote `ReactiveTableViewSource` and supporting infrastructure to fix several deficiencies [#740](https://github.com/reactiveui/ReactiveUI/issues/740) [#808](https://github.com/reactiveui/ReactiveUI/issues/808) [#867](https://github.com/reactiveui/ReactiveUI/issues/867)
 
+## Android
+* Min target is now MonoAndroid403 aka Android 4.0.3 / API Level 15
+
 ## XAML
 
 * `ViewModelViewHost` now includes a scalar `ViewContract` property [#870](https://github.com/reactiveui/ReactiveUI/issues/870)
