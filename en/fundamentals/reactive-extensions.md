@@ -30,7 +30,7 @@ To understand  the role of `IObservable<T>` let's analyze the diagram below disp
 
 You can see that `IObservable<T>` returns asynchronously, which makes it similar to `Task<T>`, except it is able to return more than a single element.
 
-You can also compare `IObservable<T>` to `IEnumerable<T>`.  `IEnumerable<T>` is **pull-based** - that means that you have to explicitly ask it to give you a next element in the sequence (e.g. in a foreach loop, after processing one element, you try to get the next one). `IObserveble<T>` is **push-based** - you do not have to ask for a next element in a sequence, it is delivered to the client whenever a new sequence element is available.
+You can also compare `IObservable<T>` to `IEnumerable<T>`.  `IEnumerable<T>` is **pull-based** - that means that you have to explicitly ask it to give you a next element in the sequence (e.g. in a foreach loop, after processing one element, you try to get the next one). `IObservable<T>` is **push-based** - you do not have to ask for a next element in a sequence, it is delivered to the client whenever a new sequence element is available.
 
 The syntax for consuming  `IObservable<T>` differs slightly from using both `Task<T>` and `IEnumerable<T>`. The core method is called `Subscribe`, and has following signature:
 
@@ -65,7 +65,7 @@ Let's go back to our single-sentence definition:
 
 You already know what "observable sequences" are all about. Now, the fun part begins. 
 
-You should agree that the best thing about `IEnumerable<T>` interface is the whole LINQ thing, making filtering, transforming and combining sequences very easy. Good news - Reactive Extensions allow you to do all the things you know from LINQ! Moreover, apart from standard LINQ operations like `Select`, `Where` or `GropuBy`, Reactive Extensions provides you a set of powerful time based operations. They let you (for example) delay the arrival time of elements of a sequence, or filter them only when the new elements arrive too fast to be processed.
+You should agree that the best thing about `IEnumerable<T>` interface is the whole LINQ thing, making filtering, transforming and combining sequences very easy. Good news - Reactive Extensions allow you to do all the things you know from LINQ! Moreover, apart from standard LINQ operations like `Select`, `Where` or `GroupBy`, Reactive Extensions provides you a set of powerful time based operations. They let you (for example) delay the arrival time of elements of a sequence, or filter them only when the new elements arrive too fast to be processed.
 
 ## Asynchronous and event-based
 The definition of Reactive Extensions promises providing a way to construct asynchronous and event-based programs. From the perspective of UI programming, it is very important that the library provides a convenient way to decide to which synchronization context should your data be delivered. A lot of UI frameworks require you to access UI elements only from a specific UI thread.
