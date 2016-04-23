@@ -13,4 +13,4 @@ This platform has two different base class libraries:
 
 > /Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/4.5/
 
-*ReactiveUI-Events* and *ReactiveUI* use Xamarin.Mac Mobile but can be consumed into a Xamarin Mac XM 4.5 application. We would love to ship XM45 assemblies with the project but do not know how to target the platform using NuGet. Get in touch if you know how to a XM45 library with NuGet in such a way Xamarin Studio would automatically pull it in for an XM45 app project.
+*ReactiveUI-Events* and *ReactiveUI* use Xamarin.Mac Mobile but can be consumed into a Xamarin Mac XM 4.5 application. We would love to ship XM45 assemblies with the project but do not know how to target the platform using NuGet. Get in touch if you know how to package a XM45 library with NuGet in such a way Xamarin Studio would automatically pull it in for an XM45 app project.
