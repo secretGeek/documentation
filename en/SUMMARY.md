@@ -20,7 +20,7 @@
    * [View Models](user-guide/view-models/index.md)
        * [Data Suspension](user-guide/data-suspension/index.md)
    * [Views](user-guide/views/index.md)
-       * [View Location](user-guide/views/view-location.md) 
+       * [View Location](user-guide/views/view-location.md)
        * [Design Time](user-guide/design-time/index.md)
    * [Binding](user-guide/binding/index.md)
        * [Type Converters](user-guide/binding/type-converters.md)
@@ -81,6 +81,7 @@
    * [Windows Presentation Framework](platform-considerations/windows-presentation-framework.md)
    * [Windows Universal](platform-considerations/windows-universal.md)
    * [Windows Store](platform-considerations/windows-store.md)
+   * Xamarin Mac
 * [Design Guidelines](design-guidelines/index.md)
    * [Commands](design-guidelines/commands.md)
    * [Command Names](design-guidelines/command-names.md)
