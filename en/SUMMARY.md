@@ -81,7 +81,7 @@
    * [Windows Presentation Framework](platform-considerations/windows-presentation-framework.md)
    * [Windows Universal](platform-considerations/windows-universal.md)
    * [Windows Store](platform-considerations/windows-store.md)
-   * Xamarin Mac
+   * [Xamarin Mac](platform-considerations/xamarin-mac.md)
 * [Design Guidelines](design-guidelines/index.md)
    * [Commands](design-guidelines/commands.md)
    * [Command Names](design-guidelines/command-names.md)
