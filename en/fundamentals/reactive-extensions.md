@@ -75,7 +75,7 @@ Using Reactive Extensions, you can parametrize the concurrency of the stream usi
 ## Learn more
 As we stated at the beginning, it is not possible do describe such a huge topic as Reactive Extensions library in a single article. In fact, we have barely scratched the surface in this introduction.
 
-If you want to learn more, there are a lot of free resources available online. You should start with a [Introduction to Rx](www.introtorx.com), a free book covering all aspects of the library in a very accessible way. Another great learning material can be found on the [Reactive Extensions official website](http://reactivex.io/intro.html).
+If you want to learn more, there are a lot of free resources available online. You should start with a [Introduction to Rx](http://www.introtorx.com), a free book covering all aspects of the library in a very accessible way. Another great learning material can be found on the [Reactive Extensions official website](http://reactivex.io/intro.html).
 
 If you are not into reading the whole book on the topic right away, you can check out [the introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754). It's a great read, easy to follow, not too shallow nor too deep. This article is based on [RxJS](https://github.com/ReactiveX/RxJS) - a JavaScript flavor of the library - but this should not be a problem (some functions names may differ, but the concepts are exactly the same).
 
