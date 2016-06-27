@@ -87,8 +87,8 @@ this.Bind(ViewModel, x => x.SearchText, x => x.SearchTextField.Text);
 
 In addition to being able to simply and declaratively handle search throttling, building the search execution logic on top of the property change has made it easy to keep all the logic in the viewmodel - all the view needs to do is bind a control to the property.
 
-####Performing view-specific transforms as an an input to `BindTo`
-Ideally, controls on your view bind directly to properties on your viewmodel. In cases where you need to convert a viewmodel value to a view-specific value (e.g. `bool` to `Visibility`), you should register a `BindingConverter`. Still, you may come across a situation in which you want to perform a transformation in the view directly. Here, we observe the `ShowToolTip` property of the viewmodel, transform the `true`/`false` values to `1` and `0` respectively, then bind the result to the `ToolTipLabel's alpha property. 
+####Performing view-specific transforms as an input to `BindTo`
+Ideally, controls on your view bind directly to properties on your viewmodel. In cases where you need to convert a viewmodel value to a view-specific value (e.g. `bool` to `Visibility`), you should register a `BindingConverter`. Still, you may come across a situation in which you want to perform a transformation in the view directly. Here, we observe the `ShowToolTip` property of the viewmodel, transform the `true`/`false` values to `1` and `0` respectively, then bind the result to the `ToolTipLabel`'s alpha property. 
 
 ```cs
 // In the view
