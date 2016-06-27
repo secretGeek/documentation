@@ -34,7 +34,7 @@ You can also compare `IObservable<T>` to `IEnumerable<T>`.  `IEnumerable<T>` is 
 
 The syntax for consuming  `IObservable<T>` differs slightly from using both `Task<T>` and `IEnumerable<T>`. The core method is called `Subscribe`, and has following signature:
 
-`IDispsable Subscribe(this IObservable<T> self, Action<T> onNext, Action<Exception> onError, Action onCompleted)`
+`IDisposable Subscribe(this IObservable<T> self, Action<T> onNext, Action<Exception> onError, Action onCompleted)`
 
 And is used simply:
 
