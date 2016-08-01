@@ -94,7 +94,7 @@ Ideally, controls on your view bind directly to properties on your viewmodel. In
 // In the view
 ViewModel.WhenAny(x => x.ShowToolTip)
          .Select(t => t ? 1f : 0f)
-         .BindTo(this, x => ToolTipLabel.Alpha);
+         .BindTo(this, x => x.ToolTipLabel.Alpha);
 ```
 
 ##Variants of `WhenAny`
