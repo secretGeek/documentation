@@ -87,7 +87,7 @@
    * [Command Names](design-guidelines/command-names.md)
    * [Asynchronous Commands](design-guidelines/asynchronous-commands.md)
    * [UI Thread and Schedulers](design-guidelines/ui-thread-and-schedulers.md)
-   * [Prefer OPAH over Properties](design-guidelines/prefer-opah-over-properties.md)
+   * [Prefer OAPH over Properties](design-guidelines/prefer-opah-over-properties.md)
    * [Use this on Left of WhenAny](design-guidelines/use-this-on-left-of-whenany.md)
    * [Use descriptive variables with WhenAny](design-guidelines/use-descriptive-variables-with-whenany.md)
 * [Samples](https:/github.com/reactiveui/samples)
