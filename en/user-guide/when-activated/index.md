@@ -20,10 +20,10 @@ public MyCoolViewModel : ISupportsActivation
     public MyCoolViewModel()
     {
         this.WhenActivated(
-            dispose =>
+            registerDisposable =>
             {
-                dispose(this.WhenAny(…));
-                dispose(this.WhenAnyValue(…));
+                registerDisposable(this.WhenAny(…));
+                registerDisposable(this.WhenAnyValue(…));
             });
     }
     
@@ -46,11 +46,11 @@ ReactiveUI provides a variant of the Dispose pattern to help handle this concern
 
 ```
 this.WhenActivated(
-    dispose =>
+    registerDisposable =>
     {
-        dispose(this.Bind(…));
-        dispose(this.WhenAny(…));
-        dispose(this.WhenAnyValue(…));
+        registerDisposable(this.Bind(…));
+        registerDisposable(this.WhenAny(…));
+        registerDisposable(this.WhenAnyValue(…));
     });
 ```
 
