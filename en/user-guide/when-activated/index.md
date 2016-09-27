@@ -63,7 +63,7 @@ this.WhenActivated(
     disposables =>
     {
         this.Bind(…)
-            .AddTo(disposables);
+            .DisposeWith(disposables);
     });
 ```
 
