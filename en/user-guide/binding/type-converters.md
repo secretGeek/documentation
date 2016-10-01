@@ -1,7 +1,5 @@
 # Type Converters
 
-Inline type conversions for bindings were recently added in https://github.com/reactiveui/ReactiveUI/pull/1052
-
 
 # Links
 * https://github.com/reactiveui/ReactiveUI/blob/master/ReactiveUI/PropertyBinding.cs#L50
@@ -9,7 +7,6 @@ Inline type conversions for bindings were recently added in https://github.com/r
 
 * http://stackoverflow.com/questions/23592231/how-do-i-register-an-ibindingtypeconverter-in-reactiveui
 * https://github.com/reactiveui/ReactiveUI/commit/7fba662c7308db60cfda9e6fb3331b7cb514f14c
-
 
 ## How GetAffinityForObjects works
 
@@ -53,3 +50,25 @@ In most cases, usage is automatic.  When a binding is created, the converter(s) 
 
     this.Bind(ViewModel, vm => vm.ViewModelProperty, v => v.Control.Property, new CustomTypeConverter());
     
+## Inline Binding Converters ##
+You can supply inline function methods to Bind. This allows you to quickly supply a conversion method. This avoids having to supply a IBindingTypeConverter for one off cases. 
+```            
+       this.WhenActivated(
+                d =>
+                    {
+                        d(this.Bind(this.ViewModel, vm => vm.DateTime, view => view.DateTextBox.Text, this.VmToViewFunc, this.ViewToVmFunc));
+                    });
+                    
+        private string VmToViewFunc(DateTime dateTime)
+        {
+            return dateTime.ToString("O"); // return ISO 8601 Date ime
+        }
+
+        private DateTime ViewToVmFunc(string value)
+        {
+            DateTime returnValue;
+            DateTime.TryParse(value, out returnValue);
+            return returnValue;
+        }
+                    
+```
