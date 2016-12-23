@@ -58,6 +58,7 @@ public class LoginViewModel : ReactiveObject
                         throw new InvalidOperationException("Failed to login.");
                     }
                 }
+            )
             .Select(_ => Unit.Default);
 }
 ```
