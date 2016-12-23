@@ -1,5 +1,4 @@
 # Summary
-
 * [Introduction](README.md)
    * [Compelling Example](compelling-example/index.md)
    * [Success Stories](https://github.com/reactiveui/ReactiveUI/issues/979)
