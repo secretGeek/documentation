@@ -1,7 +1,5 @@
 ## Canceling
 
-> **Warning** This chapter describes ReactiveCommand implementation for future version of ReactiveUI (7.0). For documentation of the current version (part of ReactiveUI 6.5), consult the main repository docs: [ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command.md) and [Asynchronous operations with ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command-async.md). 
-
 If your command's execution logic can take a long time to complete, it can be useful to allow the execution to be canceled. This cancellation support can be used internally by your view models, or exposed so that users have a say in the matter.
 
 ### Basic Cancelation
@@ -31,7 +29,7 @@ var command = ReactiveCommand
             .Return(Unit.Default)
             .Delay(TimeSpan.FromSeconds(3))
             .TakeUntil(cancel));
-            
+
 // somewhere else
 command.Execute().Subscribe();
 
@@ -56,13 +54,13 @@ public class SomeViewModel : ReactiveObject
             () => { },
             this.CancellableCommand.IsExecuting);
     }
-    
+
     public ReactiveCommand<Unit, Unit> CancelableCommand
     {
         get;
         private set;
     }
-    
+
     public ReactiveCommand<Unit, Unit> CancelCommand
     {
         get;
@@ -90,13 +88,13 @@ public class SomeViewModel : ReactiveObject
             .CreateFromTask(
                 ct => this.DoSomethingAsync(ct));
     }
-    
+
     public ReactiveCommand<Unit, Unit> CancelableCommand
     {
         get;
         private set;
     }
-    
+
     private async Task DoSomethingAsync(CancellationToken ct)
     {
         await Task.Delay(TimeSpan.FromSeconds(3), ct);
@@ -124,7 +122,7 @@ subscription.Dispose();
 
 But what if we want to cancel the execution based on an external factor, just as we did with observables? Since we only have access to the `CancellationToken` and not the `CancellationTokenSource`, it's not immediately obvious how we can achieve this.
 
-Besides forgoing TPL completely (which is recommended if possible, but not always practical), there are actually quite a few ways to achieve this. Perhaps the easiest is to use `CreateFromObservable` instead:
+Besides forgoing TPL completely \(which is recommended if possible, but not always practical\), there are actually quite a few ways to achieve this. Perhaps the easiest is to use `CreateFromObservable` instead:
 
 ```cs
 public class SomeViewModel : ReactiveObject
@@ -140,19 +138,19 @@ public class SomeViewModel : ReactiveObject
             () => { },
             this.CancellableCommand.IsExecuting);
     }
-    
+
     public ReactiveCommand<Unit, Unit> CancelableCommand
     {
         get;
         private set;
     }
-    
+
     public ReactiveCommand<Unit, Unit> CancelCommand
     {
         get;
         private set;
     }
-    
+
     private async Task DoSomethingAsync(CancellationToken ct)
     {
         await Task.Delay(TimeSpan.FromSeconds(3), ct);
@@ -161,3 +159,4 @@ public class SomeViewModel : ReactiveObject
 ```
 
 This approach allows us to use exactly the same technique as with the pure Rx solution discussed above. The difference is that our observable pipeline includes execution of TPL-based asychronous code.
+
