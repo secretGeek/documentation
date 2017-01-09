@@ -1,5 +1,4 @@
 # An Example
-> **Warning** This chapter describes ReactiveCommand implementation for future version of ReactiveUI (7.0). For documentation of the current version (part of ReactiveUI 6.5), consult the main repository docs: [ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command.md) and [Asynchronous operations with ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command-async.md). 
 
 ```cs
 public class LoginViewModel : ReactiveObject
@@ -8,7 +7,7 @@ public class LoginViewModel : ReactiveObject
     private readonly ReactiveCommand<Unit, Unit>  resetCommand;
     private string userName;
     private string password;
-    
+
     public LoginViewModel()
     {
         var canLogin = this.WhenAnyValue(
@@ -18,7 +17,7 @@ public class LoginViewModel : ReactiveObject
         this.loginCommand = ReactiveCommand.CreateFromObservable(
             this.LoginAsync,
             canLogin);
-        
+
         this.resetCommand = ReactiveCommand.Create(
             () =>
             {
@@ -26,25 +25,25 @@ public class LoginViewModel : ReactiveObject
                 this.Password = null;
             });
     }
-    
+
     public ReactiveCommand<Unit, Unit> LoginCommand => this.loginCommand;
-    
+
     // note that if no client code requires the full API of the generic ReactiveCommand<TParam, TResult>,
     // we can just declare the type as ReactiveCommand
     public ReactiveCommand ResetCommand => this.resetCommand;
-    
+
     public string UserName
     {
         get { return this.userName; }
         set { this.RaiseAndSetIfChanged(ref this.userName, value); }
     }
-    
+
     public string Password
     {
         get { return this.password; }
         set { this.RaiseAndSetIfChanged(ref this.password, value); }
     }
-    
+
     // here we simulate logins by randomly passing/failing
     private IObservable<Unit> LoginAsync() =>
         Observable
@@ -62,3 +61,6 @@ public class LoginViewModel : ReactiveObject
             .Select(_ => Unit.Default);
 }
 ```
+
+
+
