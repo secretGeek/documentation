@@ -95,6 +95,7 @@
         * [Copyright Assignment](https://github.com/reactiveui/documentation/blob/master/COPYRIGHT.md)
         * [License](https://github.com/reactiveui/documentation/blob/master/LICENSE.md)
     * [Framework](contributing/framework/index.md)
+        * [Debugging Symbols](contributing/framework/debugging-symbols.md)
         * [Pre-release Builds](contributing/framework/pre-release-builds.md)
         * [Submitting A Pull Request](contributing/framework/submitting-a-pull-request.md)
         * [Merging Pull Requests](contributing/framework/merging-pull-requests.md)
