@@ -8,4 +8,4 @@ The only requirement is to ensure the check the Enable source server support opt
 
 ![Configure Visual Studio as follows](https://docs.reactiveui.net/images/contributing/gitlink-visualstudio-enablesourceserversupport.png)
 
-Refer [to this guide if you experience problems](https://github.com/GitTools/GitLink#troubleshooting).
+Refer to [this guide if you experience problems](https://github.com/GitTools/GitLink#troubleshooting).
