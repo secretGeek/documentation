@@ -4,7 +4,7 @@ We use [GitLink](https://github.com/Gittools/GitLink) instead of shipping symbol
 
 ![We use GitLink](/images/contributing/git-link.gif)
 
-The only requirement is to ensure the check the Enable source server support option in Visual Studio as shown below:
+The only requirement is to ensure the check the `Enable source server support` option in Visual Studio as shown below:
 
 ![Configure Visual Studio as follows](/images/contributing/gitlink-visualstudio-enablesourceserversupport.png)
 
