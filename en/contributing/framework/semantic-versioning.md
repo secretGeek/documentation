@@ -1,10 +1,8 @@
 # Semantic Versioning
 
-Semantic versioning is all about releases, our continuous integration infrastructure uses \[GitVersion\]\([https://gitversion.readthedocs.io\](https://gitversion.readthedocs.io\)\) to automatically version our software. The \[versioning strategy is controlled by this file\]\(https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml\).
+Semantic versioning is all about releases, our continuous integration infrastructure uses \[GitVersion\]\([https://gitversion.readthedocs.io](https://gitversion.readthedocs.io\)\) to automatically version our software. The \[versioning strategy is controlled by this file\]\([https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml\](https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml\)\).
 
-
-
- Depending on where the build comes from - Where the software is built from \(master, develop or a pcontrols the versioning strategy which is used by NuGet and AssemblyInformation.
+Depending on where the build comes from - Where the software is built from \(master, develop or a pcontrols the versioning strategy which is used by NuGet and AssemblyInformation.
 
 automatically assign a version number
 
@@ -26,8 +24,7 @@ We use semi-automatioc semantic versioning
 * Semantic versioning is all about releases, build numbers should automatically increase when software is released. 
 * We have two workflows for releasing software \(NuGet / master and MyGet / develop\)
 * If the current current commit is tagged, the tag is always used as the version
-* 
-We use
+* We use
 
 Semantic Versioning is all about releases, not builds which means the version should only increment when software is released. This works well for release builds \(\`master\`\) but
 
