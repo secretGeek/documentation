@@ -27,7 +27,7 @@ Builds from the `master` branch do not have a suffix and GitVersion is configure
 
 ![Building a tagged release](/images/contributing/building-a-tagged-release.png)
 
-When creating a new release by pull-requesting between `develop` and `master` always use a **merge commit pull-request**. If the release contains breaking changes then the `BREAKING` can be automatically incremented by `+semver: breaking` on blank line of your commit message.
+When creating a new release by pull-requesting between `develop` and `master` always use a **merge commit pull-request**. If the release contains breaking changes then the `BREAKING` can be automatically incremented by adding `+semver: breaking` on blank line of your commit message.
 
 ## Versioning
 
