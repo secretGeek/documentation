@@ -9,9 +9,9 @@ We have three different workflows which control how ReactiveUI is versioned.
 ## Development Builds
 ![Development suffix](/images/contributing/semver-develop.png)
 
-Builds from the `develop` branch have a suffix of `alpha` so that they are sorted higher than release builds which provides the team the ability to publish development builds to NuGet as pre-releases.
+Builds from the `develop` branch have a suffix of `alpha` so that they are sorted higher than release builds which provides the team the ability to manually publish development builds to NuGet as pre-releases if they so desire.
 
-**Do not** [increment the build using commit messages](https://gitversion.readthedocs.io/en/latest/more-info/version-increments/) when merging units of change into the development branch as GitVersion is configured in [Continuous Deployment mode](https://gitversion.readthedocs.io/en/latest/reference/continuous-deployment/) which automatically increments the minor.  
+**Do not** [increment the build using commit messages](https://gitversion.readthedocs.io/en/latest/more-info/version-increments/) when merging units of change into the development branch as GitVersion is configured in [Continuous Deployment mode](https://gitversion.readthedocs.io/en/latest/reference/continuous-deployment/) which automatically increments the minor for you.
 
 When merging pull-requests into the `develop` branch use a rebase and squash commit that follows our template.
 
