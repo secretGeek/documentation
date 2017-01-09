@@ -6,3 +6,4 @@ We use [GitLink](https://github.com/Gittools/GitLink) instead of shipping symbol
 
 The only requirement is to ensure the check the Enable source server support option in Visual Studio as shown below:
 
+![](/images/contributing/gitlink-visualstudio-enablesourceserversupport.png)
