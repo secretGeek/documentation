@@ -1,6 +1,10 @@
 # Semantic Versioning
 
-Semantic versioning is all about releases, our continuous integration infrastructure uses \[GitVersion\]\([https://gitversion.readthedocs.io](https://gitversion.readthedocs.io\)\) to automatically version our software. The \[versioning strategy is controlled by this file\]\([https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml\](https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml\)\).
+Semantic versioning is all about releases, our continuous integration infrastructure uses \[GitVersion\]\([https://gitversion.readthedocs.io](https://gitversion.readthedocs.io\)\) to automatically version our software. 
+
+
+
+The \[versioning strategy is controlled by this file\]\([https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml](https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml\)\).
 
 Depending on where the build comes from - Where the software is built from \(master, develop or a pcontrols the versioning strategy which is used by NuGet and AssemblyInformation.
 
