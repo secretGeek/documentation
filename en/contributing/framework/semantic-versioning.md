@@ -1,39 +1,17 @@
 # Semantic Versioning
 
-Semantic versioning is all about releases, our continuous integration infrastructure uses [GitVersion]([https://gitversion.readthedocs.io](https://gitversion.readthedocs.io) to automatically version our releases [as per the configuration]([https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml).
+Semantic versioning is all about releases, our continuous integration infrastructure uses [GitVersion]([https://gitversion.readthedocs.io](https://gitversion.readthedocs.io) to automatically version our releases [as per the configuration]([https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml). 
 
-For maintainer sanity, we version ReactiveUI and package as a pinned group - all packages in a release will always be the same version and only work with that version which makes it impossible for a consumer to run into situations where they use `reactiveui-core` at `7.0.0` but `reactiveui-xamforms` at `6.5.0`.
+For maintainer sanity, we version ReactiveUI and package as a pinned group - all packages in a release will always be the same version and only work with that version which makes it impossible for a consumer to run into situations where they use `reactiveui-core` at `7.1.0` but `reactiveui-xamforms` at `7.0.0`. Additionally all assemblies share the same [AssemblyInfo.cs](https://github.com/reactiveui/ReactiveUI/blob/develop/src/CommonAssemblyInfo.cs) which is updated just before compile time by the build infrastructure.
 
+We have three different workflows which control how the version number is generated, builds from the develop branch have suffix (`alpha`) so that they are sorted higher than release builds which provides the team the ability to publish development builds to NuGet as pre-releases.
 
-
-
-  
-
-For developer and maintainer sanity, we version ReactiveUI as a collective unit which means that when   This means if change is applied to a sub-section of ReactiveUI 
-
-For developer sanity, we pin our NuGet packages to version number that is being built which means that Reaca particular release of ReactiveUI 
-All assemblies should share the same version number and NuGet has been 
+![](/images/contributing/semver-develop.png)
 
 
-For 
-Depending on where the build comes from - Where the software is built from \(master, develop or a pcontrols the versioning strategy which is used by NuGet and AssemblyInformation.
 
-automatically assign a version number
 
-automatically increments the  version package identifier and AssemblyInformation depending on how ReactiveUI is build.
 
-For pull-requests
-
-For
-
-two different destinations We use semi-automatic semantic versioning
-
-We use semi-automatioc semantic versioning
-
-\#TOC
-
-* We use semi-automatic semantic versioning and use GitVersion, here's our config.
-* Semantic versioning is all about releases, build numbers should automatically increase when software is released. 
 * We have two workflows for releasing software \(NuGet / master and MyGet / develop\)
 * If the current current commit is tagged, the tag is always used as the version
 * We use
