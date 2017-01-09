@@ -97,6 +97,7 @@
     * [Framework](contributing/framework/index.md)
         * [License](https://github.com/reactiveui/reactiveui/blob/master/LICENSE.md)
         * [Versioning](contributing/framework/versioning.md)
+        * [Merging Pull Requests](contributing/framework/merging-pull-requests.md)
     * [Plugins](contributing/plugins/index.md)
     * [Snapshot](contributing/snapshot/index.md)
 * [Release Notes](https://github.com/reactiveui/reactiveui/releases)
