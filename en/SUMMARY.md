@@ -95,7 +95,7 @@
         * [Copyright Assignment](https://github.com/reactiveui/documentation/blob/master/COPYRIGHT.md)
         * [License](https://github.com/reactiveui/documentation/blob/master/LICENSE.md)
     * [Framework](contributing/framework/index.md)
-        * [Semantic Versioning](en/contributing/framework/semantic-versioning.md)
+        * [Semantic Versioning](contributing/framework/semantic-versioning.md)
         * [Merging Pull Requests](contributing/framework/merging-pull-requests.md)
         * [Creating A New Release](contributing/framework/creating-a-new-release.md)
         * [License](https://github.com/reactiveui/reactiveui/blob/master/LICENSE.md)
