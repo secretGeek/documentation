@@ -1,7 +1,5 @@
 ## Asynchronous versus Synchronous Commands
 
-> **Warning** This chapter describes ReactiveCommand implementation for future version of ReactiveUI (7.0). For documentation of the current version (part of ReactiveUI 6.5), consult the main repository docs: [ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command.md) and [Asynchronous operations with ReactiveCommand](https://github.com/reactiveui/ReactiveUI/blob/master/docs/basics/reactive-command-async.md). 
-
 Even though the API presented by `ReactiveCommand` is asynchronous, you are not required to perform your execution logic asynchronously. If your command is not CPU-intensive or I/O-bound then it probably makes sense to provide synchronous execution logic. You can do so by creating a command via `ReactiveCommand.Create`:
 
 ```cs
@@ -10,7 +8,7 @@ var command = ReactiveCommand.Create(() => Console.WriteLine("a synchronous reac
 
 There are several overloads of `Create` to facilitate commands that take parameters or return interesting values when they execute. These will be discussed in more detail below.
 
-If, on the other hand, your command's logic *is* CPU- or I/O-bound, you'll want to use `CreateFromObservable` or `CreateFromTask`:
+If, on the other hand, your command's logic _is_ CPU- or I/O-bound, you'll want to use `CreateFromObservable` or `CreateFromTask`:
 
 ```cs
 // here we're using observables to model asynchrony
@@ -28,3 +26,6 @@ Again, several overloads exist for commands taking parameters and returning valu
 Regardless of whether your command is synchronous or asynchronous in nature, you execute it via the `Execute` method. You get back an observable that will tick the command's result value when execution completes. Synchronous commands will execute _immediately_, so the observable you get back will already have completed. The returned observable is behavioral though, so subscribing after the fact will still tick through the result value.
 
 > **Warning** As is often the case with idiomatic Rx, the observable returned by `Execute` is cold. That is, nothing will happen unless something subscribes to it. This subscription is often instigated by the binding infrastructure. But in those cases where you're calling `Execute` directly, it's very important to remember that it's lazy.
+
+
+
