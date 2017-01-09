@@ -1,4 +1,4 @@
-# Versioning
+# Semantic Versioning
 
 Never bump the version numbers as part of a pull-request, it is done via the project maintainer after merge.
 
