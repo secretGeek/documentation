@@ -2,6 +2,7 @@
 
 ReactiveUI uses [Semantic Versioning (SemVer)](http://semver.org/), adopting the use of major.minor.patch versioning, using the various parts of the version number to describe the degree and kind of change.
 
+
 ### Versioning Form
 
 MAJOR.MINOR.PATCH[-ALPHA-BUILDNUMBER]
