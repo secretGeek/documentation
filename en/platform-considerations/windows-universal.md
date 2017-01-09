@@ -1,5 +1,8 @@
 # Windows Universal
 
+# Quirks
+
+See https://github.com/reactiveui/ReactiveUI/issues/1221
 
 # Bindings
 
@@ -8,8 +11,6 @@ There are three core ways to do bindings:
 * XAML `{Binding blah}` uses reflection based binding. It's fragile, magic strings, dymanic typed.
 * XAML `{x:Bind blah}` is strongly typed and does not use reflection.
 * RXUI whenactivated, uses reflection but your bindings are more cross-platform. If you keep your property names consistent between iOS Android and WPF/UWP then you'll be able to copy and pasta.
-
-
 
     moswald [1:58 AM] 
     @onovotny: when doing your bindings, do they look like this?
@@ -95,3 +96,6 @@ There are three core ways to do bindings:
 
     ​[2:26] 
     Showing how a mistyped param is a compile time error
+
+
+
