@@ -1,5 +1,1 @@
 * [English](en/)
-* [](images/)
-* [](code/)
-* [](css/)
-* [](videos/)
