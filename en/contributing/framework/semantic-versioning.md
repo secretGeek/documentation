@@ -13,13 +13,12 @@ Builds from the `develop` branch have a suffix of `alpha` so that they are sorte
 
 **Do not** [increment the build using commit messages](https://gitversion.readthedocs.io/en/latest/more-info/version-increments/) when merging units of change into the development branch as GitVersion is configured in [Continuous Deployment mode](https://gitversion.readthedocs.io/en/latest/reference/continuous-deployment/) which automatically increments the minor for you.
 
-When merging pull-requests into the `develop` branch use a rebase and squash commit that follows our template.
-
 ## Pull Request Builds
 ![Pull-request suffix](/images/contributing/semver-pull-request-into-develop.png)
 
 Builds from pull-requests have a suffix of `pullrequest$GitHubIssueNumber` and are not automatically published to NuGet or MyGet but the packages are available for download from AppVeyor which allows the team to test the unit of change without merging into `develop`.
 
+When merging pull-requests into the `develop` branch use a rebase and squash commit that follows our template.
 
 ## Release Builds
 ![Release has no suffix](/images/contributing/semver-master.png)
