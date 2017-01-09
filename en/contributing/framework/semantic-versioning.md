@@ -17,6 +17,9 @@ If you are using GitFlow then builds off the develop branch will actually increm
 ReactiveUI uses [Semantic Versioning (SemVer)](http://semver.org/), adopting the use of major.minor.patch versioning, using the various parts of the version number to describe the degree and kind of change.
 
 
+If the current commit is tagged, the tag is used and build metadata (Excluding commit count) is added. The other two steps will not execute
+A set of strategies are evaluated to decide on the base version and some metadata about that version. These strategies include HighestReachableTag, NextVersionInConfig, MergedBranchWithVersion, VersionInBranchName etc.
+The highest base version is selected, using that base version the new version is calculated.
 
 ### Versioning Form
 
