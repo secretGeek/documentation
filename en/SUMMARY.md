@@ -101,7 +101,7 @@
         * [Merging Pull Requests](contributing/framework/merging-pull-requests.md)
         * [Semantic Versioning](contributing/framework/semantic-versioning.md)
         * [Creating A New Release](contributing/framework/creating-a-new-release.md)
-        * [License](https://github.com/reactiveui/reactiveui/blob/master/LICENSE.md)
+        * [License](https://github.com/reactiveui/reactiveui/blob/master/LICENSE)
     * [Plugins](contributing/plugins/index.md)
     * [Snapshot](contributing/snapshot/index.md)
 * [Release Notes](https://github.com/reactiveui/reactiveui/releases)
