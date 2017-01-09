@@ -70,7 +70,6 @@
         * [Debugging Observables](user-guide/logging/debugging-observables.md)
     * [Troubleshooting](user-guide/troubleshooting/index.md)
 * [Patterns](patterns/index.md)
-    * [Cross-platform Modal Dialogs](patterns/cross-platform-modal-dialogs.md)
     * [Validation](patterns/validation.md)
 * [Platform Considerations](platform-considerations/index.md)
     * [Xamarin Android](platform-considerations/xamarin-android.md)
