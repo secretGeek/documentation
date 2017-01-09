@@ -1,3 +1,3 @@
 # Debugging Symbols
 
-![](/assets/GitLink_example.gif)
+![](/images/contributing/git-link.gif)
