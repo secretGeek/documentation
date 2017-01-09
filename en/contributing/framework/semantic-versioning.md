@@ -26,5 +26,3 @@ PATCH when:
   - any other change (not otherwise captured)
 
 When determining what to increment when there are multiple changes, choose the highest kind of change.
-
-
