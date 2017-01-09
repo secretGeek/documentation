@@ -21,7 +21,7 @@
     ],
     "pluginsConfig": {
         "edit-link": {
-          "base": "https://github.com/reactiveui/documentation/tree/master",
+          "base": "https://github.com/reactiveui/documentation/EDIT/master",
           "label": "Edit This Page"
         },
         "github": {
