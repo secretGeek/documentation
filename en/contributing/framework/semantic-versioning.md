@@ -1,11 +1,21 @@
 # Semantic Versioning
 
-Semantic versioning is all about releases, our continuous integration infrastructure uses \[GitVersion\]\([https://gitversion.readthedocs.io](https://gitversion.readthedocs.io\)\) to automatically version our software. 
+Semantic versioning is all about releases, our continuous integration infrastructure uses [GitVersion]([https://gitversion.readthedocs.io](https://gitversion.readthedocs.io) to automatically version our releases [as per the configuration]([https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml).
+
+For maintainer sanity, we version ReactiveUI and package as a pinned group - all packages in a release will always be the same version and only work with that version which makes it impossible for a consumer to run into situations where they use `reactiveui-core` at `7.0.0` but `reactiveui-xamforms` at `6.5.0`.
 
 
 
-The \[versioning strategy is controlled by this file\]\([https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml](https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml\)\).
 
+  
+
+For developer and maintainer sanity, we version ReactiveUI as a collective unit which means that when   This means if change is applied to a sub-section of ReactiveUI 
+
+For developer sanity, we pin our NuGet packages to version number that is being built which means that Reaca particular release of ReactiveUI 
+All assemblies should share the same version number and NuGet has been 
+
+
+For 
 Depending on where the build comes from - Where the software is built from \(master, develop or a pcontrols the versioning strategy which is used by NuGet and AssemblyInformation.
 
 automatically assign a version number
@@ -15,8 +25,6 @@ automatically increments the  version package identifier and AssemblyInformation
 For pull-requests
 
 For
-
-ReactiveUI releases software and automatically increments the version differently depending on wheather you are releasing a release or development build.
 
 two different destinations We use semi-automatic semantic versioning
 
