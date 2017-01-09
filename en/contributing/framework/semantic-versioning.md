@@ -24,6 +24,10 @@ The highest base version is selected, using that base version the new version is
 
 Adding +semver: breaking or +semver: major will cause the major version to be increased,  +semver: feature or +semver: minor will bump minor and +semver: patch or +semver: fix will bump the patch.
 
+
+https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml
+
+
 ### Versioning Form
 
 MAJOR.MINOR.PATCH[-ALPHA-BUILDNUMBER]
