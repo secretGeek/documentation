@@ -3,6 +3,7 @@
 Prefer binding user interactions to commands rather than methods.
 
 ## Do
+
 ```csharp
 // In XAML
 <Button Command="{Binding Delete}" .../>
@@ -21,8 +22,8 @@ public class RepositoryViewModel : ReactiveObject
 }
 ```
 
-
 ## Don't
+
 Use the Caliburn.Micro conventions for associating buttons and commands:
 
 ```csharp
@@ -31,12 +32,16 @@ Use the Caliburn.Micro conventions for associating buttons and commands:
 
 public class RepositoryViewModel : PropertyChangedBase
 {
-  public void Delete() {...}	
+  public void Delete() {...}    
 }
 ```
 
 ## Why?
+
 * ReactiveCommand exposes the `CanExecute` property of the command to 
-enable applications to introduce additional behaviour.
+  enable applications to introduce additional behaviour.
 * It handles marshaling the result back to the UI thread.
 * It tracks in-flight items.
+
+
+

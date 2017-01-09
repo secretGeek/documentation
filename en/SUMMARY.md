@@ -85,6 +85,7 @@
 * [Design Guidelines](design-guidelines/index.md)
     * [Commands](design-guidelines/commands.md)
     * [Command Names](design-guidelines/command-names.md)
+    * [Command Execution](design-guidelines/command-execution.md)
     * [Asynchronous Commands](design-guidelines/asynchronous-commands.md)
     * [UI Thread and Schedulers](design-guidelines/ui-thread-and-schedulers.md)
     * [Prefer OAPH over Properties](design-guidelines/prefer-opah-over-properties.md)
