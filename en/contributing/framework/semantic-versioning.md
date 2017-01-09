@@ -21,6 +21,9 @@ If the current commit is tagged, the tag is used and build metadata (Excluding c
 A set of strategies are evaluated to decide on the base version and some metadata about that version. These strategies include HighestReachableTag, NextVersionInConfig, MergedBranchWithVersion, VersionInBranchName etc.
 The highest base version is selected, using that base version the new version is calculated.
 
+
+Adding +semver: breaking or +semver: major will cause the major version to be increased,  +semver: feature or +semver: minor will bump minor and +semver: patch or +semver: fix will bump the patch.
+
 ### Versioning Form
 
 MAJOR.MINOR.PATCH[-ALPHA-BUILDNUMBER]
