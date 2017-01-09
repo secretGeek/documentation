@@ -1,6 +1,21 @@
 # Semantic Versioning
 
+Semantic Versioning is all about releases, not builds. This means that the version should only increase after only increases after you release, this directly conflicts with the concept of published CI builds. 
+
+When you release the next version of your library/app/website/whatever you should only increment major/minor or patch then reset all lower parts to 0, for instance given 1.0.0, the next release should be either 2.0.0, 1.1.0 or  1.0.1. Bumping one of the version components by more than 1 in a single release means you will have gaps in your version number, which defeats the purpose of SemVer.
+
+Because of this, GitVersion works out what the next SemVer of your app is on each commit. When you are ready to release you simply deploy the latest built version and tag the release it was from. This practice is called continuous delivery. GitVersion will increment the metadata for each build so you can tell builds apart. For example 1.0.0+5 followed by 1.0.0+6. It is important to note that build metadata is not part of the semantic version, it is just metadata!.
+
+All this effectively means that GitVersion will produce the same version NuGet package each commit until you tag a release.
+
+This causes problems for people as NuGet and other package managers do not support multiple packages with the same version with only different metadata. There are a few ways to handle this problem depending on what your requirements are:
+
+1. GitFlow
+
+If you are using GitFlow then builds off the develop branch will actually increment on every commit. This is known in GitVersion as continuous deployment mode. By default develop builds are tagged with the alpha pre-release tag. This is so they are sorted higher than release branches.
+
 ReactiveUI uses [Semantic Versioning (SemVer)](http://semver.org/), adopting the use of major.minor.patch versioning, using the various parts of the version number to describe the degree and kind of change.
+
 
 
 ### Versioning Form
