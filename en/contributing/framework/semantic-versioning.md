@@ -30,9 +30,9 @@ Builds from the `master` branch do not have a suffix and GitVersion is configure
 
 When creating a new release by pull-requesting between `develop` and `master` always use a **merge commit pull-request**. If the release contains breaking changes then the `BREAKING` can be automatically incremented by `+semver: breaking` on blank line of your commit message.
 
-### Versioning Form
+## Versioning
 
-BREAKING.VERSION.PATCH\[-ALPHA-BUILDNUMBER\]
+BREAKING.MINOR.PATCH\[-ALPHA-BUILDNUMBER\]
 
 ### Decision Tree
 
@@ -43,7 +43,7 @@ BREAKING when:
 * adopt a newer MAJOR version of an existing dependency 
 * disable a compatibility quirk off by default
 
-VERSION when:
+MINOR when:
 
 * add public API surface area 
 * add new behavior
@@ -53,4 +53,4 @@ VERSION when:
 
 PATCH when:
 
-* never, unless you really stuff something up
+* never, unless you _really_ stuff something up.
