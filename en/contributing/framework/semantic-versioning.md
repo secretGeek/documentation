@@ -1,12 +1,12 @@
 # Semantic Versioning
 
-Semantic versioning is all about releases, our continuous integration infrastructure uses \[GitVersion\]\(https://gitversion.readthedocs.io\) to automatically version our software. Where the software is built from controls the versioning strategy which is used by NuGet and AssemblyInformation.
+Semantic versioning is all about releases, our continuous integration infrastructure uses \[GitVersion\]\([https://gitversion.readthedocs.io\](https://gitversion.readthedocs.io\)\) to automatically version our software. The \[versioning strategy is controlled by this file\]\(https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml\).
 
 
 
-automatically assign a version number 
+ Depending on where the build comes from - Where the software is built from \(master, develop or a pcontrols the versioning strategy which is used by NuGet and AssemblyInformation.
 
-
+automatically assign a version number
 
 automatically increments the  version package identifier and AssemblyInformation depending on how ReactiveUI is build.
 
@@ -16,63 +16,34 @@ For
 
 ReactiveUI releases software and automatically increments the version differently depending on wheather you are releasing a release or development build.
 
-
-
 two different destinations We use semi-automatic semantic versioning
-
-
 
 We use semi-automatioc semantic versioning
 
 \#TOC
-
-
 
 * We use semi-automatic semantic versioning and use GitVersion, here's our config.
 * Semantic versioning is all about releases, build numbers should automatically increase when software is released. 
 * We have two workflows for releasing software \(NuGet / master and MyGet / develop\)
 * If the current current commit is tagged, the tag is always used as the version
 * 
+We use
 
+Semantic Versioning is all about releases, not builds which means the version should only increment when software is released. This works well for release builds \(\`master\`\) but
 
-
-
-We use 
-
-Semantic Versioning is all about releases, not builds which means the version should only increment when software is released. This works well for release builds \(\`master\`\) but 
-
-
-
-
-
-If the current commit is tagged, the tag is used and build metadata \(Excluding commit count\) is added. The other two steps will not execute  
-
-
-
-
-
+If the current commit is tagged, the tag is used and build metadata \(Excluding commit count\) is added. The other two steps will not execute
 
 By default develop builds are tagged with the alpha pre-release tag. This is so they are sorted higher than release builds.
 
-
-
-This means that the version should only increase after only increases after you release which directly conflicts with the concept of published CI builds. 
-
-
+This means that the version should only increase after only increases after you release which directly conflicts with the concept of published CI builds.
 
 All this effectively means that GitVersion will produce the same version NuGet package each commit until you tag a release.
 
-
-
 f you are using GitFlow then builds off the develop branch will actually increment on every commit. This is known in GitVersion as continuous deployment mode.
-
-
 
 By default develop builds are tagged with the alpha pre-release tag. This is so they are sorted higher than release builds.
 
-
-
-We have configured GitVersion to automatically 
+We have configured GitVersion to automatically
 
 Because of this, GitVersion works out what the next SemVer of your app is on each commit. When you are ready to release you simply deploy the latest built version and tag the release it was from. This practice is called continuous delivery. GitVersion will increment the metadata for each build so you can tell builds apart. For example 1.0.0+5 followed by 1.0.0+6. It is important to note that build metadata is not part of the semantic version, it is just metadata!.
 
