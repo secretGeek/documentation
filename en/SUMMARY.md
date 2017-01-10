@@ -86,8 +86,6 @@
     * [Prefer OAPH over Properties](design-guidelines/prefer-opah-over-properties.md)
     * [Use this on Left of WhenAny](design-guidelines/use-this-on-left-of-whenany.md)
     * [Use descriptive variables with WhenAny](design-guidelines/use-descriptive-variables-with-whenany.md)
-* [Samples](https://github.com/reactiveui/samples)
-* [Support](/support/index.md)
 * [Contributing](contributing/index.md)
     * [Documentation](contributing/documentation.md)
         * [Authors](https://github.com/reactiveui/documentation/graphs/contributors)
@@ -105,6 +103,7 @@
         * [License](https://github.com/reactiveui/reactiveui/blob/master/LICENSE)
     * [Plugins](contributing/plugins/index.md)
     * [Snapshot](contributing/snapshot/index.md)
-* [Release Notes](https://github.com/reactiveui/reactiveui/releases)
-
+* [Support](support/index.md)
+* [Release Notes](github.com/reactiveui/reactiveui/releases)
+* [Samples](https://github.com/reactiveui/samples)
 
