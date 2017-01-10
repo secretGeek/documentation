@@ -1,6 +1,8 @@
-![](/en/images/contributing/squash-and-reword-the-commits.png)# Merging Pull Requests
+# Merging Pull Requests
 
 ![](/en/images/contributing/rename-the-title.png)
+
+![](/en/images/contributing/squash-and-reword-the-commits.png)
 
 ![](/en/images/contributing/assign-to-a-milestone.png)
 
