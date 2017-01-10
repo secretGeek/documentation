@@ -102,7 +102,6 @@
         * [Release Workflow](contributing/framework/release-workflow.md)
         * [License](https://github.com/reactiveui/reactiveui/blob/master/LICENSE)
     * [Plugins](contributing/plugins/index.md)
-    * [Snapshot](contributing/snapshot/index.md)
 * [Support](support/index.md)
 * [Release Notes](github.com/reactiveui/reactiveui/releases)
 * [Samples](https://github.com/reactiveui/samples)
