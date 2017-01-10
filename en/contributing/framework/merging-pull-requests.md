@@ -1,5 +1,4 @@
-#
-Merging Pull Requests
+# Merging Pull Requests
 
 Assign the GitHub issue to the `vNext` milestone.
 
