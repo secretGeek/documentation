@@ -1,6 +1,6 @@
 # Merging Pull Requests
 
-Assign the GitHub issue to the `vNext` milestone !
+Assign the GitHub issue to the `vNext` milestone.
 
 [](/en/images/contributing/assign-to-a-milestone.png)
 
