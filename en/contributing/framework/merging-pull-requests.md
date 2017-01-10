@@ -4,8 +4,6 @@
 
 ![](/en/images/contributing/apply-one-or-more-labels.png)
 
-
-
 ![](/en/images/contributing/rename-the-title.png)
 
 ![](/en/images/contributing/ready-for-squash-and-merge.png)
