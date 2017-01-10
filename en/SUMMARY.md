@@ -98,7 +98,7 @@
         * [Submitting A Pull Request](contributing/framework/submitting-a-pull-request.md)
         * [Merging Pull Requests](contributing/framework/merging-pull-requests.md)
         * [Semantic Versioning](contributing/framework/semantic-versioning.md)
-        * [Release Workflow](en/contributing/framework/release-workflow.md)
+        * [Release Workflow](contributing/framework/release-workflow.md)
         * [License](https://github.com/reactiveui/reactiveui/blob/master/LICENSE)
     * [Plugins](contributing/plugins/index.md)
     * [Snapshot](contributing/snapshot/index.md)
