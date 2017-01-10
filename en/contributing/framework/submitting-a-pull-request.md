@@ -12,7 +12,7 @@ git checkout -b my-fix-branch master
 ```
 
 * Follow our [Coding Style](code-style.md).
-* Create your patch, **including appropriate test cases**.
+* Create your patch, **including appropriate test cases and documentation**.
 * Run the test suite.
 * Commit your changes using a descriptive commit message that follows our [commit message conventions](commit-message-convention.md).
 
