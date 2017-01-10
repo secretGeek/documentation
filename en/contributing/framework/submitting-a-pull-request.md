@@ -40,5 +40,3 @@ If we suggest changes, then:
 * Push the changes to your GitHub repository (this will update your Pull Request).
 
 That's it! Thank you for your contribution!
-
-![Pull-request suffix](/images/contributing/semver-pull-request-into-develop.png)
