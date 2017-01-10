@@ -2,7 +2,7 @@
 
 Assign the GitHub issue to the `vNext` milestone.
 
-[](/images/contributing/assign-to-a-milestone.png)
+[](/en/images/contributing/assign-to-a-milestone.png)
 
 We use [GitReleaseManager](https://gitreleasemanager.readthedocs.io/en/develop/) to automatically generate our release notes as per [configured in this file](https://github.com/reactiveui/ReactiveUI/blob/develop/GitReleaseManager.yaml). By doing a little bit of leg work here it makes creating a release so much easier. You will need to assign one or more labels to categorize what component of ReactiveUI was changed by this unit of work.
 
