@@ -87,6 +87,7 @@
     * [Use this on Left of WhenAny](design-guidelines/use-this-on-left-of-whenany.md)
     * [Use descriptive variables with WhenAny](design-guidelines/use-descriptive-variables-with-whenany.md)
 * [Samples](https://github.com/reactiveui/samples)
+* [Support](/support/index.md)
 * [Contributing](contributing/index.md)
     * [Documentation](contributing/documentation.md)
         * [Authors](https://github.com/reactiveui/documentation/graphs/contributors)
@@ -105,4 +106,5 @@
     * [Plugins](contributing/plugins/index.md)
     * [Snapshot](contributing/snapshot/index.md)
 * [Release Notes](https://github.com/reactiveui/reactiveui/releases)
+
 
