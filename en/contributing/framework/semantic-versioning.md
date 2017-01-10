@@ -1,19 +1,21 @@
 # Semantic Versioning
 
-Semantic versioning is all about releases, our continuous integration infrastructure uses [GitVersion]([https://gitversion.readthedocs.io](https://gitversion.readthedocs.io) to automatically version our releases [as per the configuration]([https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml). 
+Semantic versioning is all about releases, our continuous integration infrastructure uses [GitVersion]([https://gitversion.readthedocs.io](https://gitversion.readthedocs.io) to automatically version our releases [as per the configuration]([https://github.com/reactiveui/ReactiveUI/blob/develop/GitVersion.yml).
 
-For maintainer sanity, we version ReactiveUI and package as a pinned group - all packages in a release will always be the same version and only work with that version which makes it impossible for a consumer to run into situations where they use `reactiveui-core` at `7.1.0` but `reactiveui-xamforms` at `7.0.0`. Additionally all assemblies share the same [AssemblyInfo.cs](https://github.com/reactiveui/ReactiveUI/blob/develop/src/CommonAssemblyInfo.cs) which is updated just before compile time by the build infrastructure.
+For maintainer sanity, we version ReactiveUI and package as a pinned group - all packages in a release will always be the same version and only work with that version which makes it impossible for a consumer to run into situations where they use `reactiveui-core` at `7.1.0` but `reactiveui-xamforms` at `7.0.0`. Additionally all assemblies share the same [CommonAssemblyInfo.cs](https://github.com/reactiveui/ReactiveUI/blob/develop/src/CommonAssemblyInfo.cs) which is updated just before compile time by the build infrastructure.
 
 We have three different workflows which control how ReactiveUI is versioned.
 
 ## Development Builds
+
 ![Development suffix](/images/contributing/semver-develop.png)
 
 Builds from the `develop` branch have a suffix of `alpha` so that they are sorted higher than release builds which provides the team the ability to manually publish development builds to NuGet as pre-releases if they so desire.
 
-**Do not** [increment the build using commit messages](https://gitversion.readthedocs.io/en/latest/more-info/version-increments/) when merging units of change into the development branch as GitVersion is configured in [Continuous Deployment mode](https://gitversion.readthedocs.io/en/latest/reference/continuous-deployment/) which automatically increments the minor for you.
+**Do not** [increment the build using commit messages](https://gitversion.readthedocs.io/en/latest/more-info/version-increments/) when merging units of change into the development branch as GitVersion is configured in [Continuous Deployment mode](https://gitversion.readthedocs.io/en/latest/reference/continuous-deployment/) which automatically increments the version for you.
 
 ## Pull Request Builds
+
 ![Pull-request suffix](/images/contributing/semver-pull-request-into-develop.png)
 
 Builds from pull-requests have a suffix of `pullrequest$GitHubIssueNumber` and are not automatically published to NuGet or MyGet but the packages are available for download from AppVeyor which allows the team to test the unit of change without merging into `develop`.
@@ -21,13 +23,14 @@ Builds from pull-requests have a suffix of `pullrequest$GitHubIssueNumber` and a
 When merging pull-requests into the `develop` branch use a rebase and squash commit that follows our template.
 
 ## Release Builds
+
 ![Release has no suffix](/images/contributing/semver-master.png)
 
 Builds from the `master` branch do not have a suffix and GitVersion is configured in [ContinuousDelivery mode](https://gitversion.readthedocs.io/en/latest/reference/continuous-delivery). If the current commit is tagged, the version in the tag overrides the automatic versioning strategies.
 
 ![Building a tagged release](/images/contributing/building-a-tagged-release.png)
 
-When creating a new release by pull-requesting between `develop` and `master` always use a **merge commit pull-request**. If the release contains breaking changes then the `BREAKING` can be automatically incremented by adding `+semver: breaking` on blank line of your commit message.
+When creating a new release by pull-requesting between `develop` and `master` always use a **merge commit pull-request**. If the release contains breaking changes then the `BREAKING` identifier can be automatically incremented by adding `+semver: breaking` on a blank line of your commit message.
 
 ## Versioning
 
@@ -53,3 +56,6 @@ MINOR when:
 PATCH when:
 
 * never, unless you _really_ stuff something up.
+
+
+
