@@ -1,5 +1,8 @@
-
 # Merging Pull Requests
+
+![](/en/images/contributing/rename-the-title.png)
+
+
 
 
 ![](/en/images/contributing/assign-to-a-milestone.png)
