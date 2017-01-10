@@ -1,4 +1,4 @@
-# Creating A New Release
+# Release Workflow
 
 ## Development
 
