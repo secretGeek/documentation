@@ -1,5 +1,4 @@
-#
-Release Workflow
+# Release Workflow
 
 ## Development
 
