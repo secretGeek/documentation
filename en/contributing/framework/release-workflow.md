@@ -17,7 +17,7 @@ At this stage the contributor that is proposing a new release must perform a few
 
 ![](/images/contributing/pull-request-review-required.png)
 
-Edit the `vNext` milestone and change it to the version number of the next release. If this release contains a [breaking change](semantic-versioning.md) then increase the `BREAKING` version by one and reset the `MINOR` back to zero. Otherwise just bump the `MINOR` version by one.
+Edit the `vNext` milestone and change it to the version number of the next release. If this release contains a [breaking change](semantic-versioning.md) then increase the `BREAKING` version by one and reset the `MINOR` back to zero and keep the `PATCH` at zero. Otherwise just bump the `MINOR` version by one and keep the `PATCH` at zero.
 
 ![](/images/contributing/click-edit-vnext-milestone-button.png)
 
