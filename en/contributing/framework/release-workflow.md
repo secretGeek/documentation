@@ -9,6 +9,10 @@ Once pull-requests have been merged into `develop` a new release is automaticall
 ## Production
 
 - Create a pull-request from `develop` to `master`
+
+When creating a new release by pull-requesting between `develop` and `master` always use a **merge commit pull-request**. If the release contains breaking changes then the `BREAKING` identifier can be automatically incremented by adding `+semver: breaking` on a blank line of your commit message.
+
+
 - Adjust the commit message and if it is a breaking release add the gitversion convention.
 - Merge the pull-request using the "squash commit" option.
 - Watch the build, once it completes you a draft release will appear in GitHub.
@@ -33,4 +37,3 @@ Once pull-requests have been merged into `develop` a new release is automaticall
 
 
 
-When creating a new release by pull-requesting between `develop` and `master` always use a **merge commit pull-request**. If the release contains breaking changes then the `BREAKING` identifier can be automatically incremented by adding `+semver: breaking` on a blank line of your commit message.
