@@ -13,7 +13,7 @@
     * [Solution Layout](getting-started/solution-layout.md)
     * [Visual Studio Settings](getting-started/visual-studio-settings.md)
     * [Xamarin Studio Settings](getting-started/xamarin-studio-settings.md)
-    * [Debugging Symbols](en/getting-started/debugging-symbols.md)
+    * [Debugging Symbols](getting-started/debugging-symbols.md)
     * [Example](getting-started/example.md)
 * [Samples](https://github.com/reactiveui/samples)
 * [User Guide](user-guide/index.md)
