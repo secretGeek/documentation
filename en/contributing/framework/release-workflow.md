@@ -8,14 +8,14 @@ Once pull-requests have been merged into `develop` a new release is automaticall
 
 ## Production
 
-Create a pull-request from `develop` to `master`
-Adjust the commit message and if it is a breaking release add the gitversion convention.
-Merge the pull-request using the "squash commit" option.
-Watch the build, once it completes you a draft release will appear in GitHub.
-Edit the release notes.
-Press publish release.
-Wait for the final build to happen.
-Verify packages were published to NuGet.
+- Create a pull-request from `develop` to `master`
+- Adjust the commit message and if it is a breaking release add the gitversion convention.
+- Merge the pull-request using the "squash commit" option.
+- Watch the build, once it completes you a draft release will appear in GitHub.
+- Edit the release notes.
+- Press publish release.
+- Wait for the final build to happen.
+- Verify packages were published to NuGet.
 
 ![](/en/images/contributing/click-edit-vnext-milestone-button.png)
 
