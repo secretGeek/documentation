@@ -24,7 +24,7 @@ Edit the `vNext` milestone and change it to the version number of the next relea
 If process for [merging individual pull-requests](merging-pull-requests.md) was followed perfectly then you won't need to do much here but in both parties need to verify that all issues that have been assigned to a milestone:
 
 * Has a prefix which classifies the type of change and clearly explained what was changed because our release notes are automatically generated from this information.
-* Have at _at least one or more_ label(s) assigned to the GitHub issue which classifies the scope of change. GitReleaseManager will fail to automatically generate the release notes and the draft release in GitHub if any issue has no labels.
+* Have at _at least one or more_ label(s) assigned to the GitHub issue which classifies the scope of change. GitReleaseManager will fail to automatically generate the release notes and the draft release in GitHub if any issue has no labels. If this happens, resolve this in GitHub and then re-run the merge commit build in AppVeyor.
 
 ![](/images/contributing/ensure-all-issues-assigned-to-a-milestone-are-labeled.png)
 
@@ -32,7 +32,7 @@ Once the release has been signed off, you'll need to switch your merge mode to `
 
 ![](/images/contributing/merge-commit-option.png)
 
-Mash the merge pull request button and customize the merge commit message. If the release contains breaking changes then bump the `BREAKING` identifier by adding `+semver: breaking` on a blank line of your commit message.
+Verify, once more that the GitHub issue milestone is correct as that will be the version of the software release. Mash the merge pull request button and customize the merge commit message. If the release contains breaking changes then bump the `BREAKING` identifier by adding `+semver: breaking` on a blank line of your commit message.
 
 ![](/images/contributing/merge-commit.png)
 
