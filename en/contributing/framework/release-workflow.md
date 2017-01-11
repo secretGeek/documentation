@@ -37,3 +37,8 @@ When creating a new release by pull-requesting between `develop` and `master` al
 
 
 
+![](/en/images/contributing/merge-commit-option.png)
+
+![](/en/images/contributing/merge-commit.png)
+
+![](/en/images/contributing/pull-request-into-master-then-publish-tag-to-release.png)
