@@ -14,6 +14,13 @@ By design, no single person can release a new version of ReactiveUI with-out app
 
 At this stage one of contributor that is proposing a new release must perform a few administrative tasks. It's the responsibility of the release approver to verify that these tasks have been performed correctly. 
 
+![](/en/images/contributing/click-edit-vnext-milestone-button.png)
+![](/en/images/contributing/ensure-all-issues-assigned-to-a-milestone-are-labeled.png)
+
+![](/en/images/contributing/create-new-vnext-milestone.png)
+
+![](/en/images/contributing/create-new-vnext-milestone.png)
+
 ![](/en/images/contributing/pull-request-review-required.png)
 
 ![](/en/images/contributing/merge-commit-option.png)
