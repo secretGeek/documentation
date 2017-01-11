@@ -12,7 +12,7 @@ We have three different workflows which control how ReactiveUI is versioned.
 
 Builds from the `develop` branch have a suffix of `alpha` so that they are sorted higher than release builds which provides the team the ability to manually publish development builds to NuGet as pre-releases if they so desire.
 
-**Do not** [increment the build using commit messages](https://gitversion.readthedocs.io/en/latest/more-info/version-increments/) when merging units of change into the development branch as GitVersion is configured in [Continuous Deployment mode](https://gitversion.readthedocs.io/en/latest/reference/continuous-deployment/) which automatically increments the version for you.
+GitVersion is configured in [Continuous Deployment mode](https://gitversion.readthedocs.io/en/latest/reference/continuous-deployment/) which automatically increments the version for you.
 
 ## Pull Request Builds
 
@@ -28,7 +28,6 @@ Builds from the `master` branch do not have a suffix and GitVersion is configure
 
 ![Building a tagged release](/images/contributing/building-a-tagged-release.png)
 
-When creating a new release by pull-requesting between `develop` and `master` always use a **merge commit pull-request**. If the release contains breaking changes then the `BREAKING` identifier can be automatically incremented by adding `+semver: breaking` on a blank line of your commit message.
 ## Versioning
 
 BREAKING.MINOR.PATCH\[-ALPHA-BUILDNUMBER\]
