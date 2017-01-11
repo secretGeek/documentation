@@ -15,7 +15,6 @@
     * [Xamarin Studio Settings](getting-started/xamarin-studio-settings.md)
     * [Debugging Symbols](en/getting-started/debugging-symbols.md)
     * [Example](getting-started/example.md)
-    * [Support](support/index.md)
 * [User Guide](user-guide/index.md)
     * [WhenAny](user-guide/when-any/index.md)
     * [View Models](user-guide/view-models/index.md)
