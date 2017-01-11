@@ -12,7 +12,7 @@ By design, no single person can release a new version of ReactiveUI without appr
 
 ![](/images/contributing/create-a-pull-request-from-develop-to-master.png)
 
-At this stage one of contributor that is proposing a new release must perform a few administrative tasks. It's the responsibility of the release approver to verify that these tasks have been performed correctly. Both parties should [jump into the ReactiveUI video chat room](https://appear.in/reactiveui) before proceeding any further.
+At this stage the contributor that is proposing a new release must perform a few administrative tasks. It's the responsibility of the release approver to verify that these tasks have been performed correctly. Both parties should [jump into the ReactiveUI video chat room](https://appear.in/reactiveui) before proceeding any further.
 
 
 ![](/images/contributing/pull-request-review-required.png)
