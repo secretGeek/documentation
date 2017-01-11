@@ -15,6 +15,7 @@
     * [Xamarin Studio Settings](getting-started/xamarin-studio-settings.md)
     * [Debugging Symbols](en/getting-started/debugging-symbols.md)
     * [Example](getting-started/example.md)
+* [Samples](https://github.com/reactiveui/samples)
 * [User Guide](user-guide/index.md)
     * [WhenAny](user-guide/when-any/index.md)
     * [View Models](user-guide/view-models/index.md)
@@ -103,6 +104,5 @@
         * [License](https://github.com/reactiveui/ReactiveUI/blob/develop/LICENSE)
     * [Plugins](contributing/plugins/index.md)
 * [Support](support/index.md)
-* [Release Notes](github.com/reactiveui/reactiveui/releases)
-* [Samples](https://github.com/reactiveui/samples)
+* [Release Notes](https://github.com/reactiveui/reactiveui/releases)
 
