@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
+* Introduction
     * [Compelling Example](compelling-example/index.md)
     * [Success Stories](https://github.com/reactiveui/ReactiveUI/issues/979)
 * [Fundamentals](fundamentals/index.md)
