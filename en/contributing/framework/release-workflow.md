@@ -8,7 +8,7 @@ Once pull-requests have been merged into `develop` a new release is automaticall
 
 ## Production
 
-By design, no single person can release a new version of ReactiveUI with-out approval from [one of the other contributors](https://github.com/orgs/reactiveui/teams/contributors). The process is kicked off by one of the contributors opening up a pull-request from `develop` to `master`
+By design, no single person can release a new version of ReactiveUI without approval from [one of the other contributors](https://github.com/orgs/reactiveui/teams/contributors). The process is kicked off by one of the contributors opening up a pull-request from `develop` to `master`
 
 ![](/images/contributing/create-a-pull-request-from-develop-to-master.png)
 
