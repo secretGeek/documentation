@@ -8,7 +8,9 @@ Once pull-requests have been merged into `develop` a new release is automaticall
 
 ## Production
 
-- Create a pull-request from `develop` to `master`
+* Create a pull-request from `develop` to `master`
+
+![](/en/images/contributing/create-a-pull-request-from-develop-to-master.png)
 
 When creating a new release by pull-requesting between `develop` and `master` always use a **merge commit pull-request**. If the release contains breaking changes then the `BREAKING` identifier can be automatically incremented by adding `+semver: breaking` on a blank line of your commit message.
 
@@ -42,3 +44,4 @@ When creating a new release by pull-requesting between `develop` and `master` al
 ![](/en/images/contributing/merge-commit.png)
 
 ![](/en/images/contributing/pull-request-into-master-then-publish-tag-to-release.png)
+
