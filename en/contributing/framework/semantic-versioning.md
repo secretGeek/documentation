@@ -20,7 +20,7 @@ Builds from the `develop` branch have a suffix of `alpha` so that they are sorte
 
 Builds from pull-requests have a suffix of `pullrequest$GitHubIssueNumber` and are not automatically published to NuGet or MyGet but the packages are available for download from AppVeyor which allows the team to test the unit of change without merging into `develop`.
 
-When merging pull-requests into the `develop` branch use a rebase and squash commit that follows our template.
+When merging pull-requests into the `develop` branch follow the (merging pull requests process][merging-pull-requests.md).
 
 ## Release Builds
 
