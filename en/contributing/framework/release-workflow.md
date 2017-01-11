@@ -32,7 +32,7 @@ Once the release has been signed off, you'll need to switch your merge mode to `
 
 ![](/images/contributing/merge-commit-option.png)
 
-Verify, once more that the GitHub issue milestone is correct as that will be the version of the software release. Mash the merge pull request button and customize the merge commit message. If the release contains breaking changes then bump the `BREAKING` identifier by adding `+semver: breaking` on a blank line of your commit message.
+Verify, once more that the GitHub issue milestone is correct as that will be the version of the software release. Mash the merge pull request button and customize the merge commit message. 
 
 ![](/images/contributing/merge-commit.png)
 
