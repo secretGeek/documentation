@@ -22,6 +22,7 @@ Verify that the pull-request identifier is a suffix on the commit message and th
 
 ![](/images/contributing/squash-and-reword-the-commits.png)
 
+Shower the contributor in flowers and encourage them to come join us in Slack.
+
 ![](/images/contributing/contribution-merged.png)
 
-Shower the contributor in flowers and encourage them to come join us in Slack.
