@@ -12,6 +12,8 @@ We use [GitReleaseManager](https://gitreleasemanager.readthedocs.io/develop/) to
 
 Ensure that the merge button is set to `Squash and Merge`, use the little arrow on the right hand side to switch to this mode.
 
+![](/images/contributing/squash-and-merge-commit.png)
+
 ![](/images/contributing/ready-for-squash-and-merge.png)
 
 Here you are squashing and rebasing all commits into one, this is your last chance to make sure the commit message follows [our established convention](commit-message-convention.md) with the existing suffix i.e. `(#$pullRequestNumber)`
