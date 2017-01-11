@@ -14,12 +14,13 @@ Ensure that the merge button is set to `Squash and Merge`, use the little arrow 
 
 ![](/images/contributing/squash-and-merge-commit.png)
 
+Mash the `Squash and Merge` button which will squash/rebasing all commits in the pull-request into one, this is your last chance to make sure the commit message follows [our established convention](commit-message-convention.md) with the existing suffix i.e. `(#$pullRequestNumber)`
+
 ![](/images/contributing/ready-for-squash-and-merge.png)
 
-Here you are squashing and rebasing all commits into one, this is your last chance to make sure the commit message follows [our established convention](commit-message-convention.md) with the existing suffix i.e. `(#$pullRequestNumber)`
-![](/images/contributing/squash-and-reword-the-commits.png)
-
 Verify that the pull-request identifier is a suffix on the commit message and then merge the contribution
+
+![](/images/contributing/squash-and-reword-the-commits.png)
 
 ![](/images/contributing/contribution-merged.png)
 
