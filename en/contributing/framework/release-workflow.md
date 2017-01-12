@@ -57,6 +57,50 @@ One final step remains, create a new `vNext` milestone.
 
 ### Troubleshooting
 
+#### Version wasn't bumped when merging from develop into master
+
+Change to a clean copy of `master`
+
+```shell
+git clean -fdx
+git reset --hard
+git checkout master
+git pull
+```
+
+Create a new branch
+
+```shell
+git branch bump-release-version
+```
+If you want to bump the `BREAKING` create an empty commit in the branch with the following commit message
+
+
+```
+git commit --allow-empty -m "fix: the previous commit didn't bump with +semver: breaking"
+```
+
+If you want to bump the `FEATURE` create an empty commit in the branch with the following commit message
+
+
+```
+git commit --allow-empty -m "fix: the previous commit didn't bump with +semver: feature"
+```
+
+Publish your changes 
+
+
+
+
+
+To bump the `FEATURE` use:
+ 
+
+```
+git commit --allow-empty -m "fix: commit $sha didn't bump with ${keyword}"
+```
+
+
 C:\Dropbox\OSS\reactiveui\ReactiveUI>git branch bump-release-version
 
 C:\Dropbox\OSS\reactiveui\ReactiveUI>git checkout bump-release-version
