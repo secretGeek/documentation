@@ -32,7 +32,7 @@ Once the release has been approved, you'll need to switch your merge mode to `Cr
 
 ![](/images/contributing/merge-commit-option.png)
 
-Verify, once more that the GitHub issue milestone is correct as that will be the version of the software release. Mash the merge pull request button and customize the merge commit message. 
+Verify, once more that the GitHub issue milestone is correct as that will be the version of the software release. Mash the merge pull request button. You do not need to customize the merge commit message. 
 
 ![](/images/contributing/merge-commit.png)
 
