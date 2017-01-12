@@ -54,3 +54,22 @@ Pressing the publish release button will stamp the repository with a git tag whi
 One final step remains, create a new `vNext` milestone.
 
 ![](/images/contributing/create-new-vnext-milestone.png)
+
+### Troubleshooting
+
+C:\Dropbox\OSS\reactiveui\ReactiveUI>git branch bump-release-version
+
+C:\Dropbox\OSS\reactiveui\ReactiveUI>git checkout bump-release-version
+Switched to branch 'bump-release-version'
+
+:\Dropbox\OSS\reactiveui\ReactiveUI>git commit --allow-empty -m "fix: commit 25fb135 didn't bump with +semver: feature"
+[bump-release-version 9c5c41a] fix: commit 25fb135 didn't bump with +semver: feature
+
+C:\Dropbox\OSS\reactiveui\ReactiveUI>git push origin bump-release-version
+Counting objects: 1, done.
+Writing objects: 100% (1/1), 215 bytes | 0 bytes/s, done.
+Total 1 (delta 0), reused 0 (delta 0)
+To git@github.com:reactiveui/ReactiveUI.git
+ * [new branch]      bump-release-version -> bump-release-version
+ 
+ 
