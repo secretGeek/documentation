@@ -28,7 +28,7 @@ If process for [merging individual pull-requests](merging-pull-requests.md) was 
 
 ![](/images/contributing/ensure-all-issues-assigned-to-a-milestone-are-labeled.png)
 
-Once the release has been signed off, you'll need to switch your merge mode to `Create a merge commit` aka `Merge pull request` by using the little arrow on the right hand side.
+Once the release has been approved, you'll need to switch your merge mode to `Create a merge commit` aka `Merge pull request` by using the little arrow on the right hand side.
 
 ![](/images/contributing/merge-commit-option.png)
 
