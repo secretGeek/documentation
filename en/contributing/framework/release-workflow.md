@@ -24,7 +24,7 @@ Edit the `vNext` milestone and change it to the version number of the next relea
 If process for [merging individual pull-requests](merging-pull-requests.md) was followed perfectly then you won't need to do much here but in both parties need to verify that all issues that have been assigned to a milestone:
 
 * Has a prefix which classifies the type of change and clearly explained what was changed because our release notes are automatically generated from this information.
-* Have at _at least one or more_ label(s) assigned to the GitHub issue which classifies the scope of change. GitReleaseManager will fail to automatically generate the release notes and the draft release in GitHub if any issue has no labels. If this happens, resolve this in GitHub and then re-run the merge commit build in AppVeyor.
+* Have _one_ label assigned (no, more until GitReleaseManager has been PR'ed to support multiple labels) to the GitHub issue which classifies the scope of change. GitReleaseManager will fail to automatically generate the release notes and the draft release in GitHub if any issue has no labels. If this happens, resolve this in GitHub and then re-run the merge commit build in AppVeyor.
 
 ![](/images/contributing/ensure-all-issues-assigned-to-a-milestone-are-labeled.png)
 
