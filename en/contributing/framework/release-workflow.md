@@ -61,7 +61,7 @@ One final step remains, create a new `vNext` milestone.
 
 You'll need to do a pull-request similar to this https://github.com/reactiveui/ReactiveUI/pull/1226
 
-![](/en/images/contributing/release-failed-because-gitreleasemanager-could-not-find-the-milestone.png) 
+![](/images/contributing/release-failed-because-gitreleasemanager-could-not-find-the-milestone.png) 
 
 Change to a clean copy of `master`
 
