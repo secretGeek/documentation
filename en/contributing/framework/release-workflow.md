@@ -109,5 +109,5 @@ Do not customize the merge commit message or more specifically, do not bump the 
 
 Visit the issue, resolve the problem and then visit AppVeyor and click "Rebuild Commit". It is safe to do this multiple times because building `master` does not automatically release unless the commit has been tagged.
 
-![](/en/images/contributing/release-failed-because-of-labeling-issue.png)
+![](/images/contributing/release-failed-because-of-labeling-issue.png)
 
