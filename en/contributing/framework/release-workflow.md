@@ -77,20 +77,29 @@ Create a new branch
 ```shell
 git branch bump-release-version
 ```
-If you want to bump the `BREAKING` create an empty commit in the branch with the following commit message
 
+If you want to bump the `BREAKING` create an empty commit in the branch with the following commit message
 
 ```
 git commit --allow-empty -m "fix: the previous commit didn't bump with +semver: breaking"
 ```
-
 If you want to bump the `FEATURE` create an empty commit in the branch with the following commit message
-
 
 ```
 git commit --allow-empty -m "fix: the previous commit didn't bump with +semver: feature"
 ```
 
+Push your branch
+
+```shell
+git push origin bump-release-version
+```
+
+Open a pull-request to `master` and once the release has been approved, you'll need to switch your merge mode to `Create a merge commit` aka `Merge pull request` by using the little arrow on the right hand side.
+
+![](/images/contributing/merge-commit-option.png)
+
+Do not customize the merge commit message or more specifically, do not bump the semver in the merge commit message.
 
 #### Release failed because of labeling issue
 
