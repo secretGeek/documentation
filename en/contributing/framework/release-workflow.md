@@ -91,3 +91,9 @@ If you want to bump the `FEATURE` create an empty commit in the branch with the 
 git commit --allow-empty -m "fix: the previous commit didn't bump with +semver: feature"
 ```
 
+
+#### Release failed because of labeling issue
+
+![](/en/images/contributing/release-failed-because-of-labeling-issue.png)
+
+Visit the issue, resolve the problem and then visit AppVeyor and click "Rebuild Commit". It is safe to do this multiple times because building `master` does not automatically release unless the commit has been tagged.
