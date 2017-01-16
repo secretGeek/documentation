@@ -42,9 +42,13 @@ Merging this pull-request into `master` will kick off a new build on AppVeyor bu
 
 Once this build completes, a new draft release with automatically generated release notes will be available for you to polish and add any flair as needed.
 
-$INSERT IMAGE OF DRAFT RELEASE HERE.
+![](/images/contributing/edit-release-notes.png)
+
 
 Pressing the publish release button will stamp the repository with a git tag which the release version, overriding any automatic versioning strategies and trigger a new build which will be automatically published to NuGet.org.
+
+![](/images/contributing/stamp-repository-and-publish-release.png)
+
 
 
 ![](/images/contributing/pull-request-into-master-then-publish-tag-to-release.png)
