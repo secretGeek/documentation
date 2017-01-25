@@ -10,7 +10,7 @@ The 1980's saw the invention of a new way to write computer programs: object-ori
 
 After that, things got pretty boring.
 
-Most modern programming today is basically imperative, meaning it models the traditional fetch-execute cycle of a CPU. Perform and instruction, fetch the next one. Perform that one, and so on. For decades, programmers have had to mould their brains to fit the paradigm of the CPU.
+Most modern programming today is basically imperative, meaning it models the traditional fetch-execute cycle of a CPU. Perform an instruction, fetch the next one. Perform that one, and so on. For decades, programmers have had to mould their brains to fit the paradigm of the CPU.
 
 ## Imperative Programming is Dangerous
 
